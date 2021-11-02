@@ -4,4 +4,4 @@ Service for renting parking places around town for people who may have parking s
 
 /Thomas, Uzair, Tommi, Mehrdad
 
-Copyright AirPnP AB
+(C) AirPnP AB
