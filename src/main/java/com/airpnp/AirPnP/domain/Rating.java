@@ -30,4 +30,8 @@ public class Rating {
         this.rating = rating;
     }
 
+    public double getRating() {
+        return rating;
+    }
+
 }
