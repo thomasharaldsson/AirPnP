@@ -1,9 +1,10 @@
 package com.airpnp.AirPnP.service;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.airpnp.AirPnP.domain.Rating;
+
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Customer {
@@ -15,6 +16,8 @@ public class Customer {
     private String surName;
     private String email;
     private String phoneNumber;
+    @OneToMany
+    List<Rating> ratings = new ArrayList<>();
 
     public Customer() {}
 
@@ -56,6 +59,18 @@ public class Customer {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    public void addRating(Rating rating) {
+        ratings.add(rating);
+    }
+
+    public double getRating() {
+        double totalValueOfRatings = 0;
+        for(Rating rating : ratings) {
+            totalValueOfRatings = totalValueOfRatings + rating.getRating();
+        }
+        return totalValueOfRatings;
     }
 
     @Override
