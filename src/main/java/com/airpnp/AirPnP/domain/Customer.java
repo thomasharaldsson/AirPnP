@@ -1,4 +1,4 @@
-package com.airpnp.AirPnP.service;
+package com.airpnp.AirPnP.domain;
 
 import com.airpnp.AirPnP.domain.Rating;
 

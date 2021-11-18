@@ -1,6 +1,5 @@
 package com.airpnp.AirPnP.domain;
 
-import com.airpnp.AirPnP.service.Customer;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
