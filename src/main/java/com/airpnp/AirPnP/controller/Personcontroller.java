@@ -1,7 +1,6 @@
 package com.airpnp.AirPnP.controller;
 
 import com.airpnp.AirPnP.data.CustomerRepository;
-import com.airpnp.AirPnP.domain.Person;
 import com.airpnp.AirPnP.domain.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -44,7 +43,7 @@ public class Personcontroller {
     @RequestMapping(value = "/customer/{name}")
     public ModelAndView showCustomerByName(@PathVariable("name") String name) {
 
-        return null;
-
+        Customer customer= data.findByName(name);
+        return new ModelAndView("customerInfo" , "customer", customer);
     }
 }
