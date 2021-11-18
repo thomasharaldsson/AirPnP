@@ -1,5 +1,6 @@
 package com.airpnp.AirPnP.controller;
 
+import com.airpnp.AirPnP.data.CustomerRepository;
 import com.airpnp.AirPnP.domain.Person;
 import com.airpnp.AirPnP.domain.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +17,7 @@ import java.util.List;
 public class Personcontroller {
 
     @Autowired
-    private Person data;
+    private CustomerRepository data;
 
     //This method will save the customer into the database
     @RequestMapping(value = "/newController.html", method = RequestMethod.POST)
