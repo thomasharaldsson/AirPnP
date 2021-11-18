@@ -1,7 +1,7 @@
 package com.airpnp.AirPnP.controller;
 
 import com.airpnp.AirPnP.domain.Person;
-import com.airpnp.AirPnP.service.Customer;
+import com.airpnp.AirPnP.domain.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
