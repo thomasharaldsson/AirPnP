@@ -288,3 +288,6 @@ $RECYCLE.BIN/
 # End of https://www.toptal.com/developers/gitignore/api/java,macos,windows,linux,react,intellij,eclipse,visualstudiocode
 
 *.iml
+
+# Database files
+*.mv.db
