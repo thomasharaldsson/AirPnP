@@ -39,7 +39,7 @@ public class Personcontroller {
         return new ModelAndView("allCustomers", "customers", allCustomers);
     }
 
-    //Search for a vehicle by its name
+    //Search for a customer by its name
     @RequestMapping(value = "/customer/{name}")
     public ModelAndView showCustomerByName(@PathVariable("name") String name) {
 
