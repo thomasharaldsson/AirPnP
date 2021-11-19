@@ -39,11 +39,12 @@ public class Personcontroller {
         return new ModelAndView("allCustomers", "customers", allCustomers);
     }
 
+    /*
     //Search for a customer by its name
     @RequestMapping(value = "/customer/{name}")
     public ModelAndView showCustomerByName(@PathVariable("name") String name) {
 
         Customer customer= data.findByName(name);
         return new ModelAndView("customerInfo" , "customer", customer);
-    }
+    }*/
 }
