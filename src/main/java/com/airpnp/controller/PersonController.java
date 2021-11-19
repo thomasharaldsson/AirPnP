@@ -1,8 +1,8 @@
 package com.airpnp.controller;
 
 import com.airpnp.data.CustomerRepository;
-import com.airpnp.domain.Customer;
-import com.airpnp.domain.Rating;
+import com.airpnp.domainmodel.Customer;
+import com.airpnp.domainmodel.Rating;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

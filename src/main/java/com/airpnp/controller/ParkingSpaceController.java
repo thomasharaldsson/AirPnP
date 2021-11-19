@@ -1,7 +1,7 @@
 package com.airpnp.controller;
 
-import com.airpnp.domain.Customer;
-import com.airpnp.domain.ParkingSpace;
+import com.airpnp.domainmodel.Customer;
+import com.airpnp.domainmodel.ParkingSpace;
 import com.airpnp.service.ParkingSpaceService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

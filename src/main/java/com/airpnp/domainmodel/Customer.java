@@ -1,4 +1,4 @@
-package com.airpnp.domain;
+package com.airpnp.domainmodel;
 
 import javax.persistence.*;
 import java.util.ArrayList;

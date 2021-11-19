@@ -1,6 +1,6 @@
 package com.airpnp.service;
 
-import com.airpnp.domain.ParkingSpace;
+import com.airpnp.domainmodel.ParkingSpace;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
