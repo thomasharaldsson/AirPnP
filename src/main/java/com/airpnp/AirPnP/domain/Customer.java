@@ -12,8 +12,7 @@ public class Customer {
     @GeneratedValue(strategy= GenerationType.AUTO)
     @Id
     private long id;
-    private String firstName;
-    private String surName;
+    private String name;
     private String email;
     private String phoneNumber;
     @OneToMany
@@ -29,20 +28,12 @@ public class Customer {
         this.id = id;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getSurName() {
-        return surName;
-    }
-
-    public void setSurName(String surName) {
-        this.surName = surName;
+    public String getName() {
+        return name;
     }
 
     public String getEmail() {
@@ -65,6 +56,7 @@ public class Customer {
         ratings.add(rating);
     }
 
+
     public double getRating() {
         double totalValueOfRatings = 0;
         for(Rating rating : ratings) {
@@ -73,14 +65,18 @@ public class Customer {
         return totalValueOfRatings;
     }
 
+    public String findByName(String name) {
+        return "lars olof";
+    }
+
     @Override
     public String toString() {
         return "Customer{" +
                 "id=" + id +
-                ", firstName='" + firstName + '\'' +
-                ", surName='" + surName + '\'' +
+                ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
+                ", ratings=" + ratings +
                 '}';
     }
 }
