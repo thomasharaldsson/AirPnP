@@ -32,7 +32,8 @@ public class Personcontroller {
         List<Customer> allCustomers = data.findAll();
 
         Customer newCustomer = new Customer();
-        newCustomer.setName("Bossesson");
+        newCustomer.setSurName("Bosse");
+        newCustomer.setSurName("Bossesson");
         allCustomers.add(newCustomer);
 
         return new ModelAndView("allCustomers", "customers", allCustomers);
