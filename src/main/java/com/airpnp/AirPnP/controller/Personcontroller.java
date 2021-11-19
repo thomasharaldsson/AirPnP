@@ -32,7 +32,7 @@ public class Personcontroller {
         List<Customer> allCustomers = data.findAll();
 
         Customer newCustomer = new Customer();
-        newCustomer.setSurName("Bosse");
+        newCustomer.setFirstName("Bosse");
         newCustomer.setSurName("Bossesson");
         allCustomers.add(newCustomer);
 
