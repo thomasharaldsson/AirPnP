@@ -1,4 +1,4 @@
-package com.airpnp.AirPnP.domain;
+package com.airpnp.domain;
 
 import java.util.Date;
 

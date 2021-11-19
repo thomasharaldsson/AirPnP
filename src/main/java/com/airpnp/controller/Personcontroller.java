@@ -1,10 +1,9 @@
-package com.airpnp.AirPnP.controller;
+package com.airpnp.controller;
 
-import com.airpnp.AirPnP.data.CustomerRepository;
-import com.airpnp.AirPnP.domain.Customer;
+import com.airpnp.data.CustomerRepository;
+import com.airpnp.domain.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;

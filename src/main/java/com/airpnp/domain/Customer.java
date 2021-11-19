@@ -1,6 +1,4 @@
-package com.airpnp.AirPnP.domain;
-
-import com.airpnp.AirPnP.domain.Rating;
+package com.airpnp.domain;
 
 import javax.persistence.*;
 import java.util.ArrayList;
