@@ -9,32 +9,35 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.List;
+
 @Controller
 @RequestMapping("/park")
 public class ParkingSpaceController {
 
-
-    @Autowired
     private ParkingSpaceService parkingSpaceService;
 
     @RequestMapping(value = "/parkingspaces", method = RequestMethod.GET)
-    public ModelAndView showAllParkingspace () {
-        //TODO
+    public ModelAndView showAllParkingspace() {
+        //List<ParkingSpace> allParkingSpaces = parkingSpaceService.getAllParkingSpaces();
         return null;
     }
 
     @RequestMapping(value = "/createparking", method = RequestMethod.POST)
-    public ParkingSpace createParkingspace (Customer customer) {
+    public ParkingSpace createParkingspace(Customer customer) {
         //TODO
         return null;
     }
 
-    public void deleteParkingspace () {
+    public void deleteParkingspace() {
         //TODO
     }
 
-    public void lendParkingspace () {
+    public void lendParkingspace() {
         //TODO
     }
 
+    public void setParkingSpaceService(ParkingSpaceService parkingSpaceService) {
+        this.parkingSpaceService = parkingSpaceService;
+    }
 }
