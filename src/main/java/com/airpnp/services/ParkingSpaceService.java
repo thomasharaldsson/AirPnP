@@ -1,9 +1,11 @@
 package com.airpnp.services;
 
 import com.airpnp.domain.ParkingSpace;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@Repository
 public interface ParkingSpaceService {
 
     public ParkingSpace getParkingSpaceById(int Id);
