@@ -291,3 +291,4 @@ $RECYCLE.BIN/
 
 # Database files
 *.mv.db
+Database.*
