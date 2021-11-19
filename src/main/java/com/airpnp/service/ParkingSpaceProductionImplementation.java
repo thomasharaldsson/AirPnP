@@ -1,4 +1,4 @@
-package com.airpnp.services;
+package com.airpnp.service;
 
 import com.airpnp.domain.ParkingSpace;
 
