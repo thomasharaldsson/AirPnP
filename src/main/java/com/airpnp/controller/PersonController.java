@@ -13,7 +13,7 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/website/customers")
-public class Personcontroller {
+public class PersonController {
 
 
     @Autowired
