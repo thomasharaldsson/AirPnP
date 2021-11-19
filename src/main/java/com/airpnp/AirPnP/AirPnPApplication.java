@@ -1,4 +1,4 @@
-package com.airpnp.AirPnP.client;
+package com.airpnp.AirPnP;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
