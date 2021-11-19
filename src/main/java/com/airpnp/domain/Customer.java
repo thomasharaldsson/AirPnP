@@ -27,13 +27,14 @@ public class Customer extends Person {
     public double getRating() {
         double totalValueOfRatings = 0;
         for(Rating rating : ratings) {
-            totalValueOfRatings = totalValueOfRatings + rating.getRating();
+            totalValueOfRatings = (totalValueOfRatings + rating.getRating()) / ratings.size();
         }
         return totalValueOfRatings;
     }
 
     @Override
     public String toString() {
-        return "Customer name: " + this.getFirstName() + " " + this.getSurName();
+        return "Customer name: " + this.getFirstName() + " "
+                + this.getSurName() + " with average rating: " + getRating();
     }
 }
