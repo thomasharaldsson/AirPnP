@@ -14,7 +14,7 @@
 	<name>AirPnP</name>
 	<description>Project AirPnP</description>
 	<properties>
-		<java.version>11</java.version>
+		<java.version>17</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -58,6 +58,26 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+
+
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>exec-maven-plugin</artifactId>
+				<version>1.2.1</version>
+
+				<executions>
+					<execution>
+						<phase>install</phase>
+						<goals>
+							<goal>java</goal>
+						</goals>
+						<configuration>
+							<mainClass>com.airpnp.AirPnPApplication</mainClass>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
 		</plugins>
 		<resources>
 			<resource>

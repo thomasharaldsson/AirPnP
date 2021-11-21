@@ -8,6 +8,5 @@ Service for renting parking places around town for people who may have parking s
 
 ## How to build and run
 
-1. build: `mvn clean package`
-2. launch application server: `java -jar target/AirPnP-0.0.1-SNAPSHOT.jar`
+1. build and launch application: `mvn clean install`
 3. open URL in web browser: [http://localhost:8080/customers/list.html](http://localhost:8080/customers/list.html)
