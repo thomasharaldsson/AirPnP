@@ -14,7 +14,6 @@
         <form:input path="price"/>
         <form:errors path="price"/>
     </div>
-    <!--
     <div>
         <form:label path="startDate">Start date</form:label>
         <form:input path="startDate"/>
@@ -25,7 +24,6 @@
         <form:input path="endDate"/>
         <form:errors path="endDate"/>
     </div>
-    -->
     <div>
         <form:label path="streetAddress">Street address</form:label>
         <form:input path="streetAddress"/>
