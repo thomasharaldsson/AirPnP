@@ -9,18 +9,23 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-@RequestMapping("/park")
+@RequestMapping("/parkingspace")
 public class ParkingSpaceController {
 
     private ParkingSpaceService parkingSpaceService;
 
-    @RequestMapping(value = "/parkingspaces", method = RequestMethod.GET)
+    @RequestMapping(value = "/showall", method = RequestMethod.GET)
     public ModelAndView showAllParkingspace() {
         //List<ParkingSpace> allParkingSpaces = parkingSpaceService.getAllParkingSpaces();
         return null;
     }
 
-    @RequestMapping(value = "/createparking", method = RequestMethod.POST)
+    @RequestMapping(value = "/create", method = RequestMethod.GET)
+    public ModelAndView createParkingspace() {
+        return new ModelAndView("createParkingSpace");
+    }
+
+    @RequestMapping(value = "/create", method = RequestMethod.POST)
     public ParkingSpace createParkingspace(Customer customer) {
         //TODO
         return null;
