@@ -40,7 +40,7 @@ public class PersonController {
         allCustomers.add(newCustomer);
 
 
-        return new ModelAndView("allCustomers", "customers", allCustomers);
+        return new ModelAndView("customer/allCustomers", "customers", allCustomers);
     }
 
     /*
