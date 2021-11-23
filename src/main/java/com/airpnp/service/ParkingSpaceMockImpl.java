@@ -2,18 +2,48 @@ package com.airpnp.service;
 
 import com.airpnp.domainmodel.ParkingSpace;
 
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class ParkingSpaceMockImpl implements ParkingSpaceService {
+
+    Map<Integer, ParkingSpace> parkingSpaces;
+
+    public ParkingSpaceMockImpl() {
+        parkingSpaces = new HashMap<>();
+        SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            ParkingSpace parkingSpace1 = new ParkingSpace(1, 35, dateFormatter.parse("2020-03-07"), dateFormatter.parse("2020-03-14"), "Götaplatsen 3");
+            ParkingSpace parkingSpace2 = new ParkingSpace(2, 40, dateFormatter.parse("2020-01-01"), dateFormatter.parse("2020-01-06"), "Frölunda Torg");
+            ParkingSpace parkingSpace3 = new ParkingSpace(3, 15, dateFormatter.parse("2021-02-01"), dateFormatter.parse("2020-03-01"), "Köldgatan");
+            ParkingSpace parkingSpace4 = new ParkingSpace(4, 65, dateFormatter.parse("2021-11-02"), dateFormatter.parse("2020-11-29"), "Fryshuset");
+            parkingSpaces.put(parkingSpace1.getId(), parkingSpace1);
+            parkingSpaces.put(parkingSpace2.getId(), parkingSpace2);
+            parkingSpaces.put(parkingSpace3.getId(), parkingSpace3);
+            parkingSpaces.put(parkingSpace4.getId(), parkingSpace4);
+        } catch (Exception e) {
+
+        }
+
+    }
+
     @Override
     public ParkingSpace getParkingSpaceById(int Id) {
-        // TODO: Implement method
-        return null;
+        return parkingSpaces.get(Id);
     }
 
     @Override
     public List<ParkingSpace> getAllParkingSpaces() {
-        // TODO: Implement method
-        return null;
+        return new ArrayList<>(parkingSpaces.values());
     }
+
+    @Override
+    public void addParkingSpace(ParkingSpace parkingSpace) {
+        parkingSpaces.put(parkingSpace.getId(), parkingSpace);
+    }
+
+
 }

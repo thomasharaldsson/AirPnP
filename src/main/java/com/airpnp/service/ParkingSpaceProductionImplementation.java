@@ -16,4 +16,9 @@ public class ParkingSpaceProductionImplementation implements ParkingSpaceService
         // TODO: Implement method
         return null;
     }
+
+    @Override
+    public void addParkingSpace(ParkingSpace parkingSpace) {
+        // TODO: Implement method
+    }
 }
