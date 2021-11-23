@@ -19,13 +19,13 @@ public class ParkingSpaceController {
     @RequestMapping(value = "/showall", method = RequestMethod.GET)
     public ModelAndView showAllParkingspace() {
         List<ParkingSpace> allParkingSpaces = parkingSpaceService.getAllParkingSpaces();
-        return null;
+        return new ModelAndView("parkingspace/listAll", "parkingSpaces", allParkingSpaces);
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.GET)
     public ModelAndView createParkingspace() {
         ParkingSpace parkingSpace = new ParkingSpace(5, 35, new Date(), new Date(), "Sparregatan 10");
-        return new ModelAndView("parkingspace/createParkingSpace", "form", parkingSpace);
+        return new ModelAndView("parkingspace/create", "form", parkingSpace);
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
