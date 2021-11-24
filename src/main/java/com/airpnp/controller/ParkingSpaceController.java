@@ -17,10 +17,6 @@ public class ParkingSpaceController {
     @Autowired
     private ParkingSpaceService parkingSpaceService;
 
-    public ParkingSpaceController(ParkingSpaceService service) {
-        this.parkingSpaceService = service;
-    }
-
     @RequestMapping(value = "/showall", method = RequestMethod.GET)
     public ModelAndView showAllParkingspace() {
         List<ParkingSpace> allParkingSpaces = parkingSpaceService.getAllParkingSpaces();
