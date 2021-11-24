@@ -5,6 +5,7 @@ import com.airpnp.domainmodel.ParkingSpace;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 public class ParkingSpaceProductionImpl implements ParkingSpaceService {
 
@@ -13,7 +14,12 @@ public class ParkingSpaceProductionImpl implements ParkingSpaceService {
 
     @Override
     public ParkingSpace getParkingSpaceById(Long Id) {
-        return data.findById(Id).get();
+        if (data.findById(Id).isPresent()) {
+            return data.findById(Id).get();
+        }
+        else {
+            throw new NoSuchElementException("There was no parking space with this Id.");
+        }
     }
 
     @Override
