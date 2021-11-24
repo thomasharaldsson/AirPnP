@@ -30,9 +30,10 @@ public class ParkingSpaceController {
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
-    public void createParkingspace(ParkingSpace parkingspace) {
+    public String createParkingspace(ParkingSpace parkingspace) {
         System.out.println("Parkingspace received:" + parkingspace);
         parkingSpaceService.addParkingSpace(parkingspace);
+        return "redirect:/parkingspace/showall";
     }
 
     public void deleteParkingspace() {
