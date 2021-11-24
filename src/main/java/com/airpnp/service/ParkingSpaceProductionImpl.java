@@ -3,11 +3,13 @@ package com.airpnp.service;
 import com.airpnp.data.ParkingSpaceRepository;
 import com.airpnp.domainmodel.ParkingSpace;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.NoSuchElementException;
 
+@Primary
 @Component
 public class ParkingSpaceProductionImpl implements ParkingSpaceService {
 
