@@ -2,6 +2,7 @@ package com.airpnp.controller;
 
 import com.airpnp.domainmodel.ParkingSpace;
 import com.airpnp.service.ParkingSpaceService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -13,8 +14,12 @@ import java.util.List;
 @Controller
 @RequestMapping("/parkingspace")
 public class ParkingSpaceController {
-
+    @Autowired
     private ParkingSpaceService parkingSpaceService;
+
+    public ParkingSpaceController(ParkingSpaceService service) {
+        this.parkingSpaceService = service;
+    }
 
     @RequestMapping(value = "/showall", method = RequestMethod.GET)
     public ModelAndView showAllParkingspace() {

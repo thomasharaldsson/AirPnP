@@ -4,6 +4,7 @@
     <bean id="parkingSpaceServiceBean" class="com.airpnp.service.ParkingSpaceMockImpl"/>
 
     <bean id="parkingSpaceController" class="com.airpnp.controller.ParkingSpaceController">
+        <constructor-arg ref="parkingSpaceServiceBean"></constructor-arg>
         <property name="parkingSpaceService" ref="parkingSpaceServiceBean"/>
     </bean>
 </beans>

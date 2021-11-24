@@ -1,6 +1,7 @@
 package com.airpnp.service;
 
 import com.airpnp.domainmodel.ParkingSpace;
+import org.springframework.stereotype.Component;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -8,6 +9,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+@Component
 public class ParkingSpaceMockImpl implements ParkingSpaceService {
 
     Map<Integer, ParkingSpace> parkingSpaces;
