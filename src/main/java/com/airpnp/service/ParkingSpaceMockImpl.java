@@ -33,7 +33,7 @@ public class ParkingSpaceMockImpl implements ParkingSpaceService {
     }
 
     @Override
-    public ParkingSpace getParkingSpaceById(int Id) {
+    public ParkingSpace getParkingSpaceById(Long Id) {
         return parkingSpaces.get(Id);
     }
 

@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface ParkingSpaceService {
 
-    ParkingSpace getParkingSpaceById(int Id);
+    ParkingSpace getParkingSpaceById(Long Id);
 
     List<ParkingSpace> getAllParkingSpaces();
 

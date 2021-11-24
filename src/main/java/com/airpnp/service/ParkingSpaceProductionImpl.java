@@ -6,15 +6,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
-public class ParkingSpaceProductionImplementation implements ParkingSpaceService {
+public class ParkingSpaceProductionImpl implements ParkingSpaceService {
 
     @Autowired
     private ParkingSpaceRepository data;
 
     @Override
-    public ParkingSpace getParkingSpaceById(int Id) {
-        // TODO: Implement method
-        return null;
+    public ParkingSpace getParkingSpaceById(Long Id) {
+        return data.findById(Id).get();
     }
 
     @Override
