@@ -12,7 +12,13 @@ Service for renting parking places around town for people who may have parking s
 2. open URL in web browser e.g. [http://localhost:8080/customers/list.html](http://localhost:8080/customers/list.html)
 
 ## Example pages
+
 Create parkingspace: [http://localhost:8080/parkingspace/create](http://localhost:8080/parkingspace/create)
 
 ## Database adminpage
-[http://localhost:8080/h2-console](http://localhost:8080/h2-console)
+
+In web browser open [http://localhost:8080/h2-console](http://localhost:8080/h2-console) and enter:
+
+* JDBC URL `jdbc:h2:file:./Database`
+* username: `sa`
+* password:
