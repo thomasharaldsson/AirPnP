@@ -1,7 +1,7 @@
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
         "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
 <beans>
-    <bean id="parkingSpaceServiceBean" class="com.airpnp.service.ParkingSpaceMockImpl"/>
+    <bean id="parkingSpaceServiceBean" class="com.airpnp.service.ParkingSpaceProductionImpl"/>
 
     <bean id="parkingSpaceController" class="com.airpnp.controller.ParkingSpaceController">
         <property name="parkingSpaceService" ref="parkingSpaceServiceBean"/>
