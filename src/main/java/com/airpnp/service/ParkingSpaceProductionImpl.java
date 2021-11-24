@@ -29,6 +29,10 @@ public class ParkingSpaceProductionImpl implements ParkingSpaceService {
 
     @Override
     public void addParkingSpace(ParkingSpace parkingSpace) {
-        // TODO: Implement method
+        if (parkingSpace==null) {
+            throw new NoSuchElementException("Can not add empty value");
+        } else {
+            data.save(parkingSpace);
+        }
     }
 }
