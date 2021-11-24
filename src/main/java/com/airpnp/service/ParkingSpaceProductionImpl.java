@@ -24,8 +24,7 @@ public class ParkingSpaceProductionImpl implements ParkingSpaceService {
 
     @Override
     public List<ParkingSpace> getAllParkingSpaces() {
-        // TODO: Implement method
-        return null;
+        return data.findAll();
     }
 
     @Override
