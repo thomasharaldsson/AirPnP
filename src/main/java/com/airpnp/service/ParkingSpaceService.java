@@ -6,9 +6,9 @@ import java.util.List;
 
 public interface ParkingSpaceService {
 
-    public ParkingSpace getParkingSpaceById(int Id);
+    ParkingSpace getParkingSpaceById(int Id);
 
-    public List<ParkingSpace> getAllParkingSpaces();
+    List<ParkingSpace> getAllParkingSpaces();
 
-    public void addParkingSpace(ParkingSpace parkingSpace);
+    void addParkingSpace(ParkingSpace parkingSpace);
 }
