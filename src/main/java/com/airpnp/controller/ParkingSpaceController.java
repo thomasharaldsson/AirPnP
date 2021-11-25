@@ -14,6 +14,7 @@ import java.util.List;
 @Controller
 @RequestMapping("/parkingspace")
 public class ParkingSpaceController {
+
     @Autowired
     private ParkingSpaceService parkingSpaceService;
 
@@ -44,7 +45,4 @@ public class ParkingSpaceController {
         //TODO
     }
 
-    public void setParkingSpaceService(ParkingSpaceService parkingSpaceService) {
-        this.parkingSpaceService = parkingSpaceService;
-    }
 }
