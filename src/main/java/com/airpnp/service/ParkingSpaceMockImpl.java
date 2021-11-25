@@ -34,12 +34,12 @@ public class ParkingSpaceMockImpl implements ParkingSpaceService {
     }
 
     @Override
-    public ParkingSpace getParkingSpaceById(Long Id) throws ParkingSpaceNotFoundException {
+    public ParkingSpace getParkingSpaceById(Integer Id) throws ParkingSpaceNotFoundException {
         ParkingSpace parkingSpace = parkingSpaces.get(Id);
         if (parkingSpace == null) {
             throw new ParkingSpaceNotFoundException("There was no parking space with this Id.");
         }
-        return parkingSpace;
+        return parkingSpaces.get(Id);
     }
 
     @Override

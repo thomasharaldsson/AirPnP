@@ -11,7 +11,7 @@ public class ParkingSpace {
 
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Id
-    private int id;
+    private Integer id;
     private int price;
     private Date startDate;
     private Date endDate;
@@ -28,11 +28,11 @@ public class ParkingSpace {
     public ParkingSpace() {
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

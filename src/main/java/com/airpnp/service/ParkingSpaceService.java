@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface ParkingSpaceService {
 
-    ParkingSpace getParkingSpaceById(Long Id) throws ParkingSpaceNotFoundException;
+    ParkingSpace getParkingSpaceById(Integer Id) throws ParkingSpaceNotFoundException;
 
     List<ParkingSpace> getAllParkingSpaces();
 

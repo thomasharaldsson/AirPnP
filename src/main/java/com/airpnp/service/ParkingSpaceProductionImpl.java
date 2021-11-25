@@ -18,9 +18,9 @@ public class ParkingSpaceProductionImpl implements ParkingSpaceService {
     private ParkingSpaceRepository data;
 
     @Override
-    public ParkingSpace getParkingSpaceById(Long Id) throws ParkingSpaceNotFoundException {
-        if (data.findById(Id).isPresent()) {
-            return data.findById(Id).get();
+    public ParkingSpace getParkingSpaceById(Integer id) throws ParkingSpaceNotFoundException {
+        if (data.findById(id).isPresent()) {
+            return data.findById(id).get();
         } else {
             throw new ParkingSpaceNotFoundException("There was no parking space with this Id.");
         }

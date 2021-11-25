@@ -1,11 +1,11 @@
 package com.airpnp.controller;
 
+import com.airpnp.data.exception.ParkingSpaceNotFoundException;
 import com.airpnp.domainmodel.ParkingSpace;
 import com.airpnp.service.ParkingSpaceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Date;
@@ -22,6 +22,18 @@ public class ParkingSpaceController {
     public ModelAndView showAllParkingspace() {
         List<ParkingSpace> allParkingSpaces = parkingSpaceService.getAllParkingSpaces();
         return new ModelAndView("parkingspace/listAll", "parkingSpaces", allParkingSpaces);
+    }
+
+    @GetMapping("/show/{id}")
+    @ResponseBody
+    public String showParkingspace(@PathVariable(required = true) int id) {
+        try {
+            System.out.println("parkingspace ID=" + id);
+            ParkingSpace parkingspace = parkingSpaceService.getParkingSpaceById(Integer.valueOf(id));
+            return "Here's the parkingspace you are looking for:" + parkingspace;
+        } catch (ParkingSpaceNotFoundException e) {
+            return "Could not find parkingspace ID=" + id;
+        }
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.GET)
