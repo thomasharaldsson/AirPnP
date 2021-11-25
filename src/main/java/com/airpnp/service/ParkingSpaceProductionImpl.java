@@ -1,6 +1,7 @@
 package com.airpnp.service;
 
 import com.airpnp.data.ParkingSpaceRepository;
+import com.airpnp.data.exception.ParkingSpaceNotFoundException;
 import com.airpnp.domainmodel.ParkingSpace;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
@@ -17,12 +18,11 @@ public class ParkingSpaceProductionImpl implements ParkingSpaceService {
     private ParkingSpaceRepository data;
 
     @Override
-    public ParkingSpace getParkingSpaceById(Long Id) {
+    public ParkingSpace getParkingSpaceById(Long Id) throws ParkingSpaceNotFoundException {
         if (data.findById(Id).isPresent()) {
             return data.findById(Id).get();
-        }
-        else {
-            throw new NoSuchElementException("There was no parking space with this Id.");
+        } else {
+            throw new ParkingSpaceNotFoundException("There was no parking space with this Id.");
         }
     }
 

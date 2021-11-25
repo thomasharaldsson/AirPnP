@@ -1,5 +1,6 @@
 package com.airpnp.service;
 
+import com.airpnp.data.exception.ParkingSpaceNotFoundException;
 import com.airpnp.domainmodel.ParkingSpace;
 import org.springframework.stereotype.Component;
 
@@ -33,8 +34,12 @@ public class ParkingSpaceMockImpl implements ParkingSpaceService {
     }
 
     @Override
-    public ParkingSpace getParkingSpaceById(Long Id) {
-        return parkingSpaces.get(Id);
+    public ParkingSpace getParkingSpaceById(Long Id) throws ParkingSpaceNotFoundException {
+        ParkingSpace parkingSpace = parkingSpaces.get(Id);
+        if (parkingSpace == null) {
+            throw new ParkingSpaceNotFoundException("There was no parking space with this Id.");
+        }
+        return parkingSpace;
     }
 
     @Override
