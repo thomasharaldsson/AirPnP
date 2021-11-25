@@ -21,18 +21,18 @@ public class ParkingSpaceController {
     @RequestMapping(value = "/showall", method = RequestMethod.GET)
     public ModelAndView showAllParkingspace() {
         List<ParkingSpace> allParkingSpaces = parkingSpaceService.getAllParkingSpaces();
-        return new ModelAndView("parkingspace/listAll", "parkingSpaces", allParkingSpaces);
+        return new ModelAndView("parkingspace/showAll", "parkingSpaces", allParkingSpaces);
     }
 
     @GetMapping("/show/{id}")
     @ResponseBody
-    public String showParkingspace(@PathVariable(required = true) int id) {
+    public ModelAndView showParkingspace(@PathVariable(required = true) int id) {
         try {
             System.out.println("parkingspace ID=" + id);
             ParkingSpace parkingspace = parkingSpaceService.getParkingSpaceById(Integer.valueOf(id));
-            return "Here's the parkingspace you are looking for:" + parkingspace;
+            return new ModelAndView("parkingspace/showOne", "parkingspace", parkingspace);
         } catch (ParkingSpaceNotFoundException e) {
-            return "Could not find parkingspace ID=" + id;
+            return new ModelAndView("parkingspace/showOne");
         }
     }
 
