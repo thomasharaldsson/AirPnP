@@ -2,7 +2,6 @@ package com.airpnp.controller;
 
 import com.airpnp.data.CustomerRepository;
 import com.airpnp.domainmodel.Customer;
-import com.airpnp.domainmodel.Rating;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,17 +27,18 @@ public class CustomerController {
 
 
     //Responsible for listing all of the Customers
-    @RequestMapping(value = "/listAll", method = RequestMethod.GET)
+    @RequestMapping(value = "/showAll", method = RequestMethod.GET)
     public ModelAndView listAllCustomers() {
         List<Customer> allCustomers = data.findAll();
 
+        /*
         Customer newCustomer = new Customer();
         newCustomer.setFirstName("Bosse");
         newCustomer.setSurName("Bossesson");
         newCustomer.addRating(new Rating(3));
         newCustomer.addRating(new Rating(5));
         allCustomers.add(newCustomer);
-
+    */
 
         return new ModelAndView("customer/allCustomers", "customers", allCustomers);
     }
