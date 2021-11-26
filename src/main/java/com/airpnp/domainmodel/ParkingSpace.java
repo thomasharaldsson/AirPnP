@@ -10,6 +10,7 @@ public class ParkingSpace {
     @Id
     private Integer id;
     @OneToOne
+    @PrimaryKeyJoinColumn
     private RentalTicket ticket;
     private int price;
     private Date startDate;
