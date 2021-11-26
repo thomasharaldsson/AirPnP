@@ -22,7 +22,7 @@ public class ParkingSpaceProductionImpl implements ParkingSpaceService {
         if (data.findById(id).isPresent()) {
             return data.findById(id).get();
         } else {
-            throw new ParkingSpaceNotFoundException("There was no parking space with this Id.");
+            throw new ParkingSpaceNotFoundException("There is no parking space with id = " + id + ".");
         }
     }
 

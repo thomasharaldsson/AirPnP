@@ -26,14 +26,11 @@ public class ParkingSpaceController {
 
     @GetMapping("/show/{id}")
     @ResponseBody
-    public ModelAndView showParkingspace(@PathVariable(required = true) int id) {
-        try {
-            System.out.println("parkingspace ID=" + id);
-            ParkingSpace parkingspace = parkingSpaceService.getParkingSpaceById(Integer.valueOf(id));
-            return new ModelAndView("parkingspace/showOne", "parkingspace", parkingspace);
-        } catch (ParkingSpaceNotFoundException e) {
-            return new ModelAndView("parkingspace/showOne");
-        }
+    public ModelAndView showParkingspace(@PathVariable(required = true) int id) throws ParkingSpaceNotFoundException {
+
+        System.out.println("parkingspace ID=" + id);
+        ParkingSpace parkingspace = parkingSpaceService.getParkingSpaceById(Integer.valueOf(id));
+        return new ModelAndView("parkingspace/showOne", "parkingspace", parkingspace);
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.GET)
@@ -55,6 +52,15 @@ public class ParkingSpaceController {
 
     public void lendParkingspace() {
         //TODO
+    }
+
+    @ExceptionHandler(ParkingSpaceNotFoundException.class)
+    public ModelAndView handleException(ParkingSpaceNotFoundException ex) {
+        //Do something additional if required
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("parkingspace/error");
+        modelAndView.addObject("message", ex.getMessage());
+        return modelAndView;
     }
 
 }
