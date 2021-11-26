@@ -1,7 +1,8 @@
-package com.airpnp.service;
+package com.airpnp.service.implementations;
 
 import com.airpnp.data.exception.ParkingSpaceNotFoundException;
 import com.airpnp.domainmodel.ParkingSpace;
+import com.airpnp.service.ParkingSpaceService;
 import org.springframework.stereotype.Component;
 
 import java.text.SimpleDateFormat;

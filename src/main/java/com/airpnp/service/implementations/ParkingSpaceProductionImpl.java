@@ -1,8 +1,9 @@
-package com.airpnp.service;
+package com.airpnp.service.implementations;
 
 import com.airpnp.data.ParkingSpaceRepository;
 import com.airpnp.data.exception.ParkingSpaceNotFoundException;
 import com.airpnp.domainmodel.ParkingSpace;
+import com.airpnp.service.ParkingSpaceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
