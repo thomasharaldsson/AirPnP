@@ -10,4 +10,6 @@ public class RentalTicket {
     private Integer id;
     @ManyToOne
     private Customer customer;
+    @ManyToOne
+    Vehicle vehicle;
 }
