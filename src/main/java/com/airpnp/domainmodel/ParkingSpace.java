@@ -1,9 +1,6 @@
 package com.airpnp.domainmodel;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
@@ -12,10 +9,13 @@ public class ParkingSpace {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Id
     private Integer id;
+    @OneToOne
+    private RentalTicket ticket;
     private int price;
     private Date startDate;
     private Date endDate;
     private String streetAddress;
+
 
     public ParkingSpace(int id, int price, Date startDate, Date endDate, String streetAddress) {
         this.id = id;
@@ -66,6 +66,15 @@ public class ParkingSpace {
 
     public void setStreetAddress(String streetAddress) {
         this.streetAddress = streetAddress;
+    }
+
+
+    public RentalTicket getTicket() {
+        return ticket;
+    }
+
+    public void setTicket(RentalTicket ticket) {
+        this.ticket = ticket;
     }
 
     @Override
