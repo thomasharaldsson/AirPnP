@@ -9,7 +9,7 @@ public interface CustomerService {
 
     void update(Customer customer);
 
-    Customer getCustomer(Integer Id);
+    Customer getCustomer(long id);
 
     List<Customer> getAll();
 }

@@ -5,20 +5,25 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class Customer extends Lender {
+public class Customer extends Person {
 
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Id
-    private long id;
+    private Long id;
 
-    @OneToMany
+    @ManyToMany
     List<Rating> ratings = new ArrayList<>();
 
     public Customer() {
+
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public void addRating(Rating rating) {
@@ -27,7 +32,7 @@ public class Customer extends Lender {
 
     public double getRating() {
         double totalValueOfRatings = 0;
-        for(Rating rating : ratings) {
+        for (Rating rating : ratings) {
             totalValueOfRatings = (totalValueOfRatings + rating.getRating()) / ratings.size();
         }
         return totalValueOfRatings;
