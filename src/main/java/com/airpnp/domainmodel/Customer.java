@@ -5,16 +5,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class Customer extends Person {
+public class Customer extends Lender {
 
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Id
     private long id;
 
     @OneToMany
     List<Rating> ratings = new ArrayList<>();
 
-    public Customer() {}
+    public Customer() {
+    }
 
     public long getId() {
         return id;

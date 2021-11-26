@@ -1,6 +1,6 @@
 package com.airpnp.domainmodel;
 
-public class Person {
+public class Lender {
     private String firstName;
     private String surName;
     private String email;
