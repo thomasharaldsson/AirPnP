@@ -32,8 +32,17 @@ public class ParkingSpaceProductionImpl implements ParkingSpaceService {
     }
 
     @Override
+    public void updateParkingSpace(ParkingSpace parkingSpace) throws ParkingSpaceNotFoundException {
+        Integer id = parkingSpace.getId();
+        if (!data.existsById(id)) {
+            throw new ParkingSpaceNotFoundException("Unable to update space since parkingspace with that id=" + id + " doesn't exist");
+        }
+        data.save(parkingSpace);
+    }
+
+    @Override
     public void addParkingSpace(ParkingSpace parkingSpace) {
-        if (parkingSpace==null) {
+        if (parkingSpace == null) {
             throw new NoSuchElementException("Can not add empty value");
         } else {
             data.save(parkingSpace);

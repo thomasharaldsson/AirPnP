@@ -4,6 +4,7 @@
 <h1>Here is the parking space:</h1>
 
 <ul>
+    <li>ID: ${parkingspace.id}</li>
     <li>street address: ${parkingspace.streetAddress}</li>
     <li>start date: ${parkingspace.startDate}</li>
     <li>end date: ${parkingspace.endDate}</li>

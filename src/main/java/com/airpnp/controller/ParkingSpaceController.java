@@ -24,11 +24,32 @@ public class ParkingSpaceController {
         return new ModelAndView("parkingspace/showAll", "parkingSpaces", allParkingSpaces);
     }
 
+    @GetMapping(value = "/edit/{id}")
+    @ResponseBody
+    public ModelAndView editParkingspace(@PathVariable(required = true) int id) throws ParkingSpaceNotFoundException {
+        System.out.println("Editing parkingspace ID=" + id);
+
+        ParkingSpace parkingspace = parkingSpaceService.getParkingSpaceById(Integer.valueOf(id));
+        ModelAndView modelAndView = new ModelAndView("parkingspace/createAndEdit");
+        modelAndView.addObject("parkingspace", parkingspace);
+        modelAndView.addObject("edit", Boolean.valueOf(true));
+        modelAndView.addObject("action", "/parkingspace/edit");
+
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/edit", method = RequestMethod.POST)
+    public String editParkingspace(ParkingSpace parkingspace) throws ParkingSpaceNotFoundException {
+        System.out.println("Edit parkingspace received:" + parkingspace);
+        parkingSpaceService.updateParkingSpace(parkingspace);
+        return "redirect:/parkingspace/showall";
+    }
+
+
+    //TODO: Add missing RequestMethod
     @GetMapping("/show/{id}")
     @ResponseBody
     public ModelAndView showParkingspace(@PathVariable(required = true) int id) throws ParkingSpaceNotFoundException {
-
-        System.out.println("parkingspace ID=" + id);
         ParkingSpace parkingspace = parkingSpaceService.getParkingSpaceById(Integer.valueOf(id));
         return new ModelAndView("parkingspace/showOne", "parkingspace", parkingspace);
     }
@@ -36,7 +57,9 @@ public class ParkingSpaceController {
     @RequestMapping(value = "/create", method = RequestMethod.GET)
     public ModelAndView createParkingspace() {
         ParkingSpace parkingSpace = new ParkingSpace(5, 35, new Date(), new Date(), "Sparregatan 10");
-        return new ModelAndView("parkingspace/create", "form", parkingSpace);
+        ModelAndView modelAndView = new ModelAndView("parkingspace/createAndEdit", "parkingspace", parkingSpace);
+        modelAndView.addObject("action", "");
+        return modelAndView;
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)

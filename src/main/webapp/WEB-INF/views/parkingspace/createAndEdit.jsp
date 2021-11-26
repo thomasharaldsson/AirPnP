@@ -1,14 +1,25 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <html>
 <body>
-<h1>Create new parking Space</h1>
 
-<form:form modelAttribute="form">
+<c:choose>
+    <c:when test="${edit != null && edit == true}">
+        <h1>Edit parking Space</h1>
+    </c:when>
+    <c:otherwise>
+        <h1>Create new parking Space</h1>
+    </c:otherwise>
+</c:choose>
 
-<form>
-        <form:errors path="" element="div"/>
+<form:form modelAttribute="parkingspace" action="${action}">
+
+
+    <form:errors path="" element="div"/>
+    ID: ${parkingspace.id}
+    <form:hidden path="id" value="${id}"/>
     <div>
         <form:label path="price">Price</form:label>
         <form:input path="price"/>
@@ -32,7 +43,7 @@
     <div>
         <input type="submit"/>
     </div>
-    </form:form>
+</form:form>
 
 </body>
 </html>

@@ -48,6 +48,11 @@ public class ParkingSpaceMockImpl implements ParkingSpaceService {
     }
 
     @Override
+    public void updateParkingSpace(ParkingSpace parkingSpace) throws ParkingSpaceNotFoundException {
+        //TODO: implement method.
+    }
+
+    @Override
     public void addParkingSpace(ParkingSpace parkingSpace) {
         parkingSpaces.put(parkingSpace.getId(), parkingSpace);
     }
