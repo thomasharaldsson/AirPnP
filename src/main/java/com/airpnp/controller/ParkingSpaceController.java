@@ -40,7 +40,6 @@ public class ParkingSpaceController {
 
     @RequestMapping(value = "/edit", method = RequestMethod.POST)
     public String editParkingspace(ParkingSpace parkingspace) throws ParkingSpaceNotFoundException {
-        System.out.println("Edit parkingspace received:" + parkingspace);
         parkingSpaceService.updateParkingSpace(parkingspace);
         return "redirect:/parkingspace/showall";
     }
@@ -64,7 +63,6 @@ public class ParkingSpaceController {
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public String createParkingspace(ParkingSpace parkingspace) {
-        System.out.println("Parkingspace received:" + parkingspace);
         parkingSpaceService.addParkingSpace(parkingspace);
         return "redirect:/parkingspace/showall";
     }
