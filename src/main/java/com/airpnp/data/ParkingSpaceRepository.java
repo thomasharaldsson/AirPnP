@@ -6,4 +6,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ParkingSpaceRepository extends JpaRepository<ParkingSpace, Integer> {
+
+    void deleteParkingSpacesById(Integer id);
 }
