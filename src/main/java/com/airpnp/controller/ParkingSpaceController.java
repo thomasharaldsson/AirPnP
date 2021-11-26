@@ -44,6 +44,13 @@ public class ParkingSpaceController {
         return "redirect:/parkingspace/showall";
     }
 
+    @RequestMapping(value = "/delete/{id}", method = { RequestMethod.DELETE, RequestMethod.GET })
+    public String deleteParkingspace(@PathVariable(required = true) int id) {
+        System.out.println("Deleting parkingspace ID=" + id);
+        parkingSpaceService.deleteParkingSpace(id);
+        return "redirect:/parkingspace/showall";
+    }
+
 
     //TODO: Add missing RequestMethod
     @GetMapping("/show/{id}")
@@ -65,10 +72,6 @@ public class ParkingSpaceController {
     public String createParkingspace(ParkingSpace parkingspace) {
         parkingSpaceService.addParkingSpace(parkingspace);
         return "redirect:/parkingspace/showall";
-    }
-
-    public void deleteParkingspace() {
-        //TODO
     }
 
     public void lendParkingspace() {

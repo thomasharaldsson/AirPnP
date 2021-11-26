@@ -58,5 +58,11 @@ public class ParkingSpaceMockImpl implements ParkingSpaceService {
         parkingSpaces.put(parkingSpace.getId(), parkingSpace);
     }
 
+    @Override
+    public void deleteParkingSpace(int Id) {
+
+    }
+
+
 
 }
