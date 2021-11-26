@@ -14,4 +14,7 @@ public interface ParkingSpaceService {
     void updateParkingSpace(ParkingSpace parkingSpace) throws ParkingSpaceNotFoundException;
 
     void addParkingSpace(ParkingSpace parkingSpace);
+
+    void deleteParkingspace(Integer id);
+
 }

@@ -4,6 +4,8 @@ import com.airpnp.data.exception.ParkingSpaceNotFoundException;
 import com.airpnp.domainmodel.ParkingSpace;
 import com.airpnp.service.ParkingSpaceService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -67,8 +69,15 @@ public class ParkingSpaceController {
         return "redirect:/parkingspace/showall";
     }
 
-    public void deleteParkingspace() {
-        //TODO
+    //TODO Need assistans on this. This request registers as GET when we want DELETE
+    @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity<String> deleteParkingspace(@PathVariable int id) throws ParkingSpaceNotFoundException {
+        if (parkingSpaceService.getParkingSpaceById(id) == null) {
+            return new ResponseEntity<String>("Parkingspace not found", HttpStatus.NOT_FOUND);
+        } else {
+            parkingSpaceService.deleteParkingspace(id);
+        }
+        return new ResponseEntity<String>("Parkingspace Deleted", HttpStatus.OK);
     }
 
     public void lendParkingspace() {
