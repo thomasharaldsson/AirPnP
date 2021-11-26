@@ -2,6 +2,7 @@ package com.airpnp.controller;
 
 import com.airpnp.data.exception.ParkingSpaceNotFoundException;
 import com.airpnp.domainmodel.Customer;
+import com.airpnp.domainmodel.Rating;
 import com.airpnp.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -26,13 +27,15 @@ public class CustomerController {
 
     @RequestMapping(value = "/create", method = RequestMethod.GET)
     public ModelAndView createCustomer() {
+        //Customer customer = new Customer(3, "Bosse", "Svensson", "boknows@hotmail.com", "0735551533");
         Customer customer = new Customer();
+
         customer.setFirstName("Bosse");
         customer.setSurName("Bossesson");
         customer.setPhoneNumber("0735551533");
         customer.setEmail("boknows@hotmail.com");
-        //newCustomer.addRating(new Rating(3));
-        //newCustomer.addRating(new Rating(5));
+        customer.addRating(new Rating(3));
+        customer.addRating(new Rating(5));
         ModelAndView modelAndView = new ModelAndView("customer/createAndEdit", "customer", customer);
         modelAndView.addObject("action", "");
         return modelAndView;
@@ -41,7 +44,7 @@ public class CustomerController {
     //TODO: Add missing RequestMethod
     @GetMapping("/show/{id}")
     @ResponseBody
-    public ModelAndView showCustomer(@PathVariable(required = true) long id) {
+    public ModelAndView showCustomer(@PathVariable(required = true) int id) {
         Customer customer = service.getCustomer(id);
         // Problem: previous line is not returning a proper object from DB.
         return new ModelAndView("customer/showOne", "customer", customer);

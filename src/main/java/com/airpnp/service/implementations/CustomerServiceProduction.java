@@ -27,8 +27,13 @@ public class CustomerServiceProduction implements CustomerService {
     }
 
     @Override
-    public Customer getCustomer(long id) {
-        return data.getById(id);
+    public Customer getCustomer(int id) {
+        if (data.findById(id).isPresent()) {
+            return data.findById(id).get();
+        } else {
+            System.err.println("Unable to retrieve customer id=" + id);
+            return null;
+        }
     }
 
     @Override
