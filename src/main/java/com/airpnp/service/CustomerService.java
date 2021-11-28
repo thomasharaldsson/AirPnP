@@ -8,7 +8,7 @@ import java.util.List;
 public interface CustomerService {
     void addCustomer(Customer customer);
 
-    void update(Customer customer);
+    void update(Customer customer) throws CustomerNotFoundException;
 
     Customer getCustomer(int id) throws CustomerNotFoundException;
 

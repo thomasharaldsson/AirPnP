@@ -1,7 +1,6 @@
 package com.airpnp.controller;
 
 import com.airpnp.data.exception.CustomerNotFoundException;
-import com.airpnp.data.exception.ParkingSpaceNotFoundException;
 import com.airpnp.domainmodel.Customer;
 import com.airpnp.domainmodel.Rating;
 import com.airpnp.service.CustomerService;
@@ -65,9 +64,9 @@ public class CustomerController {
     }
 
     @RequestMapping(value = "/edit", method = RequestMethod.POST)
-    public String editCustomer(Customer customer) throws ParkingSpaceNotFoundException {
+    public String editCustomer(Customer customer) throws CustomerNotFoundException {
         service.update(customer);
-        return "redirect:/customer/showall";
+        return "redirect:/customer/showAll";
     }
 
     //Responsible for listing all of the Customers

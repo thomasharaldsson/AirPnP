@@ -23,8 +23,12 @@ public class CustomerServiceProduction implements CustomerService {
     }
 
     @Override
-    public void update(Customer customer) {
-
+    public void update(Customer customer) throws CustomerNotFoundException {
+        Integer id = customer.getId();
+        if (!data.existsById(id)) {
+            throw new CustomerNotFoundException("Unable to update space since customer with that id=" + id + " doesn't exist");
+        }
+        data.save(customer);
     }
 
     @Override
