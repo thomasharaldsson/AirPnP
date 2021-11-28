@@ -41,6 +41,19 @@ public class CustomerController {
         return modelAndView;
     }
 
+    @GetMapping(value = "/edit/{id}")
+    @ResponseBody
+    public ModelAndView editCustomer(@PathVariable(required = true) int id) throws ParkingSpaceNotFoundException {
+        System.out.println("Editing customer ID=" + id);
+
+        Customer customer = service.getCustomer(Integer.valueOf(id));
+        ModelAndView modelAndView = new ModelAndView("customer/createAndEdit", "customer", customer);
+        modelAndView.addObject("edit", Boolean.valueOf(true));
+        modelAndView.addObject("action", "/customer/edit");
+
+        return modelAndView;
+    }
+
     //TODO: Add missing RequestMethod
     @GetMapping("/show/{id}")
     @ResponseBody
