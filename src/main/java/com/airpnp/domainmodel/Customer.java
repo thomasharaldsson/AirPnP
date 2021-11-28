@@ -5,20 +5,31 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class Customer extends Lender {
+public class Customer extends Person {
 
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Id
-    private long id;
+    private Integer id;
 
-    @OneToMany
+    @ManyToMany
     List<Rating> ratings = new ArrayList<>();
 
     public Customer() {
+
     }
 
-    public long getId() {
+    public Customer(Integer id, String firstName, String surName, String email, String phoneNumber) {
+        super(firstName, surName, email, phoneNumber);
+        this.id = id;
+        //this.ratings = ratings;
+    }
+
+    public Integer getId() {
         return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public void addRating(Rating rating) {
@@ -27,7 +38,7 @@ public class Customer extends Lender {
 
     public double getRating() {
         double totalValueOfRatings = 0;
-        for(Rating rating : ratings) {
+        for (Rating rating : ratings) {
             totalValueOfRatings = (totalValueOfRatings + rating.getRating()) / ratings.size();
         }
         return totalValueOfRatings;
@@ -35,7 +46,7 @@ public class Customer extends Lender {
 
     @Override
     public String toString() {
-        return "Customer name: " + this.getFirstName() + " "
-                + this.getSurName() + " with average rating: " + getRating();
+        return "Customer id=" + this.getId() + " name: " + this.getFirstName() + " "
+                + this.getSurName();// + " with average rating: " + getRating();
     }
 }
