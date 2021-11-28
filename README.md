@@ -11,9 +11,9 @@ Service for renting parking places around town for people who may have parking s
 1. build and launch application: `mvn clean install`
 2. open URL in web browser e.g. [http://localhost:8080/customers/list.html](http://localhost:8080/customers/list.html)
 
-## Example pages
+## How to access AirPnP Frontend
 
-Create parkingspace: [http://localhost:8080/parkingspace/create](http://localhost:8080/parkingspace/create)
+After that open this URL in your web browser: [http://localhost:8080](http://localhost:8080)
 
 ## Database adminpage
 

@@ -22,7 +22,7 @@ public class CustomerController {
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public String newCustomer(Customer customer) {
         service.addCustomer(customer);
-        return "redirect:/customer/showAll";
+        return "redirect:/customer/show/all";
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.GET)
@@ -66,11 +66,11 @@ public class CustomerController {
     @RequestMapping(value = "/edit", method = RequestMethod.POST)
     public String editCustomer(Customer customer) throws CustomerNotFoundException {
         service.update(customer);
-        return "redirect:/customer/showAll";
+        return "redirect:/customer/showall";
     }
 
     //Responsible for listing all of the Customers
-    @RequestMapping(value = "/showAll", method = RequestMethod.GET)
+    @RequestMapping(value = "/showall", method = RequestMethod.GET)
     public ModelAndView listAllCustomers() {
 
         //List<Customer> allCustomers = data.findAll();
@@ -94,7 +94,7 @@ public class CustomerController {
     public String deleteCustomer(@PathVariable(required = true) int id) throws CustomerNotFoundException {
         System.out.println("Deleting customer ID=" + id);
         service.deleteCustomer(id);
-        return "redirect:/customer/showAll";
+        return "redirect:/customer/showall";
     }
 
     @ExceptionHandler(CustomerNotFoundException.class)
