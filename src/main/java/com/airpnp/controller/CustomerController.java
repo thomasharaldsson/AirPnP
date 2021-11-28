@@ -86,7 +86,7 @@ public class CustomerController {
 
         //return new ModelAndView("customer/allCustomers", "customers", allCustomers);
         List<Customer> allCustomers = service.getAll();
-        return new ModelAndView("customer/allCustomers", "customers", allCustomers);
+        return new ModelAndView("customer/showAll", "customers", allCustomers);
     }
 
     @ExceptionHandler(CustomerNotFoundException.class)
