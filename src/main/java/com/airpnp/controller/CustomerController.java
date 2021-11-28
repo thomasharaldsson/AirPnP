@@ -89,6 +89,14 @@ public class CustomerController {
         return new ModelAndView("customer/showAll", "customers", allCustomers);
     }
 
+    // Delete should now work because we use DELETE and GET here
+    @RequestMapping(value = "/delete/{id}", method = {RequestMethod.DELETE, RequestMethod.GET})
+    public String deleteCustomer(@PathVariable(required = true) int id) throws CustomerNotFoundException {
+        System.out.println("Deleting customer ID=" + id);
+        service.deleteCustomer(id);
+        return "redirect:/customer/showAll";
+    }
+
     @ExceptionHandler(CustomerNotFoundException.class)
     public ModelAndView handleException(CustomerNotFoundException ex) {
         //Do something additional if required

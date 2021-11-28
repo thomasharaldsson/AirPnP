@@ -13,4 +13,6 @@ public interface CustomerService {
     Customer getCustomer(int id) throws CustomerNotFoundException;
 
     List<Customer> getAll();
+
+    void deleteCustomer(int id) throws CustomerNotFoundException;
 }

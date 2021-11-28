@@ -9,4 +9,5 @@
     <li>Lastname: ${customer.surName}</li>
     <li>E-mail: ${customer.email}</li>
     <li>Phonenumber: ${customer.phoneNumber}</li>
+    <li>(<a href="/customer/edit/${customer.id}">edit</a>) (<a href="/customer/delete/${customer.id}">delete</a>)</li>
 </ul>

@@ -11,7 +11,7 @@
             <li>Lastname: ${customer.surName}</li>
             <li>E-mail: ${customer.email}</li>
             <li>Phone: ${customer.phoneNumber}</li>
-            <li>(<a href="show/${customer.id}">open</a>) (<a href="edit/${customer.id}">edit</a>) (delete)</li>
+            <li>(<a href="show/${customer.id}">open</a>)</li>
         </ul>
 
         <br/>
