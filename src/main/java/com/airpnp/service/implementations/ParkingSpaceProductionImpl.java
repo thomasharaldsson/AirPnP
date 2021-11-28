@@ -51,12 +51,7 @@ public class ParkingSpaceProductionImpl implements ParkingSpaceService {
     }
 
     @Override
-    public void deleteParkingSpace(int Id) {
-        try {
-            ParkingSpace parkingSpace1 = getParkingSpaceById(Id);
-            data.delete(parkingSpace1);
-        } catch (ParkingSpaceNotFoundException e) {
-            e.printStackTrace();
-        }
+    public void deleteParkingSpace(int Id) throws ParkingSpaceNotFoundException {
+        data.delete(this.getParkingSpaceById(Id));
     }
 }

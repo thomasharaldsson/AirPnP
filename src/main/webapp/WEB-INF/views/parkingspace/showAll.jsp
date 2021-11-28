@@ -11,7 +11,7 @@
             <li>start date: ${parkingspace.startDate}</li>
             <li>end date: ${parkingspace.endDate}</li>
             <li>price: ${parkingspace.price}</li>
-            <li>(<a href="show/${parkingspace.id}">open</a>) (<a href="edit/${parkingspace.id}">edit</a>) (delete)</li>
+            <li>(<a href="show/${parkingspace.id}">open</a>)</li>
         </ul>
 
         <br/>
