@@ -1,5 +1,6 @@
 package com.airpnp.controller;
 
+import com.airpnp.data.exception.CustomerNotFoundException;
 import com.airpnp.data.exception.ParkingSpaceNotFoundException;
 import com.airpnp.domainmodel.Customer;
 import com.airpnp.domainmodel.Rating;
@@ -43,7 +44,7 @@ public class CustomerController {
 
     @GetMapping(value = "/edit/{id}")
     @ResponseBody
-    public ModelAndView editCustomer(@PathVariable(required = true) int id) throws ParkingSpaceNotFoundException {
+    public ModelAndView editCustomer(@PathVariable(required = true) int id) throws CustomerNotFoundException {
         System.out.println("Editing customer ID=" + id);
 
         Customer customer = service.getCustomer(Integer.valueOf(id));
@@ -57,7 +58,7 @@ public class CustomerController {
     //TODO: Add missing RequestMethod
     @GetMapping("/show/{id}")
     @ResponseBody
-    public ModelAndView showCustomer(@PathVariable(required = true) int id) {
+    public ModelAndView showCustomer(@PathVariable(required = true) int id) throws CustomerNotFoundException {
         Customer customer = service.getCustomer(id);
         // Problem: previous line is not returning a proper object from DB.
         return new ModelAndView("customer/showOne", "customer", customer);
@@ -89,12 +90,12 @@ public class CustomerController {
         return new ModelAndView("customer/allCustomers", "customers", allCustomers);
     }
 
-    /*
-    //Search for a customer by its name
-    @RequestMapping(value = "/customer/{name}")
-    public ModelAndView showCustomerByName(@PathVariable("name") String name) {
-
-        Customer customer= data.findByName(name);
-        return new ModelAndView("customerInfo" , "customer", customer);
-    }*/
+    @ExceptionHandler(CustomerNotFoundException.class)
+    public ModelAndView handleException(CustomerNotFoundException ex) {
+        //Do something additional if required
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("customer/error");
+        modelAndView.addObject("message", ex.getMessage());
+        return modelAndView;
+    }
 }

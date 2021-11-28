@@ -1,6 +1,7 @@
 package com.airpnp.service.implementations;
 
 import com.airpnp.data.CustomerRepository;
+import com.airpnp.data.exception.CustomerNotFoundException;
 import com.airpnp.domainmodel.Customer;
 import com.airpnp.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,12 +28,11 @@ public class CustomerServiceProduction implements CustomerService {
     }
 
     @Override
-    public Customer getCustomer(int id) {
+    public Customer getCustomer(int id) throws CustomerNotFoundException {
         if (data.findById(id).isPresent()) {
             return data.findById(id).get();
         } else {
-            System.err.println("Unable to retrieve customer id=" + id);
-            return null;
+            throw new CustomerNotFoundException("There is no customer with id = " + id + ".");
         }
     }
 
