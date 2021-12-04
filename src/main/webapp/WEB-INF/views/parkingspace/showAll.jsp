@@ -1,6 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-
+<br/>Menu: <a href="create">add new parkingspace</a>
 <h1>All parking spaces</h1>
 
 <ul>

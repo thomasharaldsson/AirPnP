@@ -1,7 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-
-<h1>All customers</h1>
+<br/>Menu: <a href="create">add new customer</a>
+<h1>All customers: </h1>
 
 <ul>
     <c:forEach items="${customers}" var="customer">
@@ -17,4 +17,6 @@
         <br/>
         <br/>
     </c:forEach>
+
+
 </ul>
