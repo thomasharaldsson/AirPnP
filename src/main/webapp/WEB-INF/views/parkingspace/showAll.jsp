@@ -3,18 +3,25 @@
 <br/>Menu: <a href="create">add new parkingspace</a>
 <h1>All parking spaces</h1>
 
-<ul>
-    <c:forEach items="${parkingSpaces}" var="parkingspace">
+<c:choose>
+    <c:when test="${parkingSpaces.size() > 0}">
         <ul>
-            <li>ID: ${parkingspace.id}</li>
-            <li>street address: ${parkingspace.streetAddress}</li>
-            <li>start date: ${parkingspace.startDate}</li>
-            <li>end date: ${parkingspace.endDate}</li>
-            <li>price: ${parkingspace.price}</li>
-            <li>(<a href="show/${parkingspace.id}">open</a>)</li>
-        </ul>
+            <c:forEach items="${parkingSpaces}" var="parkingspace">
+                <ul>
+                    <li>ID: ${parkingspace.id}</li>
+                    <li>street address: ${parkingspace.streetAddress}</li>
+                    <li>start date: ${parkingspace.startDate}</li>
+                    <li>end date: ${parkingspace.endDate}</li>
+                    <li>price: ${parkingspace.price}</li>
+                    <li>(<a href="show/${parkingspace.id}">open</a>)</li>
+                </ul>
 
-        <br/>
-        <br/>
-    </c:forEach>
-</ul>
+                <br/>
+                <br/>
+            </c:forEach>
+        </ul>
+    </c:when>
+    <c:otherwise>
+        You have not added any parkingspaces yet.
+    </c:otherwise>
+</c:choose>
