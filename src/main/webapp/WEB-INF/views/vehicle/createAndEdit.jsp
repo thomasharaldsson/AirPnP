@@ -28,23 +28,37 @@
     </div>
     <div>
         Owner:
-        <select name="owner_id">
-            <c:forEach var="customer" items="${customers}">
-                <option value="${customer.id}"
-                        <c:choose>
-                            <c:when test="${vehicle.getOwner() != null && customer.id == vehicle.getOwner().getId()}">
-                                SELECTED
-                            </c:when>
-                        </c:choose>
-                >
-                        ${customer.getFirstName()} ${customer.getSurName()}
-                </option>
-            </c:forEach>
 
-        </select>
+        <c:choose>
+            <c:when test="${customers.size() > 0}">
+                <select name="owner_id">
+                    <c:forEach var="customer" items="${customers}">
+                        <option value="${customer.id}"
+                                <c:choose>
+                                    <c:when test="${vehicle.getOwner() != null && customer.id == vehicle.getOwner().getId()}">
+                                        SELECTED
+                                    </c:when>
+                                </c:choose>
+                        >
+                                ${customer.getFirstName()} ${customer.getSurName()}
+                        </option>
+                    </c:forEach>
+
+                </select>
+            </c:when>
+            <c:otherwise>
+                You have not added any customers yet. Please <a href="/customer/create">add some</a> first.
+            </c:otherwise>
+        </c:choose>
     </div>
     <div>
-        <input type="submit"/> (does not work yet)
+        <input type="submit"
+                <c:choose>
+                    <c:when test="${customers.size() == 0}">
+                        disabled="disabled"
+                    </c:when>
+                </c:choose>
+        />
     </div>
 </form:form>
 <jsp:include page="/WEB-INF/views/footer.jsp"/>
