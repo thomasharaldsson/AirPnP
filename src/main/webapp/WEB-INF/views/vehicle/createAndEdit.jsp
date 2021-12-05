@@ -47,6 +47,6 @@
         <input type="submit"/> (does not work yet)
     </div>
 </form:form>
-
+<jsp:include page="/WEB-INF/views/footer.jsp"/>
 </body>
 </html>

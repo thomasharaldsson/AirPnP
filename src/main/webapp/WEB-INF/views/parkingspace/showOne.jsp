@@ -12,3 +12,4 @@
     <li>(<a href="/parkingspace/edit/${parkingspace.id}">edit</a>) (<a href="/parkingspace/delete/${parkingspace.id}">delete</a>)
     </li>
 </ul>
+<jsp:include page="/WEB-INF/views/footer.jsp"/>

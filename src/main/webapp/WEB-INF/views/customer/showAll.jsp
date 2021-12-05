@@ -25,3 +25,4 @@
         You have not added any customers yet.
     </c:otherwise>
 </c:choose>
+<jsp:include page="/WEB-INF/views/footer.jsp"/>

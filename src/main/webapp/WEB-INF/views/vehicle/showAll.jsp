@@ -23,3 +23,5 @@
         You have not added any vehicles yet.
     </c:otherwise>
 </c:choose>
+
+<jsp:include page="/WEB-INF/views/footer.jsp"/>

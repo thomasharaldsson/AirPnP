@@ -11,3 +11,5 @@
     <li>Phonenumber: ${vehicle.getOwner().getPhoneNumber()}</li>
     <li>(<a href="/vehicle/edit/${vehicle.getId()}">edit</a>) (<a href="/vehicle/delete/${vehicle.getId()}">delete</a>)</li>
 </ul>
+
+<jsp:include page="/WEB-INF/views/footer.jsp"/>
