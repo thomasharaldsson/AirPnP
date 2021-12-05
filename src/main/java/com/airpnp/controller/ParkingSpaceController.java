@@ -44,7 +44,6 @@ public class ParkingSpaceController {
         return "redirect:/parkingspace/showall";
     }
 
-    // Delete should now work because we use DELETE and GET here
     @RequestMapping(value = "/delete/{id}", method = {RequestMethod.DELETE, RequestMethod.GET})
     public String deleteParkingspace(@PathVariable(required = true) int id) throws ParkingSpaceNotFoundException {
         System.out.println("Deleting parkingspace ID=" + id);
