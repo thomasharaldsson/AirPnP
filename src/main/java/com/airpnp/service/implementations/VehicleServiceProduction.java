@@ -12,7 +12,7 @@ import java.util.List;
 public class VehicleServiceProduction implements VehicleService {
     @Override
     public void addVehicle(Vehicle newVehicle) {
-        throw new UnsupportedOperationException("This method has not yet been implemeted.");
+        throw new UnsupportedOperationException("This method/feature has not been implemeted yet.");
     }
 
     @Override

@@ -1,11 +1,13 @@
 package com.airpnp.controller;
 
+import com.airpnp.data.exception.ParkingSpaceNotFoundException;
 import com.airpnp.domainmodel.Customer;
 import com.airpnp.domainmodel.ParkingSpace;
 import com.airpnp.domainmodel.Vehicle;
 import com.airpnp.service.VehicleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -36,6 +38,19 @@ public class VehicleController {
 
     }
 
-    //TODO: Add exception method
+    @RequestMapping(value = "/create", method = RequestMethod.POST)
+    public String createVehicle(Vehicle vehicle) {
+        service.addVehicle(vehicle);
+        return "redirect:/vehicle/showall";
+    }
 
+    //TODO: Add proper exception handling
+    @ExceptionHandler(Exception.class)
+    public ModelAndView handleException(Exception ex) {
+        //Do something additional if required
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("vehicle/error");
+        modelAndView.addObject("message", ex.getMessage());
+        return modelAndView;
+    }
 }
