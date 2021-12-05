@@ -57,12 +57,27 @@ public class VehicleController {
         return modelAndView;
     }
 
+    @RequestMapping(value = "/edit", method = RequestMethod.POST)
+    public String editVehicle(Vehicle vehicle, int owner_id) throws VehicleNotFoundException, CustomerNotFoundException {
+        Customer owner = customerService.getCustomer(owner_id);
+        vehicle.setOwner(owner);
+        vehicleService.updateVehicle(vehicle);
+        return "redirect:/vehicle/showall";
+    }
+
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public String createVehicle(Vehicle vehicle, int owner_id) throws CustomerNotFoundException {
         Customer owner = customerService.getCustomer(owner_id);
         vehicle.setOwner(owner);
         vehicleService.addVehicle(vehicle);
         return "redirect:/vehicle/showall";
+    }
+
+    @GetMapping("/show/{id}")
+    @ResponseBody
+    public ModelAndView showVehicle(@PathVariable(required = true) int id) throws VehicleNotFoundException {
+        Vehicle vehicle = vehicleService.getVehicleById(Integer.valueOf(id));
+        return new ModelAndView("vehicle/showOne", "vehicle", vehicle);
     }
 
     //TODO: Add proper exception handling

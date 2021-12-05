@@ -11,7 +11,7 @@
                     <li>ID: ${vehicle.getId()}</li>
                     <li>Registration number: ${vehicle.getRegistrationNumber()}</li>
                     <li>Owner: ${vehicle.owner.getFirstName()} ${vehicle.owner.getSurName()}</li>
-                    <li>(open)</li>
+                    <li>(<a href="show/${vehicle.id}">open</a>)</li>
                 </ul>
 
                 <br/>

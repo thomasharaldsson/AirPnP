@@ -11,4 +11,6 @@ public interface VehicleService {
     List<Vehicle> getAll();
 
     Vehicle getVehicleById(Integer valueOf) throws VehicleNotFoundException;
+
+    void updateVehicle(Vehicle vehicle) throws VehicleNotFoundException;
 }
