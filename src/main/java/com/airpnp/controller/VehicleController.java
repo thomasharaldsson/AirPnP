@@ -28,6 +28,16 @@ public class VehicleController {
         return new ModelAndView("vehicle/showAll", "vehicles", allVehicles);
     }
 
+    @RequestMapping(value = "/create", method = RequestMethod.GET)
+    public ModelAndView createVehicle() {
+        Customer currentCustomer = new Customer(2, "George", "Silvant", "gs@france.com", "+99-234-7344");
+        Vehicle vehicle = new Vehicle(4, "ABC-123", currentCustomer);
+        ModelAndView modelAndView = new ModelAndView("vehicle/createAndEdit", "vehicle", vehicle);
+        modelAndView.addObject("action", "");
+        return modelAndView;
+
+    }
+
     //TODO: Add exception method
 
 }
