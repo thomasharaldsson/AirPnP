@@ -29,7 +29,7 @@
         Owner: ${vehicle.owner.getFirstName()} ${vehicle.owner.getSurName()}
     </div>
     <div>
-        <input type="submit"/>
+        <input type="submit"/> (does not work yet)
     </div>
 </form:form>
 
