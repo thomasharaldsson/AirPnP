@@ -1,7 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <br/>Menu: <a href="create">add new vehicle</a>
-<h1>All vehicles (this content is fake): </h1>
+<h1>All vehicles: </h1>
 
 <c:choose>
     <c:when test="${vehicles.size() > 0}">

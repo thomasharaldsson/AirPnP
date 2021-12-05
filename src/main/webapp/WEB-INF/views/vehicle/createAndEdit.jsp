@@ -14,6 +14,7 @@
     </c:otherwise>
 </c:choose>
 
+
 <form:form modelAttribute="vehicle" action="${action}">
 
 
@@ -21,12 +22,26 @@
     ID: ${vehicle.id}
     <form:hidden path="id" value="${id}"/>
     <div>
-        <form:label path="registrationNumber">Registration number</form:label>
+        <form:label path="registrationNumber">Registration number: </form:label>
         <form:input path="registrationNumber"/>
         <form:errors path="registrationNumber"/>
     </div>
     <div>
-        Owner: ${vehicle.owner.getFirstName()} ${vehicle.owner.getSurName()}
+        Owner:
+        <select name="owner_id">
+            <c:forEach var="customer" items="${customers}">
+                <option value="${customer.id}"
+                        <c:choose>
+                            <c:when test="${vehicle.getOwner() != null && customer.id == vehicle.getOwner().getId()}">
+                                SELECTED
+                            </c:when>
+                        </c:choose>
+                >
+                        ${customer.getFirstName()} ${customer.getSurName()}
+                </option>
+            </c:forEach>
+
+        </select>
     </div>
     <div>
         <input type="submit"/> (does not work yet)
