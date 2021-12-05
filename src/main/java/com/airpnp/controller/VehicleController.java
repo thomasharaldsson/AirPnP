@@ -89,4 +89,10 @@ public class VehicleController {
         modelAndView.addObject("message", ex.getMessage());
         return modelAndView;
     }
+
+    @RequestMapping(value = "/delete/{id}", method = {RequestMethod.DELETE, RequestMethod.GET})
+    public String deleteVehicle(@PathVariable(required = true) int id) throws VehicleNotFoundException {
+        vehicleService.deleteVehicle(id);
+        return "redirect:/vehicle/showall";
+    }
 }
