@@ -20,7 +20,7 @@
         </ul>
     </c:when>
     <c:otherwise>
-        You have not added any vehicles yet.
+        You have not added any vehicles yet. Please <a href="/vehicle/create">add some</a> first.
     </c:otherwise>
 </c:choose>
 

@@ -22,7 +22,7 @@
         </ul>
     </c:when>
     <c:otherwise>
-        You have not added any customers yet.
+        You have not added any customers yet. Please <a href="/customer/create">add some</a> first.
     </c:otherwise>
 </c:choose>
 <jsp:include page="/WEB-INF/views/footer.jsp"/>
