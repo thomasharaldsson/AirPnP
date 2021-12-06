@@ -7,11 +7,12 @@ import com.airpnp.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Primary
-@Component
+@Service("customerService")
 public class CustomerServiceProduction implements CustomerService {
 
     @Autowired

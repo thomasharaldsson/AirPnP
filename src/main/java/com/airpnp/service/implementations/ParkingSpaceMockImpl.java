@@ -4,6 +4,7 @@ import com.airpnp.data.exception.ParkingSpaceNotFoundException;
 import com.airpnp.domainmodel.ParkingSpace;
 import com.airpnp.service.ParkingSpaceService;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -11,7 +12,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@Component
+@Service("parkingSpaceServiceMock")
 public class ParkingSpaceMockImpl implements ParkingSpaceService {
 
     Map<Integer, ParkingSpace> parkingSpaces;

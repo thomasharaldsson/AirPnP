@@ -8,11 +8,12 @@ import com.airpnp.domainmodel.Vehicle;
 import com.airpnp.service.VehicleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Component
+@Service("vehicleService")
 public class VehicleServiceProduction implements VehicleService {
 
     @Autowired
