@@ -8,8 +8,8 @@ public class RentalTicket {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Id
     private Integer id;
-    @ManyToOne
-    private Customer customer;
+ //   @ManyToOne
+ //   private Customer customer;
     @ManyToOne
     Vehicle vehicle;
 }
