@@ -16,6 +16,9 @@ public class ParkingSpace {
     private Date startDate;
     private Date endDate;
     private String streetAddress;
+    @ManyToOne
+    @PrimaryKeyJoinColumn
+    private Customer owner;
 
 
     public ParkingSpace(int id, int price, Date startDate, Date endDate, String streetAddress) {
