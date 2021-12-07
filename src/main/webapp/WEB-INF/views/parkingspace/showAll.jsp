@@ -22,7 +22,7 @@
         </ul>
     </c:when>
     <c:otherwise>
-        You have not added any parkingspaces yet.
+        You have not added any parkingspaces yet. Please <a href="/parkingspace/create">add some</a> first.
     </c:otherwise>
 </c:choose>
 <jsp:include page="/WEB-INF/views/footer.jsp"/>
