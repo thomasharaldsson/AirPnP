@@ -35,6 +35,7 @@ public class VehicleController {
     public ModelAndView createVehicle() {
         Customer currentCustomer = new Customer(2, "George", "Silvant", "gs@france.com", "+99-234-7344");
         Vehicle vehicle = new Vehicle(4, "ABC-123", currentCustomer);
+        vehicle.setId(null);
         List<Customer> allCustomers = customerService.getAll();
         ModelAndView modelAndView = new ModelAndView("vehicle/createAndEdit", "vehicle", vehicle);
         modelAndView.addObject("customers", allCustomers);
