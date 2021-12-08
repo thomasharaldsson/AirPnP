@@ -3,3 +3,6 @@
 <p>
     Return to <a href="/">main menu.</a>
 </p>
+<p>
+    <a href="/logout">Logout</a>
+</p>

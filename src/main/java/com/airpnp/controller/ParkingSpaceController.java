@@ -4,6 +4,9 @@ import com.airpnp.data.exception.ParkingSpaceNotFoundException;
 import com.airpnp.domainmodel.ParkingSpace;
 import com.airpnp.service.ParkingSpaceService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -20,6 +23,7 @@ public class ParkingSpaceController {
 
     @RequestMapping(value = "/showall", method = RequestMethod.GET)
     public ModelAndView showAllParkingspace() {
+        System.out.println("Currently logged in user=" + getCurrentlyLoggedInUser());
         List<ParkingSpace> allParkingSpaces = parkingSpaceService.getAllParkingSpaces();
         return new ModelAndView("parkingspace/showAll", "parkingSpaces", allParkingSpaces);
     }
@@ -85,6 +89,22 @@ public class ParkingSpaceController {
         modelAndView.setViewName("parkingspace/error");
         modelAndView.addObject("message", ex.getMessage());
         return modelAndView;
+    }
+
+
+    /**
+     *
+     * @return username of logged in user. Or null if no user is logged in.
+     */
+    String getCurrentlyLoggedInUser() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        if (!(authentication instanceof AnonymousAuthenticationToken)) {
+            String currentUserName = authentication.getName();
+            return currentUserName;
+        }
+
+        return null;
     }
 
 }

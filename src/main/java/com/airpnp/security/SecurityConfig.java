@@ -5,11 +5,14 @@ import com.airpnp.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
@@ -59,7 +62,23 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         List<Customer> allCustomers = customerService.getAll();
         for (Customer c : allCustomers) {
             System.out.println("Grant login access to user " + c);
+            auth.inMemoryAuthentication().withUser(c.getUsername()).password(encoder.encode(c.getPassword())).roles(ROLE_CUSTOMER);
         }
+    }
+
+    /**
+     *
+     * @return username of logged in user. Or null if no user is logged in.
+     */
+    String getCurrentlyLoggedInUser() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        if (!(authentication instanceof AnonymousAuthenticationToken)) {
+            String currentUserName = authentication.getName();
+            return currentUserName;
+        }
+
+        return null;
     }
 
 }

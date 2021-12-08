@@ -1,5 +1,8 @@
 package com.airpnp.domainmodel;
 
+import com.sun.istack.NotNull;
+
+import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
 
 @MappedSuperclass
@@ -9,6 +12,8 @@ public class Person {
     private String email;
     private String phoneNumber;
     private String password;
+    @NotNull
+    @Column(unique=true)
     private String username;
 
     public Person() {
@@ -51,5 +56,21 @@ public class Person {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 }
