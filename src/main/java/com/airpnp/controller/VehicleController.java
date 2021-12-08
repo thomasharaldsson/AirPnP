@@ -9,11 +9,13 @@ import com.airpnp.domainmodel.Vehicle;
 import com.airpnp.service.CustomerService;
 import com.airpnp.service.VehicleService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-
 import java.util.List;
+
+import static com.airpnp.security.SecurityConfig.USER_ROLE_CUSTOMER;
 
 @Controller
 @RequestMapping("/vehicle")
@@ -44,6 +46,7 @@ public class VehicleController {
 
     }
 
+    @Secured(USER_ROLE_CUSTOMER)
     @GetMapping(value = "/edit/{id}")
     @ResponseBody
     public ModelAndView editVehicle(@PathVariable(required = true) int id) throws VehicleNotFoundException {
@@ -58,6 +61,7 @@ public class VehicleController {
         return modelAndView;
     }
 
+    @Secured(USER_ROLE_CUSTOMER)
     @RequestMapping(value = "/edit", method = RequestMethod.POST)
     public String editVehicle(Vehicle vehicle, int owner_id) throws VehicleNotFoundException, CustomerNotFoundException {
         Customer owner = customerService.getCustomer(owner_id);
