@@ -7,7 +7,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import static com.airpnp.authorization.SecurityConfig.ROLE_CUSTOMER;
+import static com.airpnp.authorization.SecurityConfig.USER_ROLE_CUSTOMER;
 
 
 public class CustomerPrincipal implements UserDetails {
@@ -25,7 +25,7 @@ public class CustomerPrincipal implements UserDetails {
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         List<GrantedAuthority> authorities = new ArrayList<>();
-        authorities.add(new SimpleGrantedAuthority(ROLE_CUSTOMER));
+        authorities.add(new SimpleGrantedAuthority(USER_ROLE_CUSTOMER));
         return authorities;
     }
 

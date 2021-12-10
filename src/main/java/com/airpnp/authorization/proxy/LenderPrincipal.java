@@ -1,6 +1,5 @@
 package com.airpnp.authorization.proxy;
 
-import com.airpnp.domainmodel.Customer;
 import com.airpnp.domainmodel.Lender;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -10,8 +9,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import static com.airpnp.authorization.SecurityConfig.ROLE_CUSTOMER;
-import static com.airpnp.authorization.SecurityConfig.ROLE_LENDER;
+import static com.airpnp.authorization.SecurityConfig.*;
 
 public class LenderPrincipal implements UserDetails {
 
@@ -27,7 +25,7 @@ public class LenderPrincipal implements UserDetails {
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         List<GrantedAuthority> authorities = new ArrayList<>();
-        authorities.add(new SimpleGrantedAuthority(ROLE_LENDER));
+        authorities.add(new SimpleGrantedAuthority(USER_ROLE_LENDER));
         return authorities;
     }
 

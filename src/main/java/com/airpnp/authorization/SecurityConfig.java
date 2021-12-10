@@ -30,8 +30,8 @@ import javax.annotation.Resource;
 @Profile("production")
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    public static final String ROLE_CUSTOMER = "CUSTOMER";
-    public static final String ROLE_LENDER = "LENDER";
+    private static final String ROLE_CUSTOMER = "CUSTOMER";
+    private static final String ROLE_LENDER = "LENDER";
     public static final String USER_ROLE_CUSTOMER = "ROLE_" + ROLE_CUSTOMER;
     public static final String USER_ROLE_LENDER = "ROLE_" + ROLE_LENDER;
 
