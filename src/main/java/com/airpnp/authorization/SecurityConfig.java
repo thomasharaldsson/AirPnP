@@ -1,7 +1,7 @@
-package com.airpnp.security;
+package com.airpnp.authorization;
 
+import com.airpnp.authorization.proxy.CustomerPrincipal;
 import com.airpnp.domainmodel.Customer;
-import com.airpnp.service.CustomerPrincipal;
 import com.airpnp.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -11,20 +11,15 @@ import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
-import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.annotation.Resource;
-import javax.sql.DataSource;
-import java.util.List;
 
 @Configuration
 @EnableWebSecurity
@@ -35,8 +30,8 @@ import java.util.List;
 @Profile("production")
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    private static final String ROLE_CUSTOMER = "CUSTOMER";
-    private static final String ROLE_LENDER = "LENDER";
+    public static final String ROLE_CUSTOMER = "CUSTOMER";
+    public static final String ROLE_LENDER = "LENDER";
     public static final String USER_ROLE_CUSTOMER = "ROLE_" + ROLE_CUSTOMER;
     public static final String USER_ROLE_LENDER = "ROLE_" + ROLE_LENDER;
 

@@ -1,27 +1,25 @@
-package com.airpnp.service;
+package com.airpnp.authorization.proxy;
 
 import com.airpnp.domainmodel.Customer;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import static com.airpnp.authorization.SecurityConfig.ROLE_CUSTOMER;
+
 
 public class CustomerPrincipal implements UserDetails {
-
-    private static final String ROLE_CUSTOMER = "CUSTOMER";
-    public static final String USER_ROLE_CUSTOMER = "ROLE_" + ROLE_CUSTOMER;
-
-    public Customer getCustomer() {
-        return customer;
-    }
 
     private Customer customer;
 
     public CustomerPrincipal(Customer customer) {
         this.customer = customer;
+    }
+
+    public Customer getCustomer() {
+        return customer;
     }
 
     @Override

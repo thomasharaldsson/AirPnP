@@ -1,10 +1,8 @@
 package com.airpnp.controller;
 
 import com.airpnp.data.exception.CustomerNotFoundException;
-import com.airpnp.data.exception.ParkingSpaceNotFoundException;
 import com.airpnp.data.exception.VehicleNotFoundException;
 import com.airpnp.domainmodel.Customer;
-import com.airpnp.domainmodel.ParkingSpace;
 import com.airpnp.domainmodel.Vehicle;
 import com.airpnp.service.CustomerService;
 import com.airpnp.service.VehicleService;
@@ -15,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import java.util.List;
 
-import static com.airpnp.security.SecurityConfig.USER_ROLE_CUSTOMER;
+import static com.airpnp.authorization.SecurityConfig.USER_ROLE_CUSTOMER;
 
 @Controller
 @RequestMapping("/vehicle")
