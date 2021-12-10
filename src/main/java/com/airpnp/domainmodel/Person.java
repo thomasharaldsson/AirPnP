@@ -13,7 +13,7 @@ public class Person {
     private String phoneNumber;
     private String password;
     @NotNull
-    @Column(unique=true)
+    @Column(nullable = false, unique=true)
     private String username;
 
     public Person() {
