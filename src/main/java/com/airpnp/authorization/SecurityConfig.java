@@ -66,6 +66,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public static Customer getCurrentlyLoggedInUser() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
+        if (authentication == null) {
+            return null;
+        }
+
         if (!(authentication instanceof AnonymousAuthenticationToken)) {
             CustomerPrincipal customerPrincipal = (CustomerPrincipal) authentication.getPrincipal();
             return customerPrincipal.getCustomer();
