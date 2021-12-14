@@ -15,11 +15,35 @@
 </c:choose>
 
 <form:form modelAttribute="customer" action="${action}">
-
-
     <form:errors path="" element="div"/>
     ID: ${customer.id}
     <form:hidden path="id" value="${id}"/>
+
+    <div>
+
+        <c:choose>
+
+            <c:when test="${edit != null && edit == true}">
+                <!-- Editing customer: you can't edit username after it's been created. -->
+                Username: ${customer.username}
+                <form:hidden path="username" value="${username}"/>
+            </c:when>
+
+            <c:otherwise>
+                <!-- Creating customer: here you are allowed to enter username. -->
+                <form:label path="username">Username</form:label>
+                <form:input path="username"/>
+                <form:errors path="username"/>
+            </c:otherwise>
+
+        </c:choose>
+
+    </div>
+    <div>
+        <form:label path="password">Password</form:label>
+        <form:input path="password"/>
+        <form:errors path="password"/>
+    </div>
     <div>
         <form:label path="firstName">Firstname</form:label>
         <form:input path="firstName"/>
