@@ -5,6 +5,8 @@
 
 <ul>
     <li>ID: ${customer.id}</li>
+    <li>Username: ${customer.username}</li>
+    <li>Password: ${customer.password}</li>
     <li>Firstname: ${customer.firstName}</li>
     <li>Lastname: ${customer.surName}</li>
     <li>E-mail: ${customer.email}</li>
