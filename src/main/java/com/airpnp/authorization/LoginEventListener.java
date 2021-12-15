@@ -20,9 +20,15 @@ public class LoginEventListener implements ApplicationListener<AuthenticationSuc
 
         UserDetails userDetails = (UserDetails) event.getAuthentication().getPrincipal();
         if (userDetails.getClass() == UserPrincipal.class) {
-            // Lender has logged in.
-            UserPrincipal userPrincipal = (UserPrincipal) userDetails;
-            System.out.println("Lender " + userPrincipal.getUsername() + " has just logged in");
+            UserPrincipal user = (UserPrincipal) userDetails;
+
+            if (user.getCustomer() != null) {
+                System.out.println("Customer " + user.getUsername() + " has just logged in");
+            }
+
+            if (user.getLender() != null) {
+                System.out.println("Lender " + user.getUsername() + " has just logged in");
+            }
         }
     }
 }

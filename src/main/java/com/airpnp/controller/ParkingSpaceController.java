@@ -1,5 +1,7 @@
 package com.airpnp.controller;
 
+import com.airpnp.authorization.loggedinuser.IAuthenticationFacade;
+import com.airpnp.authorization.proxy.UserPrincipal;
 import com.airpnp.data.exception.ParkingSpaceNotFoundException;
 import com.airpnp.domainmodel.ParkingSpace;
 import com.airpnp.service.ParkingSpaceService;
@@ -21,9 +23,17 @@ public class ParkingSpaceController {
     @Autowired
     private ParkingSpaceService parkingSpaceService;
 
+    @Autowired
+    private IAuthenticationFacade authenticationFacade;
+
     @RequestMapping(value = "/showall", method = RequestMethod.GET)
     public ModelAndView showAllParkingspace() {
-        System.out.println("Currently logged in user=" + getCurrentlyLoggedInUser());
+
+        UserPrincipal user = authenticationFacade.getAuthenticatedUser();
+        if (user != null) {
+            System.out.println("Currently logged in customer has user id=" + user.getCustomer().getId());
+        }
+
         List<ParkingSpace> allParkingSpaces = parkingSpaceService.getAllParkingSpaces();
         return new ModelAndView("parkingspace/showAll", "parkingSpaces", allParkingSpaces);
     }
