@@ -1,6 +1,7 @@
 package com.airpnp.authorization.proxy;
 
 import com.airpnp.domainmodel.Customer;
+import com.airpnp.domainmodel.Lender;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -8,35 +9,69 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import static com.airpnp.authorization.SecurityConfig.USER_ROLE_CUSTOMER;
+import static com.airpnp.authorization.SecurityConfig.USER_ROLE_LENDER;
 
 
-public class CustomerPrincipal implements UserDetails {
+public class UserPrincipal implements UserDetails {
 
     private Customer customer;
+    private Lender lender;
 
-    public CustomerPrincipal(Customer customer) {
+    public UserPrincipal(Customer customer) {
         this.customer = customer;
+    }
+
+    public UserPrincipal(Lender lender) {
+        this.lender = lender;
     }
 
     public Customer getCustomer() {
         return customer;
     }
 
+    public Lender getLender() {
+        return lender;
+    }
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         List<GrantedAuthority> authorities = new ArrayList<>();
-        authorities.add(new SimpleGrantedAuthority(USER_ROLE_CUSTOMER));
+
+        if (lender != null) {
+            authorities.add(new SimpleGrantedAuthority(USER_ROLE_CUSTOMER));
+        }
+
+        if (customer != null) {
+            authorities.add(new SimpleGrantedAuthority(USER_ROLE_LENDER));
+        }
+
         return authorities;
     }
 
     @Override
     public String getPassword() {
-        return customer.getPassword();
+        if (lender != null) {
+            return lender.getPassword();
+        }
+
+        if (customer != null) {
+            return customer.getPassword();
+        }
+
+        return null;
     }
 
     @Override
     public String getUsername() {
-        return customer.getUsername();
+        if (lender != null) {
+            return lender.getUsername();
+        }
+
+        if (customer != null) {
+            return customer.getUsername();
+        }
+
+        return null;
     }
 
     @Override

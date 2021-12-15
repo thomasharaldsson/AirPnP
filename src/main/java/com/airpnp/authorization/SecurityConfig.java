@@ -1,6 +1,6 @@
 package com.airpnp.authorization;
 
-import com.airpnp.authorization.proxy.CustomerPrincipal;
+import com.airpnp.authorization.proxy.UserPrincipal;
 import com.airpnp.domainmodel.Customer;
 import com.airpnp.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -71,7 +71,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         }
 
         if (!(authentication instanceof AnonymousAuthenticationToken)) {
-            CustomerPrincipal customerPrincipal = (CustomerPrincipal) authentication.getPrincipal();
+            UserPrincipal customerPrincipal = (UserPrincipal) authentication.getPrincipal();
             return customerPrincipal.getCustomer();
         }
 
