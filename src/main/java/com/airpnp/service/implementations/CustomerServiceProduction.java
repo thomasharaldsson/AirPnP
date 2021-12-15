@@ -6,6 +6,7 @@ import com.airpnp.domainmodel.Customer;
 import com.airpnp.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
@@ -18,14 +19,20 @@ public class CustomerServiceProduction implements CustomerService {
 
     @Autowired
     private CustomerRepository data;
-
-    @Autowired
     private PasswordEncoder passwordEncoder;
+
+    public CustomerServiceProduction() {
+        passwordEncoder = new BCryptPasswordEncoder();
+    }
+
+    private void encodePassword(Customer customer) {
+        customer.setPassword(passwordEncoder.encode(customer.getPassword()));
+    }
 
     @Override
     public void addCustomer(Customer customer) {
         // Encode the password before storing it in the database
-        customer.setPassword(passwordEncoder.encode(customer.getPassword()));
+        encodePassword(customer);
         data.save(customer);
     }
 
@@ -35,6 +42,7 @@ public class CustomerServiceProduction implements CustomerService {
         if (!data.existsById(id)) {
             throw new CustomerNotFoundException("Unable to update space since customer with that id=" + id + " doesn't exist");
         }
+        encodePassword(customer);
         data.save(customer);
     }
 
