@@ -6,6 +6,7 @@ import com.airpnp.domainmodel.Customer;
 import com.airpnp.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
@@ -18,8 +19,13 @@ public class CustomerServiceProduction implements CustomerService {
     @Autowired
     private CustomerRepository data;
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
     @Override
     public void addCustomer(Customer customer) {
+        // Encode the password before storing it in the database
+        customer.setPassword(passwordEncoder.encode(customer.getPassword()));
         data.save(customer);
     }
 

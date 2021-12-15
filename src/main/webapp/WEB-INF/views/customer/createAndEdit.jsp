@@ -43,7 +43,7 @@
     </div>
     <div>
         <form:label path="password">Password</form:label>
-        <form:input path="password"/>
+        <form:password path="password"/>
         <form:errors path="password"/>
     </div>
     <div>
