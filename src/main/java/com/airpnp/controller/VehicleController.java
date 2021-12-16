@@ -44,7 +44,7 @@ public class VehicleController {
 
     }
 
-    @Secured(USER_ROLE_CUSTOMER)
+    //@Secured(USER_ROLE_CUSTOMER)
     @GetMapping(value = "/edit/{id}")
     @ResponseBody
     public ModelAndView editVehicle(@PathVariable(required = true) int id) throws VehicleNotFoundException {
@@ -59,7 +59,7 @@ public class VehicleController {
         return modelAndView;
     }
 
-    @Secured(USER_ROLE_CUSTOMER)
+    //@Secured(USER_ROLE_CUSTOMER)
     @RequestMapping(value = "/edit", method = RequestMethod.POST)
     public String editVehicle(Vehicle vehicle, int owner_id) throws VehicleNotFoundException, CustomerNotFoundException {
         Customer owner = customerService.getCustomer(owner_id);
