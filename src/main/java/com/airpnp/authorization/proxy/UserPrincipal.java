@@ -37,11 +37,11 @@ public class UserPrincipal implements UserDetails {
     public Collection<? extends GrantedAuthority> getAuthorities() {
         List<GrantedAuthority> authorities = new ArrayList<>();
 
-        if (lender != null) {
+        if (customer != null) {
             authorities.add(new SimpleGrantedAuthority(USER_ROLE_CUSTOMER));
         }
 
-        if (customer != null) {
+        if (lender != null) {
             authorities.add(new SimpleGrantedAuthority(USER_ROLE_LENDER));
         }
 
