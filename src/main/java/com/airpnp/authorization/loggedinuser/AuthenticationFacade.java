@@ -11,8 +11,13 @@ public class AuthenticationFacade implements IAuthenticationFacade {
     public UserPrincipal getAuthenticatedUser() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
-        if (authentication!=null) {
-            return (UserPrincipal) authentication.getPrincipal();
+        if (authentication != null) {
+
+            Object principal = authentication.getPrincipal();
+            if (principal instanceof UserPrincipal) {
+                return (UserPrincipal) principal;
+            }
+            return null;
         }
 
         return null;
