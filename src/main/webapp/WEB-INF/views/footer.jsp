@@ -10,8 +10,7 @@
 </p>
 <p>
     <security:authorize access="isAuthenticated()">
-        <a href="/logout">Logout: <security:authentication property="principal.username"/></a>
-Add information about which  a        <br/>
+        <a href="/logout">Logout: <security:authentication property="principal.username"/></a><br/>
     </security:authorize>
 
     <security:authorize access="hasRole('LENDER')">
