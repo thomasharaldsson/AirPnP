@@ -11,5 +11,18 @@
 <p>
     <security:authorize access="isAuthenticated()">
         <a href="/logout">Logout: <security:authentication property="principal.username"/></a>
+Add information about which  a        <br/>
+    </security:authorize>
+
+    <security:authorize access="hasRole('LENDER')">
+        You are a Lender.
+    </security:authorize>
+
+    <security:authorize access="hasRole('CUSTOMER')">
+        You are a Customer.
+    </security:authorize>
+
+    <security:authorize access="isAnonymous()">
+        You are an anonymous user.
     </security:authorize>
 </p>
