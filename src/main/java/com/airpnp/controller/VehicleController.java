@@ -1,5 +1,6 @@
 package com.airpnp.controller;
 
+import com.airpnp.authorization.SecurityConfig;
 import com.airpnp.data.exception.CustomerNotFoundException;
 import com.airpnp.data.exception.VehicleNotFoundException;
 import com.airpnp.domainmodel.Customer;
@@ -31,9 +32,10 @@ public class VehicleController {
         return new ModelAndView("vehicle/showAll", "vehicles", allVehicles);
     }
 
+    @Secured(USER_ROLE_CUSTOMER)
     @RequestMapping(value = "/create", method = RequestMethod.GET)
     public ModelAndView createVehicle() {
-        Customer currentCustomer = new Customer(2, "George", "Silvant", "gs@france.com", "+99-234-7344");
+        Customer currentCustomer = SecurityConfig.getCurrentlyLoggedInUserPrincipal().getCustomer();
         Vehicle vehicle = new Vehicle(4, "ABC-123", currentCustomer);
         vehicle.setId(null);
         List<Customer> allCustomers = customerService.getAll();
@@ -68,6 +70,7 @@ public class VehicleController {
         return "redirect:/vehicle/showall";
     }
 
+    @Secured(USER_ROLE_CUSTOMER)
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public String createVehicle(Vehicle vehicle, int owner_id) throws CustomerNotFoundException {
         Customer owner = customerService.getCustomer(owner_id);

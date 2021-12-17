@@ -19,11 +19,13 @@ public class Person {
     public Person() {
     }
 
-    public Person(String firstName, String surName, String email, String phoneNumber) {
-        this.firstName = firstName;
-        this.surName = surName;
-        this.email = email;
-        this.phoneNumber = phoneNumber;
+    public Person(String firstName, String surName, String email, String phoneNumber, String username, String password) {
+        setFirstName(firstName);
+        setSurName(surName);
+        setEmail(email);
+        setPhoneNumber(phoneNumber);
+        setUsername(username);
+        setPassword(password);
     }
 
     public String getFirstName() {

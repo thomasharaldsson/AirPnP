@@ -14,8 +14,8 @@ public class Lender extends Person {
     public Lender() {
     }
 
-    public Lender(String firstName, String surName, String email, String phoneNumber, Integer id) {
-        super(firstName, surName, email, phoneNumber);
+    public Lender(String firstName, String surName, String email, String phoneNumber, Integer id, String username, String password) {
+        super(firstName, surName, email, phoneNumber, username, password);
         this.id = id;
     }
 

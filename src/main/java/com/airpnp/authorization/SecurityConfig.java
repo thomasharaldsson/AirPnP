@@ -81,7 +81,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
      *
      * @return username of logged in user. Or null if no user is logged in.
      */
-    public static Customer getCurrentlyLoggedInUser() {
+    public static UserPrincipal getCurrentlyLoggedInUserPrincipal() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
         if (authentication == null) {
@@ -90,7 +90,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         if (!(authentication instanceof AnonymousAuthenticationToken)) {
             UserPrincipal customerPrincipal = (UserPrincipal) authentication.getPrincipal();
-            return customerPrincipal.getCustomer();
+
+            return customerPrincipal;
         }
 
         return null;

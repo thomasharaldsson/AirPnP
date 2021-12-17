@@ -18,8 +18,8 @@ public class Customer extends Person {
 
     }
 
-    public Customer(Integer id, String firstName, String surName, String email, String phoneNumber) {
-        super(firstName, surName, email, phoneNumber);
+    public Customer(String firstName, String surName, String email, String phoneNumber, String username, String password) {
+        super(firstName, surName, email, phoneNumber, username, password);
         this.id = id;
         //this.ratings = ratings;
     }
