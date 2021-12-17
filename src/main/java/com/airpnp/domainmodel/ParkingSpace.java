@@ -18,11 +18,10 @@ public class ParkingSpace {
     private String streetAddress;
     @ManyToOne
     @PrimaryKeyJoinColumn
-    private Customer owner;
+    private Lender owner;
 
 
     public ParkingSpace(int price, Date startDate, Date endDate, String streetAddress) {
-        this.id = id;
         this.price = price;
         this.startDate = startDate;
         this.endDate = endDate;
