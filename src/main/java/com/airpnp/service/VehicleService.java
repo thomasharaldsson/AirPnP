@@ -15,4 +15,6 @@ public interface VehicleService {
     void updateVehicle(Vehicle vehicle) throws VehicleNotFoundException;
 
     void deleteVehicle(int id) throws VehicleNotFoundException;
+
+    void deleteAll();
 }

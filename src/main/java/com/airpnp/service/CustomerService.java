@@ -15,4 +15,6 @@ public interface CustomerService {
     List<Customer> getAll();
 
     void deleteCustomer(int id) throws CustomerNotFoundException;
+
+    void deleteAll();
 }

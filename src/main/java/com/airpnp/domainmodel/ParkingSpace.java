@@ -21,7 +21,7 @@ public class ParkingSpace {
     private Customer owner;
 
 
-    public ParkingSpace(int id, int price, Date startDate, Date endDate, String streetAddress) {
+    public ParkingSpace(int price, Date startDate, Date endDate, String streetAddress) {
         this.id = id;
         this.price = price;
         this.startDate = startDate;

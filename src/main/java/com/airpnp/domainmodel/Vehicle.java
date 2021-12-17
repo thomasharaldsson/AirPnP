@@ -17,12 +17,10 @@ public class Vehicle {
 
     /**
      *
-     * @param id vehicle ID in database.
      * @param registrationNumber Registartion number of vehicle.
      * @param owner Customer ID of person who owns this vehicle.
      */
-    public Vehicle(Integer id, String registrationNumber, Customer owner) {
-        this.id = id;
+    public Vehicle(String registrationNumber, Customer owner) {
         this.registrationNumber = registrationNumber;
         this.owner = owner;
     }

@@ -36,7 +36,7 @@ public class VehicleController {
     @RequestMapping(value = "/create", method = RequestMethod.GET)
     public ModelAndView createVehicle() {
         Customer currentCustomer = SecurityConfig.getCurrentlyLoggedInUserPrincipal().getCustomer();
-        Vehicle vehicle = new Vehicle(4, "ABC-123", currentCustomer);
+        Vehicle vehicle = new Vehicle("ABC-123", currentCustomer);
         vehicle.setId(null);
         List<Customer> allCustomers = customerService.getAll();
         ModelAndView modelAndView = new ModelAndView("vehicle/createAndEdit", "vehicle", vehicle);

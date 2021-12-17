@@ -64,4 +64,9 @@ public class CustomerServiceProduction implements CustomerService {
     public void deleteCustomer(int id) throws CustomerNotFoundException {
         data.delete(this.getCustomer(id));
     }
+
+    @Override
+    public void deleteAll() {
+        data.deleteAll();
+    }
 }

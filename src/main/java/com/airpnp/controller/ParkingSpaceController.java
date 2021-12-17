@@ -76,7 +76,7 @@ public class ParkingSpaceController {
 
     @RequestMapping(value = "/create", method = RequestMethod.GET)
     public ModelAndView createParkingspace() {
-        ParkingSpace parkingSpace = new ParkingSpace(5, 35, new Date(), new Date(), "Sparregatan 10");
+        ParkingSpace parkingSpace = new ParkingSpace(35, new Date(), new Date(), "Sparregatan 10");
         ModelAndView modelAndView = new ModelAndView("parkingspace/createAndEdit", "parkingspace", parkingSpace);
         modelAndView.addObject("action", "");
         return modelAndView;

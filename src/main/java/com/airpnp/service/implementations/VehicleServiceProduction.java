@@ -51,4 +51,9 @@ public class VehicleServiceProduction implements VehicleService {
     public void deleteVehicle(int id) throws VehicleNotFoundException {
         data.delete(this.getVehicleById(Integer.valueOf(id)));
     }
+
+    @Override
+    public void deleteAll() {
+        data.deleteAll();
+    }
 }
