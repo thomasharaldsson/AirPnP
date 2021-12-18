@@ -6,6 +6,7 @@ import com.airpnp.domainmodel.ParkingSpace;
 import com.airpnp.domainmodel.Vehicle;
 import com.airpnp.service.CustomerService;
 import com.airpnp.service.ParkingSpaceService;
+import com.airpnp.service.RentalTicketService;
 import com.airpnp.service.VehicleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -28,6 +29,9 @@ public class AirPnPApplication {
 
 	@Autowired
 	private ParkingSpaceService parkingSpaceService;
+
+	@Autowired
+	private RentalTicketService rentalTicketService;
 
 	public static void main(String[] args) {
 		SpringApplication.run(AirPnPApplication.class, args);
