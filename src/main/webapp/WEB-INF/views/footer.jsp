@@ -16,6 +16,11 @@
 </c:choose>
 
 <p>
+
+    <security:authorize access="isAnonymous()">
+        <a href="/login">Login</a>
+    </security:authorize>
+
     <security:authorize access="isAuthenticated()">
         <a href="/logout">Logout</a>
     </security:authorize>
@@ -23,7 +28,7 @@
     <security:authorize access="isAuthenticated()">
             username: <security:authentication property="principal.username"/>,
     </security:authorize>
-    role:
+    current role:
     <security:authorize access="hasRole('LENDER')">lender</security:authorize>
     <security:authorize access="hasRole('CUSTOMER')">customer</security:authorize>
     <security:authorize access="isAnonymous()">anonymous</security:authorize>
