@@ -16,15 +16,20 @@
 
 
     <ul>
+        <security:authorize access="isAnonymous()">
+            <li><a href="parkingspace/showall">Show parkingspaces</a> (for all users)</li>
+        </security:authorize>
+
         <security:authorize access="hasRole('CUSTOMER')">
             <li><a href="vehicle/showall">Manage vehicles</a> (only for customers)</li>
+            <li><a href="customer/showall">Manage customers</a> (only for customers)</li>
         </security:authorize>
 
 
-        <li><a href="parkingspace/showall">Manage parkingspaces</a> (for all users)</li>
-        <li><a href="customer/showall">Manage customers</a> (only for customers)</li>
+        <security:authorize access="hasRole('LENDER')">
+            <li>Do lender stuff</li>
+        </security:authorize>
 
-        <li>Buy rental ticket</li>
     </ul>
 </div>
 <jsp:include page="/WEB-INF/views/footer.jsp"/>
