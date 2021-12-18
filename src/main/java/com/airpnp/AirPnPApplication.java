@@ -30,9 +30,6 @@ public class AirPnPApplication {
 	@Autowired
 	private ParkingSpaceService parkingSpaceService;
 
-	@Autowired
-	private RentalTicketService rentalTicketService;
-
 	public static void main(String[] args) {
 		SpringApplication.run(AirPnPApplication.class, args);
 	}
