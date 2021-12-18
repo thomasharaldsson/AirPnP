@@ -1,4 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -12,12 +13,20 @@
     <h1>Welcome to AirPnP!</h1>
 
     <h2>Main menu:</h2>
+
+
     <ul>
+        <security:authorize access="hasRole('CUSTOMER')">
+            <li><a href="vehicle/showall">Manage vehicles</a> (only for customers)</li>
+        </security:authorize>
+
+
         <li><a href="parkingspace/showall">Manage parkingspaces</a> (for all users)</li>
         <li><a href="customer/showall">Manage customers</a> (only for customers)</li>
-        <li><a href="vehicle/showall">Manage vehicles</a> (only for customers)</li>
+
         <li>Buy rental ticket</li>
     </ul>
 </div>
+<jsp:include page="/WEB-INF/views/footer.jsp"/>
 </body>
 </html>

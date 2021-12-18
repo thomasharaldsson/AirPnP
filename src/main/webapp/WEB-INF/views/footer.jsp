@@ -4,24 +4,33 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s" %>
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
+<c:set var="requestPath" value="${requestScope['javax.servlet.forward.request_uri']}"/>
 <hr>
-<p>
-    Return to <a href="/">main menu.</a>
-</p>
+<!-- Show a link to index page if we are not there already. -->
+<c:choose>
+    <c:when test="${!requestPath.equals('/')}">
+        <p>
+            Return to <a href="/">main menu.</a>
+        </p>
+    </c:when>
+</c:choose>
+
 <p>
     <security:authorize access="isAuthenticated()">
-        <a href="/logout">Logout: <security:authentication property="principal.username"/></a><br/>
+        <a href="/logout">Logout</a>
     </security:authorize>
 
+    (username: <security:authentication property="principal.username"/>, role:
     <security:authorize access="hasRole('LENDER')">
-        You are a Lender.
+        lender
     </security:authorize>
 
     <security:authorize access="hasRole('CUSTOMER')">
-        You are a Customer.
+        customer
     </security:authorize>
 
     <security:authorize access="isAnonymous()">
-        You are an anonymous user.
+        anonymous
     </security:authorize>
+    )
 </p>
