@@ -19,18 +19,13 @@
     <security:authorize access="isAuthenticated()">
         <a href="/logout">Logout</a>
     </security:authorize>
-
-    (username: <security:authentication property="principal.username"/>, role:
-    <security:authorize access="hasRole('LENDER')">
-        lender
+    (
+    <security:authorize access="isAuthenticated()">
+            username: <security:authentication property="principal.username"/>,
     </security:authorize>
-
-    <security:authorize access="hasRole('CUSTOMER')">
-        customer
-    </security:authorize>
-
-    <security:authorize access="isAnonymous()">
-        anonymous
-    </security:authorize>
+    role:
+    <security:authorize access="hasRole('LENDER')">lender</security:authorize>
+    <security:authorize access="hasRole('CUSTOMER')">customer</security:authorize>
+    <security:authorize access="isAnonymous()">anonymous</security:authorize>
     )
 </p>
