@@ -16,9 +16,13 @@
 
 
     <ul>
+
+
+        <li><a href="parkingspace/showall">Show all parkingspaces</a> (for all users)</li>
+        <li><a href="customer/showall">Manage customers</a> (for all users)</li>
+
         <security:authorize access="isAnonymous()">
-            <li><a href="parkingspace/showall">Show parkingspaces</a> (for all users)</li>
-            <li><a href="customer/showall">Manage customers</a> (for all users)</li>
+            <li>Please login to gain access to other functionality.</li>
         </security:authorize>
 
         <security:authorize access="hasRole('CUSTOMER')">
@@ -27,7 +31,8 @@
 
 
         <security:authorize access="hasRole('LENDER')">
-            <li>Do lender stuff</li>
+            <li>Show all my parkingspaces</li>
+            <li><a href="http://localhost:8080/parkingspace/create">create</a> a new parkingpsace</li>
         </security:authorize>
 
     </ul>
