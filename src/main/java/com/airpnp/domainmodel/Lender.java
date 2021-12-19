@@ -14,9 +14,8 @@ public class Lender extends Person {
     public Lender() {
     }
 
-    public Lender(String firstName, String surName, String email, String phoneNumber, Integer id, String username, String password) {
+    public Lender(String firstName, String surName, String email, String phoneNumber, String username, String password) {
         super(firstName, surName, email, phoneNumber, username, password);
-        this.id = id;
     }
 
     public Integer getId() {
@@ -25,5 +24,12 @@ public class Lender extends Person {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    @Override
+    public String toString() {
+        return "Lender{" +
+                "id=" + id +
+                '}' + super.toString();
     }
 }

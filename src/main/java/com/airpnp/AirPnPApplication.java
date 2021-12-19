@@ -1,14 +1,8 @@
 package com.airpnp;
 
 import com.airpnp.data.CustomerRepository;
-import com.airpnp.domainmodel.Customer;
-import com.airpnp.domainmodel.ParkingSpace;
-import com.airpnp.domainmodel.RentalTicket;
-import com.airpnp.domainmodel.Vehicle;
-import com.airpnp.service.CustomerService;
-import com.airpnp.service.ParkingSpaceService;
-import com.airpnp.service.RentalTicketService;
-import com.airpnp.service.VehicleService;
+import com.airpnp.domainmodel.*;
+import com.airpnp.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -32,6 +26,9 @@ public class AirPnPApplication {
 	private ParkingSpaceService parkingSpaceService;
 
 	@Autowired
+	private LenderService lenderService;
+
+	@Autowired
 	private RentalTicketService rentalTicketService;
 
 	public static void main(String[] args) {
@@ -45,9 +42,10 @@ public class AirPnPApplication {
 			// Initialize database here
 			System.out.println("Initialize database..");
 
-			// Delete all vehicles and customers from database:
+			// Delete all vehicles, customers and lenders from database:
 			vehicleService.deleteAll();
 			customerService.deleteAll();
+			lenderService.deleteAll();
 			parkingSpaceService.deleteAll();
 
 			// Create some customers:
@@ -59,6 +57,14 @@ public class AirPnPApplication {
 
 			Customer c3 = new Customer("Björn", "Borg", "bb@tennis.se", "11111133", "bjorn", "disc333");
 			customerService.addCustomer(c3);
+
+			// Create some lenders:
+			Lender l1 = new Lender("Lenny", "Bruce", "lenny@bbc.com", "08973247", "lenny", "motorzzz");
+			System.out.println(l1);
+			lenderService.addLender(l1);
+
+			Lender l2 = new Lender("Bo", "Breddahl", "bosse@flashback.se", "3456666", "bo", "cykel");
+			lenderService.addLender(l2);
 
 			// Create some vehicles:
 			Vehicle v1 = new Vehicle("JON-141", c1);
