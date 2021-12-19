@@ -1,12 +1,13 @@
 package com.airpnp.service;
 
 import com.airpnp.data.exception.CustomerNotFoundException;
+import com.airpnp.data.exception.UsernameAlreadyInUseException;
 import com.airpnp.domainmodel.Customer;
 
 import java.util.List;
 
 public interface CustomerService {
-    void addCustomer(Customer customer);
+    void addCustomer(Customer customer) throws UsernameAlreadyInUseException;
 
     void update(Customer customer) throws CustomerNotFoundException;
 
@@ -17,4 +18,6 @@ public interface CustomerService {
     void deleteCustomer(int id) throws CustomerNotFoundException;
 
     void deleteAll();
+
+    Customer findByUsername(String username);
 }

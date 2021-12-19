@@ -2,8 +2,10 @@ package com.airpnp.service.implementations;
 
 import com.airpnp.data.CustomerRepository;
 import com.airpnp.data.exception.CustomerNotFoundException;
+import com.airpnp.data.exception.UsernameAlreadyInUseException;
 import com.airpnp.domainmodel.Customer;
 import com.airpnp.service.CustomerService;
+import com.airpnp.service.LenderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -21,6 +23,9 @@ public class CustomerServiceProduction implements CustomerService {
     private CustomerRepository data;
     private PasswordEncoder passwordEncoder;
 
+    @Autowired
+    private LenderService lenderService;
+
     public CustomerServiceProduction() {
         passwordEncoder = new BCryptPasswordEncoder();
     }
@@ -30,7 +35,12 @@ public class CustomerServiceProduction implements CustomerService {
     }
 
     @Override
-    public void addCustomer(Customer customer) {
+    public void addCustomer(Customer customer) throws UsernameAlreadyInUseException {
+        // Check if there already exists customer or lender with this username
+        if (lenderService.findByUsername( customer.getUsername() ) != null || data.findByUsername( customer.getUsername() ) != null) {
+            throw new UsernameAlreadyInUseException("Username " + customer.getUsername() + " is already in use. Please choose another.");
+        }
+
         // Encode the password before storing it in the database
         encodePassword(customer);
         data.save(customer);
@@ -68,5 +78,10 @@ public class CustomerServiceProduction implements CustomerService {
     @Override
     public void deleteAll() {
         data.deleteAll();
+    }
+
+    @Override
+    public Customer findByUsername(String username) {
+        return data.findByUsername(username);
     }
 }

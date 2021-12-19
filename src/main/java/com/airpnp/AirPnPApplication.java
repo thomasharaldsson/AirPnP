@@ -60,11 +60,13 @@ public class AirPnPApplication {
 
 			// Create some lenders:
 			Lender l1 = new Lender("Lenny", "Bruce", "lenny@bbc.com", "08973247", "lenny", "motorzzz");
-			System.out.println(l1);
 			lenderService.addLender(l1);
 
 			Lender l2 = new Lender("Bo", "Breddahl", "bosse@flashback.se", "3456666", "bo", "cykel");
 			lenderService.addLender(l2);
+
+			Lender l3 = new Lender("Franny", "Middleston", "fran@flashback.se", "3453366", "franny", "bike");
+			lenderService.addLender(l3);
 
 			// Create some vehicles:
 			Vehicle v1 = new Vehicle("JON-141", c1);

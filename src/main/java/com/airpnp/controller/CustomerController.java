@@ -1,6 +1,7 @@
 package com.airpnp.controller;
 
 import com.airpnp.data.exception.CustomerNotFoundException;
+import com.airpnp.data.exception.UsernameAlreadyInUseException;
 import com.airpnp.domainmodel.Customer;
 import com.airpnp.domainmodel.Rating;
 import com.airpnp.service.CustomerService;
@@ -20,7 +21,7 @@ public class CustomerController {
 
     //This method will save the customer into the database
     @RequestMapping(value = "/create", method = RequestMethod.POST)
-    public String newCustomer(Customer customer) {
+    public String newCustomer(Customer customer) throws UsernameAlreadyInUseException {
         service.addCustomer(customer);
         return "redirect:/login";
     }
