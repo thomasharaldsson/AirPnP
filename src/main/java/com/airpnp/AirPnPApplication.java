@@ -47,13 +47,13 @@ public class AirPnPApplication {
 			parkingSpaceService.deleteAll();
 
 			// Create some customers:
-			Customer c1 = new Customer("Jonas", "Backlund", "jonas@outlook.com", "555.1234", "jonas", "jonas123");
+			Customer c1 = new Customer("Jonas", "Backlund", "jonas@outlook.com", "555.1234", "jonas", "space123");
 			customerService.addCustomer(c1);
 
-			Customer c2 = new Customer("Stefan", "Lindell", "steffe@gov.au", "222265643", "stefan", "stefan123");
+			Customer c2 = new Customer("Stefan", "Lindell", "steffe@gov.au", "222265643", "stefan", "floor222");
 			customerService.addCustomer(c2);
 
-			Customer c3 = new Customer("Björn", "Borg", "bb@tennis.se", "11111133", "bjorn", "bjorn123");
+			Customer c3 = new Customer("Björn", "Borg", "bb@tennis.se", "11111133", "bjorn", "disc333");
 			customerService.addCustomer(c3);
 
 			// Create some vehicles:
