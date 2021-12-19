@@ -6,6 +6,38 @@
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <c:set var="requestPath" value="${requestScope['javax.servlet.forward.request_uri']}"/>
 <hr>
+
+<p>
+<!-- Print login and logout links: -->
+
+<c:choose>
+    <c:when test="${requestPath.equals('/customer/create')}">
+        <!-- Login and logout link are not shown on registration page(s). -->
+    </c:when>
+    <c:otherwise>
+
+        <!-- Print login link -->
+        <security:authorize access="isAnonymous()">
+            <p>
+                <a href="/login">Login</a> with username and password.
+            </p>
+
+            <p>
+                Don't have an account yet? Register as a <a href="/customer/create">new customer</a> or a new lender.
+            </p>
+        </security:authorize>
+
+        <!-- Print logout link -->
+        <security:authorize access="isAuthenticated()">
+            <p>
+                <a href="/logout">Logout</a>
+            </p>
+        </security:authorize>
+
+    </c:otherwise>
+
+</c:choose>
+
 <!-- Show a link to index page if we are not there already. -->
 <c:choose>
     <c:when test="${!requestPath.equals('/')}">
@@ -15,22 +47,15 @@
     </c:when>
 </c:choose>
 
-<p>
+<!-- Print out user role of current user: -->
+(
+<security:authorize access="isAuthenticated()">
+    username: <security:authentication property="principal.username"/>,
+</security:authorize>
+current role:
+<security:authorize access="hasRole('LENDER')">lender</security:authorize>
+<security:authorize access="hasRole('CUSTOMER')">customer</security:authorize>
+<security:authorize access="isAnonymous()">anonymous</security:authorize>
+)
 
-    <security:authorize access="isAnonymous()">
-        <a href="/login">Login</a>
-    </security:authorize>
-
-    <security:authorize access="isAuthenticated()">
-        <a href="/logout">Logout</a>
-    </security:authorize>
-    (
-    <security:authorize access="isAuthenticated()">
-            username: <security:authentication property="principal.username"/>,
-    </security:authorize>
-    current role:
-    <security:authorize access="hasRole('LENDER')">lender</security:authorize>
-    <security:authorize access="hasRole('CUSTOMER')">customer</security:authorize>
-    <security:authorize access="isAnonymous()">anonymous</security:authorize>
-    )
 </p>

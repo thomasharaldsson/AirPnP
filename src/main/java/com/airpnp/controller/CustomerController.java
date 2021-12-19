@@ -22,7 +22,7 @@ public class CustomerController {
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public String newCustomer(Customer customer) {
         service.addCustomer(customer);
-        return "redirect:/customer/showall";
+        return "redirect:/login";
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.GET)

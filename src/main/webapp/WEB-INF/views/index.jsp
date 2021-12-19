@@ -18,11 +18,11 @@
     <ul>
         <security:authorize access="isAnonymous()">
             <li><a href="parkingspace/showall">Show parkingspaces</a> (for all users)</li>
+            <li><a href="customer/showall">Manage customers</a> (only for customers)</li>
         </security:authorize>
 
         <security:authorize access="hasRole('CUSTOMER')">
             <li><a href="vehicle/showall">Manage vehicles</a> (only for customers)</li>
-            <li><a href="customer/showall">Manage customers</a> (only for customers)</li>
         </security:authorize>
 
 

@@ -66,7 +66,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         security
                 .authorizeRequests().antMatchers("/").permitAll()
                 .antMatchers("/parkingspace/showall").permitAll()
-                .antMatchers("/customer/*").hasRole("CUSTOMER")
+                .antMatchers("/customer/*").permitAll()
                 .antMatchers("/vehicle/*").hasRole("CUSTOMER")
                 .anyRequest().authenticated()
                 .and()
