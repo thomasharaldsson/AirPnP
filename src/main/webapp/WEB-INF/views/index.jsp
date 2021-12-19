@@ -18,7 +18,7 @@
     <ul>
         <security:authorize access="isAnonymous()">
             <li><a href="parkingspace/showall">Show parkingspaces</a> (for all users)</li>
-            <li><a href="customer/showall">Manage customers</a> (only for customers)</li>
+            <li><a href="customer/showall">Manage customers</a> (for all users)</li>
         </security:authorize>
 
         <security:authorize access="hasRole('CUSTOMER')">
