@@ -3,6 +3,7 @@ package com.airpnp;
 import com.airpnp.data.CustomerRepository;
 import com.airpnp.domainmodel.Customer;
 import com.airpnp.domainmodel.ParkingSpace;
+import com.airpnp.domainmodel.RentalTicket;
 import com.airpnp.domainmodel.Vehicle;
 import com.airpnp.service.CustomerService;
 import com.airpnp.service.ParkingSpaceService;
@@ -29,6 +30,9 @@ public class AirPnPApplication {
 
 	@Autowired
 	private ParkingSpaceService parkingSpaceService;
+
+	@Autowired
+	private RentalTicketService rentalTicketService;
 
 	public static void main(String[] args) {
 		SpringApplication.run(AirPnPApplication.class, args);
@@ -71,6 +75,16 @@ public class AirPnPApplication {
 
 			ParkingSpace p2 = new ParkingSpace(35, format.parse ( "2022-01-14" ), format.parse ( "2022-02-15" ), "Storgatan 52");
 			parkingSpaceService.addParkingSpace(p2);
+
+			ParkingSpace p3 = new ParkingSpace(35, format.parse ( "2022-02-01" ), format.parse ( "2022-02-07" ), "Sjömansgatan 11");
+			parkingSpaceService.addParkingSpace(p2);
+
+			//Create some rental tickets:
+			RentalTicket t1 = new RentalTicket(c1, v1, p1);
+			rentalTicketService.addRentalTicket(t1);
+
+			RentalTicket t2 = new RentalTicket(c3, v2, p2);
+			rentalTicketService.addRentalTicket(t1);
 		};
 	}
 }
