@@ -10,9 +10,6 @@ import org.springframework.web.servlet.ModelAndView;
 public class indexPageController {
     @GetMapping
     public ModelAndView showPage() {
-        System.out.println("Startpage");
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("index");
-        return modelAndView;
+        return new ModelAndView("index");
     }
 }
