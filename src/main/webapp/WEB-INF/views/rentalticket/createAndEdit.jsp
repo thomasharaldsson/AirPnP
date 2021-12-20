@@ -21,21 +21,25 @@
     <form:errors path="" element="div"/>
     ID: ${rentalticket.id}
     <form:hidden path="id" value="${id}"/>
+    <br/><br/>
+    <h5> Select Customer: </h5>
     <select name="customer">
         <c:forEach items="${listCustomer}" var="customer">
-            <option value="${customer}">${customer.firstName}</option>
+            <option value="${customer.id}">${customer.firstName}</option>
         </c:forEach>
     </select>
     <br/><br/>
+    <h5> Select Parking Space (street address): </h5>
     <select name="parkingSpace">
         <c:forEach items="${listParkingSpace}" var="parkingspace">
-            <option value="${parkingspace}">${parkingspace.streetAddress}</option>
+            <option value="${parkingspace.id}">${parkingspace.streetAddress}</option>
         </c:forEach>
     </select>
     <br/><br/>
+    <h5> Select Vehicle (registration number): </h5>
     <select name="vehicle">
         <c:forEach items="${listVehicle}" var="vehicle">
-            <option value="${vehicle}">${vehicle.registrationNumber}</option>
+            <option value="${vehicle.id}">${vehicle.registrationNumber}</option>
         </c:forEach>
     </select>
     <br/><br/>

@@ -35,6 +35,11 @@
             <li><a href="http://localhost:8080/parkingspace/create">create</a> a new parkingpsace</li>
         </security:authorize>
 
+        <security:authorize access="hasRole('CUSTOMER')">
+            <li>Show all my rental tickets</li>
+            <li><a href="http://localhost:8080/rentalticket/showall">Manage Rental Tickets</a></li>
+        </security:authorize>
+
     </ul>
 </div>
 <jsp:include page="/WEB-INF/views/footer.jsp"/>

@@ -2,7 +2,9 @@
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<h1>All parking spaces</h1>
+<br/>Menu: <a href="create">add new rental tickets</a>
+
+<h1>All my rental tickets</h1>
 
 <c:choose>
     <c:when test="${rentalTickets.size() > 0}">
@@ -10,8 +12,9 @@
             <c:forEach items="${rentalTickets}" var="rentalticket">
                 <ul>
                     <li>ID: ${rentalticket.getId()}</li>
-                    <li>Vehicle: ${rentalticket.getVehicle().getRegistrationNumber()}</li>
-                    <li>Customer: ${rentalticket.getCustomer().getFirstName()}</li>
+                    <li>Vehicle (registration number): ${rentalticket.getVehicle().getRegistrationNumber()}</li>
+                    <li>Customer: ${rentalticket.getCustomer().getFirstName()} ${rentalticket.getCustomer().getSurName()}</li>
+                    <li>Parking Space (street address): ${rentalticket.getParkingSpace().getStreetAddress()}</li>
                 </ul>
 
                 <br/>

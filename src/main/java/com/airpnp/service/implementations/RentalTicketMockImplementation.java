@@ -1,10 +1,14 @@
 package com.airpnp.service.implementations;
 
+import com.airpnp.data.RentalTicketRepository;
+import com.airpnp.data.exception.ParkingSpaceNotFoundException;
 import com.airpnp.domainmodel.Customer;
 import com.airpnp.domainmodel.ParkingSpace;
 import com.airpnp.domainmodel.RentalTicket;
 import com.airpnp.domainmodel.Vehicle;
+import com.airpnp.service.ParkingSpaceService;
 import com.airpnp.service.RentalTicketService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.text.SimpleDateFormat;
@@ -16,6 +20,12 @@ import java.util.Map;
 @Service("rentalTicketsServiceMock")
 
 public class RentalTicketMockImplementation implements RentalTicketService {
+
+    @Autowired
+    private RentalTicketRepository data;
+
+    @Autowired
+    private ParkingSpaceService parkingSpaceService;
 
     Map<Integer, RentalTicket> rentalTickets;
     public RentalTicketMockImplementation() {
@@ -30,13 +40,21 @@ public class RentalTicketMockImplementation implements RentalTicketService {
         }
 
     }
-    @Override
-    public void addRentalTicket(RentalTicket rentalTicket) {
 
+    //MUST CHANGE BEAN
+    @Override
+    public void addRentalTicket(RentalTicket rentalTicket) throws ParkingSpaceNotFoundException {
+
+        data.save(rentalTicket);
+        try {
+            parkingSpaceService.getParkingSpaceById(rentalTicket.getParkingSpace().getId()).setTicket(rentalTicket);
+        } catch (Exception e){
+
+        }
     }
 
     @Override
     public List<RentalTicket> getAllRentalTickets() {
-        return new ArrayList<>(rentalTickets.values());
+        return data.findAll();
     }
 }
