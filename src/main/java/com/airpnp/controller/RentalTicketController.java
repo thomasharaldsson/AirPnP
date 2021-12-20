@@ -57,8 +57,28 @@ public class RentalTicketController {
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
-    public String createRentalTicket(RentalTicket rentalTicket) {
-        rentalTicketService.addRentalTicket(rentalTicket);
+    public String createRentalTicket(int customer, int parkingSpace, int vehicle) {
+        System.out.println("CUST" + customer);
+        System.out.println("VEH" + parkingSpace);
+        System.out.println("PS" + vehicle);
+        boolean flag=true;
+        for (RentalTicket ticket: rentalTicketService.getAllRentalTickets()
+             ) {
+            try {
+                if (ticket.getParkingSpace().getStreetAddress().equals(parkingSpaceService.getParkingSpaceById(parkingSpace).getStreetAddress())) {
+                    flag = false;
+                }
+            } catch (Exception e){
+
+            }
+        }
+        try{
+            if(flag){
+                rentalTicketService.addRentalTicket(new RentalTicket(customerService.getCustomer(customer), vehicleService.getVehicleById(vehicle), parkingSpaceService.getParkingSpaceById(parkingSpace)));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return "redirect:/rentalticket/showall";
     }
 
