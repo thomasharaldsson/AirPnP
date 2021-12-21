@@ -43,6 +43,7 @@ public class AirPnPApplication {
 			System.out.println("Initialize database..");
 
 			// Delete all vehicles, customers and lenders from database:
+			rentalTicketService.deleteAll();
 			vehicleService.deleteAll();
 			customerService.deleteAll();
 			lenderService.deleteAll();

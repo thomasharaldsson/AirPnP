@@ -17,8 +17,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@Service("rentalTicketsServiceMock")
-
 public class RentalTicketMockImplementation implements RentalTicketService {
 
     @Autowired
@@ -51,6 +49,11 @@ public class RentalTicketMockImplementation implements RentalTicketService {
         } catch (Exception e){
 
         }
+    }
+
+    @Override
+    public void deleteAll() {
+        // TODO: implement method.
     }
 
     @Override

@@ -6,9 +6,11 @@ import com.airpnp.domainmodel.RentalTicket;
 import com.airpnp.service.ParkingSpaceService;
 import com.airpnp.service.RentalTicketService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service("rentalTicketsServiceMock")
 public class RentalTicketProductionImpl implements RentalTicketService {
 
     @Autowired
@@ -30,5 +32,10 @@ public class RentalTicketProductionImpl implements RentalTicketService {
         } catch (Exception e){
 
         }
+    }
+
+    @Override
+    public void deleteAll() {
+        data.deleteAll();
     }
 }
