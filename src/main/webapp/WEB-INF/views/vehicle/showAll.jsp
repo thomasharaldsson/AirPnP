@@ -9,17 +9,34 @@
     <c:when test="${vehicles.size() > 0}">
         <ul>
             <c:forEach items="${vehicles}" var="vehicle">
+                <div class="card">
                 <ul>
                     <li>ID: ${vehicle.getId()}</li>
                     <li>Registration number: ${vehicle.getRegistrationNumber()}</li>
                     <li>Owner: ${vehicle.owner.getFirstName()} ${vehicle.owner.getSurName()}</li>
                     <li>(<a href="show/${vehicle.id}">open</a>)</li>
                 </ul>
-
+                </div>
                 <br/>
                 <br/>
             </c:forEach>
         </ul>
+
+        <style>
+            .card {
+                box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+                transition: 0.3s;
+                padding: 2px 16px;
+                display: grid;
+                grid-template-columns: auto auto auto;
+                background-color: #2196F3;
+                padding: 10px;
+            }
+
+            .card:hover {
+                box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+            }
+        </style>
     </c:when>
     <c:otherwise>
         You have not added any vehicles yet. Please <a href="/vehicle/create">add some</a> first.
