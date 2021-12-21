@@ -11,8 +11,11 @@ public class RentalTicket {
     @ManyToOne
     private Customer customer;
 
+    @ManyToOne
+    private Vehicle vehicle;
+
     @OneToOne
-    ParkingSpace parkingSpace;
+    private ParkingSpace parkingSpace;
 
     public RentalTicket() {
 
@@ -32,9 +35,6 @@ public class RentalTicket {
         this.vehicle = vehicle;
         this.parkingSpace = parkingSpace;
     }
-
-    @ManyToOne
-    Vehicle vehicle;
 
     public Integer getId() {
         return id;
