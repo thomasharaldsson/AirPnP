@@ -93,7 +93,7 @@ public class AirPnPApplication {
 			rentalTicketService.addRentalTicket(t1);
 
 			RentalTicket t2 = new RentalTicket(c3, v2, p2);
-			rentalTicketService.addRentalTicket(t1);
+			rentalTicketService.addRentalTicket(t2);
 		};
 	}
 }
