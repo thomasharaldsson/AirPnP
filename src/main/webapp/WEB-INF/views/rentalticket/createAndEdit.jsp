@@ -43,18 +43,6 @@
         </c:forEach>
     </select>
     <br/><br/>
-    <h5>Select start and end date</h5>
-    <select name="startDate">
-        <c:forEach items="${listDates}" var="dates">
-            <option value="${dates.id}">${dates.date}</option>
-        </c:forEach>
-    </select>
-    <br>
-    <select name="endDate">
-        <c:forEach items="${listDates}" var="dates">
-            <option value="${dates.id}">${dates.date}</option>
-        </c:forEach>
-    </select>
     <div>
         <input type="submit"/>
     </div>
