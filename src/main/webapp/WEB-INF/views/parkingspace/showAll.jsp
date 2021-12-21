@@ -9,6 +9,7 @@
     <c:when test="${parkingSpaces.size() > 0}">
         <ul>
             <c:forEach items="${parkingSpaces}" var="parkingspace">
+                <div class="card">
                 <ul>
                     <li>ID: ${parkingspace.id}</li>
                     <li>street address: ${parkingspace.streetAddress}</li>
@@ -17,11 +18,23 @@
                     <li>price: ${parkingspace.price}</li>
                     <li>(<a href="show/${parkingspace.id}">open</a>)</li>
                 </ul>
-
+                </div>
                 <br/>
                 <br/>
             </c:forEach>
         </ul>
+
+        <style>
+            .card {
+                box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+                transition: 0.3s;
+                padding: 2px 16px;
+            }
+
+            .card:hover {
+                box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+            }
+        </style>
     </c:when>
     <c:otherwise>
         You have not added any parkingspaces yet. Please <a href="/parkingspace/create">add some</a> first.
