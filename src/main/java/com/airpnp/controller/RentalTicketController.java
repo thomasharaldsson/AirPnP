@@ -2,10 +2,7 @@ package com.airpnp.controller;
 
 import com.airpnp.data.exception.CustomerNotFoundException;
 import com.airpnp.data.exception.VehicleNotFoundException;
-import com.airpnp.domainmodel.Customer;
-import com.airpnp.domainmodel.ParkingSpace;
-import com.airpnp.domainmodel.RentalTicket;
-import com.airpnp.domainmodel.Vehicle;
+import com.airpnp.domainmodel.*;
 import com.airpnp.service.CustomerService;
 import com.airpnp.service.ParkingSpaceService;
 import com.airpnp.service.RentalTicketService;
@@ -53,6 +50,8 @@ public class RentalTicketController {
         modelAndView.addObject("listCustomer", customerService.getAll());
         modelAndView.addObject("listParkingSpace", parkingSpaceService.getAllParkingSpaces());
         modelAndView.addObject("listVehicle", vehicleService.getAll());
+        ParkingDate date = new ParkingDate();
+        modelAndView.addObject("listDates", date.generateDates());
         return modelAndView;
     }
 

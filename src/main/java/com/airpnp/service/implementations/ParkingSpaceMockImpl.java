@@ -3,10 +3,10 @@ package com.airpnp.service.implementations;
 import com.airpnp.data.exception.ParkingSpaceNotFoundException;
 import com.airpnp.domainmodel.ParkingSpace;
 import com.airpnp.service.ParkingSpaceService;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -72,5 +72,6 @@ public class ParkingSpaceMockImpl implements ParkingSpaceService {
     public void deleteAll() {
         parkingSpaces.clear();
     }
+
 
 }

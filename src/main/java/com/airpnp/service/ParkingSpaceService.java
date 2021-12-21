@@ -3,6 +3,7 @@ package com.airpnp.service;
 import com.airpnp.data.exception.ParkingSpaceNotFoundException;
 import com.airpnp.domainmodel.ParkingSpace;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public interface ParkingSpaceService {
@@ -18,4 +19,5 @@ public interface ParkingSpaceService {
     void deleteParkingSpace(int Id) throws ParkingSpaceNotFoundException;
 
     void deleteAll();
+
 }
