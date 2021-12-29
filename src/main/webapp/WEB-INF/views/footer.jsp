@@ -53,7 +53,7 @@
     username: <security:authentication property="principal.username"/>,
 </security:authorize>
 current role:
-<security:authorize access="hasRole('LENDER')">lender</security:authorize>
+<security:authorize access="hasRole('ADMIN')">admin</security:authorize>
 <security:authorize access="hasRole('CUSTOMER')">customer</security:authorize>
 <security:authorize access="isAnonymous()">anonymous</security:authorize>
 )

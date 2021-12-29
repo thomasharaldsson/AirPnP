@@ -26,7 +26,7 @@ public class LoginEventListener implements ApplicationListener<AuthenticationSuc
                 System.out.println("Customer " + user.getUsername() + " has just logged in");
             }
 
-            if (user.getLender() != null) {
+            if (user.getAdmin() != null) {
                 System.out.println("Lender " + user.getUsername() + " has just logged in");
             }
         }

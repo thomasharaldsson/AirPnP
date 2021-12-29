@@ -1,7 +1,6 @@
 package com.airpnp.authorization;
 
 import com.airpnp.authorization.proxy.UserPrincipal;
-import com.airpnp.domainmodel.Customer;
 import com.airpnp.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -32,9 +31,9 @@ import javax.annotation.Resource;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private static final String ROLE_CUSTOMER = "CUSTOMER";
-    private static final String ROLE_LENDER = "LENDER";
+    private static final String ROLE_ADMIN = "ADMIN";
     public static final String USER_ROLE_CUSTOMER = "ROLE_" + ROLE_CUSTOMER;
-    public static final String USER_ROLE_LENDER = "ROLE_" + ROLE_LENDER;
+    public static final String USER_ROLE_ADMIN = "ROLE_" + ROLE_ADMIN;
 
     @Autowired
     private CustomerService customerService;

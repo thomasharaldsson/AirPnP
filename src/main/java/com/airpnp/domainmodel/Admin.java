@@ -6,15 +6,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Lender extends Person {
+public class Admin extends Person {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Id
     private Integer id;
 
-    public Lender() {
+    public Admin() {
     }
 
-    public Lender(String firstName, String surName, String email, String phoneNumber, String username, String password) {
+    public Admin(String firstName, String surName, String email, String phoneNumber, String username, String password) {
         super(firstName, surName, email, phoneNumber, username, password);
     }
 
