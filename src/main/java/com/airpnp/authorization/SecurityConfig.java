@@ -83,9 +83,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         }
 
         if (!(authentication instanceof AnonymousAuthenticationToken)) {
-            UserPrincipal customerPrincipal = (UserPrincipal) authentication.getPrincipal();
+            UserPrincipal userPrincipal = (UserPrincipal) authentication.getPrincipal();
 
-            return customerPrincipal;
+            return userPrincipal;
         }
 
         return null;
