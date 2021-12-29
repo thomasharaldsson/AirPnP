@@ -86,7 +86,7 @@ public class AirPnPApplication {
 			parkingSpaceService.addParkingSpace(p2);
 
 			ParkingSpace p3 = new ParkingSpace(35, format.parse ( "2022-02-01" ), format.parse ( "2022-02-07" ), "Sjömansgatan 11");
-			parkingSpaceService.addParkingSpace(p2);
+			parkingSpaceService.addParkingSpace(p3);
 
 			//Create some rental tickets:
 			RentalTicket t1 = new RentalTicket(c1, v1, p1);
