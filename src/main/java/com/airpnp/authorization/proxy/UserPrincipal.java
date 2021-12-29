@@ -1,7 +1,7 @@
 package com.airpnp.authorization.proxy;
 
 import com.airpnp.domainmodel.Customer;
-import com.airpnp.domainmodel.Lender;
+import com.airpnp.domainmodel.Admin;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -9,28 +9,28 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import static com.airpnp.authorization.SecurityConfig.USER_ROLE_CUSTOMER;
-import static com.airpnp.authorization.SecurityConfig.USER_ROLE_LENDER;
+import static com.airpnp.authorization.SecurityConfig.USER_ROLE_ADMIN;
 
 
 public class UserPrincipal implements UserDetails {
 
     private Customer customer;
-    private Lender lender;
+    private Admin admin;
 
     public UserPrincipal(Customer customer) {
         this.customer = customer;
     }
 
-    public UserPrincipal(Lender lender) {
-        this.lender = lender;
+    public UserPrincipal(Admin admin) {
+        this.admin = admin;
     }
 
     public Customer getCustomer() {
         return customer;
     }
 
-    public Lender getLender() {
-        return lender;
+    public Admin getAdmin() {
+        return admin;
     }
 
     @Override
@@ -41,8 +41,8 @@ public class UserPrincipal implements UserDetails {
             authorities.add(new SimpleGrantedAuthority(USER_ROLE_CUSTOMER));
         }
 
-        if (lender != null) {
-            authorities.add(new SimpleGrantedAuthority(USER_ROLE_LENDER));
+        if (admin != null) {
+            authorities.add(new SimpleGrantedAuthority(USER_ROLE_ADMIN));
         }
 
         return authorities;
@@ -50,8 +50,8 @@ public class UserPrincipal implements UserDetails {
 
     @Override
     public String getPassword() {
-        if (lender != null) {
-            return lender.getPassword();
+        if (admin != null) {
+            return admin.getPassword();
         }
 
         if (customer != null) {
@@ -63,8 +63,8 @@ public class UserPrincipal implements UserDetails {
 
     @Override
     public String getUsername() {
-        if (lender != null) {
-            return lender.getUsername();
+        if (admin != null) {
+            return admin.getUsername();
         }
 
         if (customer != null) {

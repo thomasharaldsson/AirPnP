@@ -5,12 +5,11 @@ import com.airpnp.data.exception.CustomerNotFoundException;
 import com.airpnp.data.exception.UsernameAlreadyInUseException;
 import com.airpnp.domainmodel.Customer;
 import com.airpnp.service.CustomerService;
-import com.airpnp.service.LenderService;
+import com.airpnp.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -21,10 +20,10 @@ public class CustomerServiceProduction implements CustomerService {
 
     @Autowired
     private CustomerRepository data;
-    private PasswordEncoder passwordEncoder;
+    private final PasswordEncoder passwordEncoder;
 
     @Autowired
-    private LenderService lenderService;
+    private AdminService adminService;
 
     public CustomerServiceProduction() {
         passwordEncoder = new BCryptPasswordEncoder();
@@ -37,7 +36,7 @@ public class CustomerServiceProduction implements CustomerService {
     @Override
     public void addCustomer(Customer customer) throws UsernameAlreadyInUseException {
         // Check if there already exists customer or lender with this username
-        if (lenderService.findByUsername( customer.getUsername() ) != null || data.findByUsername( customer.getUsername() ) != null) {
+        if (adminService.findByUsername( customer.getUsername() ) != null || data.findByUsername( customer.getUsername() ) != null) {
             throw new UsernameAlreadyInUseException("Username " + customer.getUsername() + " is already in use. Please choose another.");
         }
 

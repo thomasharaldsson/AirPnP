@@ -1,9 +1,6 @@
 package com.airpnp.authorization;
 
 import com.airpnp.authorization.proxy.UserPrincipal;
-import com.airpnp.domainmodel.Customer;
-import com.airpnp.service.CustomerService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
@@ -32,12 +29,9 @@ import javax.annotation.Resource;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private static final String ROLE_CUSTOMER = "CUSTOMER";
-    private static final String ROLE_LENDER = "LENDER";
+    private static final String ROLE_ADMIN = "ADMIN";
     public static final String USER_ROLE_CUSTOMER = "ROLE_" + ROLE_CUSTOMER;
-    public static final String USER_ROLE_LENDER = "ROLE_" + ROLE_LENDER;
-
-    @Autowired
-    private CustomerService customerService;
+    public static final String USER_ROLE_ADMIN = "ROLE_" + ROLE_ADMIN;
 
     @Resource
     private UserDetailsService userDetailsService;
@@ -51,7 +45,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+    protected void configure(AuthenticationManagerBuilder auth) {
         auth.authenticationProvider(authProvider());
     }
 
@@ -89,9 +83,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         }
 
         if (!(authentication instanceof AnonymousAuthenticationToken)) {
-            UserPrincipal customerPrincipal = (UserPrincipal) authentication.getPrincipal();
+            UserPrincipal userPrincipal = (UserPrincipal) authentication.getPrincipal();
 
-            return customerPrincipal;
+            return userPrincipal;
         }
 
         return null;

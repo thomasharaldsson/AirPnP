@@ -1,12 +1,10 @@
 package com.airpnp;
 
-import com.airpnp.data.CustomerRepository;
 import com.airpnp.domainmodel.*;
 import com.airpnp.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
 import org.springframework.context.annotation.Bean;
@@ -26,7 +24,7 @@ public class AirPnPApplication {
 	private ParkingSpaceService parkingSpaceService;
 
 	@Autowired
-	private LenderService lenderService;
+	private AdminService adminService;
 
 	@Autowired
 	private RentalTicketService rentalTicketService;
@@ -46,7 +44,7 @@ public class AirPnPApplication {
 			rentalTicketService.deleteAll();
 			vehicleService.deleteAll();
 			customerService.deleteAll();
-			lenderService.deleteAll();
+			adminService.deleteAll();
 			parkingSpaceService.deleteAll();
 
 			// Create some customers:
@@ -59,15 +57,15 @@ public class AirPnPApplication {
 			Customer c3 = new Customer("Björn", "Borg", "bb@tennis.se", "11111133", "bjorn", "disc333");
 			customerService.addCustomer(c3);
 
-			// Create some lenders:
-			Lender l1 = new Lender("Lenny", "Bruce", "lenny@bbc.com", "08973247", "lenny", "motorzzz");
-			lenderService.addLender(l1);
+			// Create some admins:
+			Admin a1 = new Admin("Lenny", "Bruce", "lenny@bbc.com", "08973247", "lenny", "motorzzz");
+			adminService.addAdmin(a1);
 
-			Lender l2 = new Lender("Bo", "Breddahl", "bosse@flashback.se", "3456666", "bo", "cykel");
-			lenderService.addLender(l2);
+			Admin a2 = new Admin("Bo", "Breddahl", "bosse@flashback.se", "3456666", "bo", "cykel");
+			adminService.addAdmin(a2);
 
-			Lender l3 = new Lender("Franny", "Middleston", "fran@flashback.se", "3453366", "franny", "bike");
-			lenderService.addLender(l3);
+			Admin a3 = new Admin("Franny", "Middleston", "fran@flashback.se", "3453366", "franny", "bike");
+			adminService.addAdmin(a3);
 
 			// Create some vehicles:
 			Vehicle v1 = new Vehicle("JON-141", c1);
