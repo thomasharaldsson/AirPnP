@@ -31,7 +31,7 @@
                 <br/>
             </c:forEach>
         </ul>
-        </div>
+        
         <style>
             .card {
                 box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
@@ -52,5 +52,7 @@
         You have not added any tickets yet.
     </c:otherwise>
 </c:choose>
+
 <jsp:include page="/WEB-INF/views/footer.jsp"/>
 </body>
+</html>
