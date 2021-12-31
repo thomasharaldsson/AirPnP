@@ -8,7 +8,9 @@
     <div class="d-flex justify-content-between">
 
         <%-- This div element is left justified --%>
-        <div class="p-2 h1 text-danger">AirPnP</div>
+        <div class="p-2 h1 text-danger">
+            <a class="deco-none" href="/">AirPnP</a>
+        </div>
 
         <div class="p-2">
             <%-- This div element is right justified --%>

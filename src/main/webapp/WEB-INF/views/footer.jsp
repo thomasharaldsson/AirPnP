@@ -35,6 +35,7 @@
 </c:choose>
 
 <!-- Show a link to index page if we are not there already. -->
+<%--
 <c:choose>
     <c:when test="${!requestPath.equals('/')}">
         <p>
@@ -42,6 +43,7 @@
         </p>
     </c:when>
 </c:choose>
+--%>
 
 <!-- Print out user role of current user: -->
 <security:authorize access="isAuthenticated()">
