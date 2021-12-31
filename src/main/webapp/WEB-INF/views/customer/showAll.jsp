@@ -2,6 +2,8 @@
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
+<jsp:include page="/WEB-INF/views/header.jsp"/>
+
 <br/>Menu: <a href="create">add new customer</a>
 <h1>All customers: </h1>
 

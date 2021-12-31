@@ -6,6 +6,7 @@
 
 <html>
 <body>
+<jsp:include page="/WEB-INF/views/header.jsp"/>
 
 <c:choose>
     <c:when test="${edit != null && edit == true}">

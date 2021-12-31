@@ -5,6 +5,7 @@
 
 <html>
 <body>
+<jsp:include page="/WEB-INF/views/header.jsp"/>
 <h1>Error</h1>
 ${message}
 <jsp:include page="/WEB-INF/views/footer.jsp"/>
