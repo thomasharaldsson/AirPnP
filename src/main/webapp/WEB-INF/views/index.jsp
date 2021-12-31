@@ -11,15 +11,10 @@
 <body>
 <jsp:include page="/WEB-INF/views/header.jsp"/>
 <div>
-    <h1>Welcome to AirPnP!</h1>
-
     <h2>Main menu:</h2>
-
 
     <ul>
 
-
-        <li><a href="parkingspace/showall">Show all parkingspaces</a> (for all users)</li>
         <li><a href="customer/showall">Manage customers</a> (for all users)</li>
 
         <security:authorize access="isAnonymous()">
