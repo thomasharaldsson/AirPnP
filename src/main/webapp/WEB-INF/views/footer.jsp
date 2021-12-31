@@ -18,9 +18,9 @@
 
         <!-- Print login link -->
         <security:authorize access="isAnonymous()">
-            <p>
-                Don't have an account yet? Register as a <a href="/customer/create">new customer</a> or a new lender.
-            </p>
+            <a href="/customer/create" class="btn btn-danger mx-1">
+                Register new account
+            </a>
         </security:authorize>
 
         <%-- Show logout button when user is logged in: --%>
