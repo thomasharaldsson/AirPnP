@@ -19,10 +19,6 @@
         <!-- Print login link -->
         <security:authorize access="isAnonymous()">
             <p>
-                <a href="/login">Login</a> with username and password.
-            </p>
-
-            <p>
                 Don't have an account yet? Register as a <a href="/customer/create">new customer</a> or a new lender.
             </p>
         </security:authorize>
