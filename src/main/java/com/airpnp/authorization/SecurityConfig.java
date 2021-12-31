@@ -68,6 +68,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .httpBasic();
 
+        // Select page that will be opened after user has been successfully logged out.
+        security.logout().logoutSuccessUrl("/");
     }
 
 
