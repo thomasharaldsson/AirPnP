@@ -58,7 +58,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity security) throws Exception {
 
         security
-                .authorizeRequests().antMatchers("/").permitAll()
+                .authorizeRequests().antMatchers("/", "/css/**").permitAll()
                 .antMatchers("/parkingspace/showall").permitAll()
                 .antMatchers("/customer/*").permitAll()
                 .antMatchers("/vehicle/*").hasRole("CUSTOMER")

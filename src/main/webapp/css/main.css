@@ -1,0 +1,14 @@
+a.deco-none {
+    color: inherit;
+    text-decoration: inherit;
+}
+
+a.deco-none:link {
+    color: inherit;
+    text-decoration: inherit;
+}
+
+a.deco-none:hover {
+    color: inherit;
+    text-decoration: inherit;
+}
