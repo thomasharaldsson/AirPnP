@@ -31,7 +31,7 @@
         </security:authorize>
 
 
-        <security:authorize access="hasRole('LENDER')">
+        <security:authorize access="hasRole('ADMIN')">
             <li>Show all my parkingspaces</li>
             <li><a href="http://localhost:8080/parkingspace/create">create</a> a new parkingpsace</li>
         </security:authorize>
