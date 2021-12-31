@@ -23,11 +23,11 @@
             </p>
         </security:authorize>
 
-        <!-- Print logout link -->
+        <%-- Show logout button when user is logged in: --%>
         <security:authorize access="isAuthenticated()">
-            <p>
-                <a href="/logout">Logout</a>
-            </p>
+            <a href="/logout" class="btn btn-danger">
+                Sign out
+            </a>
         </security:authorize>
 
     </c:otherwise>
@@ -44,7 +44,6 @@
 </c:choose>
 
 <!-- Print out user role of current user: -->
-(
 <security:authorize access="isAuthenticated()">
     username: <security:authentication property="principal.username"/>,
 </security:authorize>
@@ -52,7 +51,6 @@ current role:
 <security:authorize access="hasRole('ADMIN')">admin</security:authorize>
 <security:authorize access="hasRole('CUSTOMER')">customer</security:authorize>
 <security:authorize access="isAnonymous()">anonymous</security:authorize>
-)
 
 </p>
 </div>
