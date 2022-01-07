@@ -20,10 +20,9 @@
                 <div class="card">
                 <ul class="itemlist">
                     <li class="hide">ID: ${parkingspace.id}</li>
-                    <li>street address: ${parkingspace.streetAddress}</li>
-                    <li>start date: ${parkingspace.startDate}</li>
-                    <li>end date: ${parkingspace.endDate}</li>
-                    <li>price: ${parkingspace.price}</li>
+                    <li>${parkingspace.streetAddress}</li>
+                    <li>${parkingspace.startDate} till ${parkingspace.endDate}</li>
+                    <li>${parkingspace.price} SEK/day</li>
                     <li><a href="show/${parkingspace.id}" class="btn btn-danger mx-1">open</a></li>
                 </ul>
                 </div>
