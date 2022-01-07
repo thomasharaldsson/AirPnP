@@ -24,6 +24,14 @@ a.deco-none:hover {
     display: grid;
     grid-template-columns: auto auto auto;
 }
+.itemlist{
+    margin: 0.5em;
+    list-style-type: none;
+}
+
+.hide{
+    display: none;
+}
 
 .card:hover {
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);

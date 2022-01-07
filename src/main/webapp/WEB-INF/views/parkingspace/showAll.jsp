@@ -18,8 +18,8 @@
         <ul class="list">
             <c:forEach items="${parkingSpaces}" var="parkingspace">
                 <div class="card">
-                <ul>
-                    <li>ID: ${parkingspace.id}</li>
+                <ul class="itemlist">
+                    <li class="hide">ID: ${parkingspace.id}</li>
                     <li>street address: ${parkingspace.streetAddress}</li>
                     <li>start date: ${parkingspace.startDate}</li>
                     <li>end date: ${parkingspace.endDate}</li>
