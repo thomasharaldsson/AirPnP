@@ -11,16 +11,15 @@
 <body>
 <jsp:include page="/WEB-INF/views/header.jsp"/>
 
-<br/>Menu: <a href="create">add new rental tickets</a>
 
-<h1>All my rental tickets</h1>
+<h2>All my rental tickets</h2>
 
 <c:choose>
     <c:when test="${rentalTickets.size() > 0}">
-        <ul>
+        <ul class="list">
             <c:forEach items="${rentalTickets}" var="rentalticket">
                 <div class="card">
-                    <ul>
+                    <ul class="itemlist">
                         <li>ID: ${rentalticket.getId()}</li>
                         <li>Vehicle (registration number): ${rentalticket.getVehicle().getRegistrationNumber()}</li>
                         <li>Customer: ${rentalticket.getCustomer().getFirstName()} ${rentalticket.getCustomer().getSurName()}</li>
@@ -29,6 +28,10 @@
                 </div>
             </c:forEach>
         </ul>
+
+        <div class="addbuttdiv">
+            <a href="create" class="btn btn-danger mx-1" id="addbutt">add new rental tickets</a>
+        </div>
 
     </c:when>
     <c:otherwise>

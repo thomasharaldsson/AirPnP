@@ -13,11 +13,15 @@ a.deco-none:hover {
     text-decoration: inherit;
 }
 
-.card {
-    margin: 1em;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    transition: 0.3s;
-    padding: 2px 16px;
+.addbuttdiv{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#addbutt{
+    border-color: mediumslateblue;
+    background-color: mediumslateblue;
 }
 
 .list{
@@ -31,6 +35,12 @@ a.deco-none:hover {
 
 .hide{
     display: none;
+}
+.card {
+    margin: 1em;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+    padding: 2px 16px;
 }
 
 .card:hover {

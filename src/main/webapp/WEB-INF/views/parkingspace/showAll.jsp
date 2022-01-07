@@ -29,6 +29,16 @@
             </c:forEach>
         </ul>
 
+        <div class="addbuttdiv">
+        <c:choose>
+            <c:when test="${!requestPath.equals('/parkingspace/create')}">
+                <a href="/parkingspace/create" class="btn btn-danger mx-1" id="addbutt">
+                    Add new parkingspace
+                </a>
+            </c:when>
+        </c:choose>
+        </div>
+
     </c:when>
     <c:otherwise>
         You have not added any parkingspaces yet. Please <a href="/parkingspace/create">add some</a> first.

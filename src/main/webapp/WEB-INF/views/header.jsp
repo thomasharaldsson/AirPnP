@@ -25,14 +25,6 @@
                     </c:when>
                 </c:choose>
 
-                <c:choose>
-                    <c:when test="${!requestPath.equals('/parkingspace/create')}">
-                        <a href="/parkingspace/create" class="btn btn-danger mx-1">
-                           Add new parkingspace
-                        </a>
-                    </c:when>
-                </c:choose>
-
                 <%-- Show login button when not logged in: --%>
                 <security:authorize access="isAnonymous()">
                     <a href="/login" class="btn btn-danger mx-1">

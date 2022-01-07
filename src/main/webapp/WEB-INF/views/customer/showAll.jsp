@@ -15,10 +15,10 @@
 
 <c:choose>
     <c:when test="${customers.size() > 0}">
-        <ul>
+        <ul class="list">
             <c:forEach items="${customers}" var="customer">
                 <div class="card">
-                    <ul>
+                    <ul class="itemlist">
                         <li>ID: ${customer.id}</li>
                         <li>Username: ${customer.username}</li>
                         <li>Password: ${customer.password}</li>
@@ -29,8 +29,6 @@
                         <li>(<a href="show/${customer.id}">open</a>)</li>
                     </ul>
                 </div>
-                <br/>
-                <br/>
             </c:forEach>
         </ul>
 
