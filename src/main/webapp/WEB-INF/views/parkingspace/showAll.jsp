@@ -10,12 +10,12 @@
 <body>
 <jsp:include page="/WEB-INF/views/header.jsp"/>
 
-<br/>Menu: <a href="create">add new parkingspace</a>
-<h1>All parking spaces</h1>
+<br/>
+<h2>All parking spaces</h2>
 
 <c:choose>
     <c:when test="${parkingSpaces.size() > 0}">
-        <ul>
+        <ul class="list">
             <c:forEach items="${parkingSpaces}" var="parkingspace">
                 <div class="card">
                 <ul>
@@ -24,11 +24,9 @@
                     <li>start date: ${parkingspace.startDate}</li>
                     <li>end date: ${parkingspace.endDate}</li>
                     <li>price: ${parkingspace.price}</li>
-                    <li>(<a href="show/${parkingspace.id}">open</a>)</li>
+                    <li><a href="show/${parkingspace.id}" class="btn btn-danger mx-1">open</a></li>
                 </ul>
                 </div>
-                <br/>
-                <br/>
             </c:forEach>
         </ul>
 
