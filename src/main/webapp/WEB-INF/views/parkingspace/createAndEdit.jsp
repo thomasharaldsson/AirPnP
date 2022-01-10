@@ -28,7 +28,7 @@
 <div class="createps">
 
     <div class="form">
-        <form:label path="price">Price</form:label><br>
+        <form:label path="price">Price/hour</form:label><br>
         <form:input path="price"/>
         <form:errors path="price"/>
     </div>

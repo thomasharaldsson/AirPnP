@@ -9,7 +9,7 @@
 <body>
 <jsp:include page="/WEB-INF/views/header.jsp"/>
 
-<br/>Menu: <a href="create">add new customer</a>
+
 <h1>All customers: </h1>
 
 <c:choose>
@@ -20,16 +20,19 @@
                     <ul class="itemlist">
                         <li>ID: ${customer.id}</li>
                         <li>Username: ${customer.username}</li>
-                        <li>Password: ${customer.password}</li>
                         <li>Firstname: ${customer.firstName}</li>
                         <li>Lastname: ${customer.surName}</li>
                         <li>E-mail: ${customer.email}</li>
                         <li>Phone: ${customer.phoneNumber}</li>
-                        <li>(<a href="show/${customer.id}">open</a>)</li>
+                        <li><a href="show/${customer.id}" class="btn btn-danger mx-1">open</a></li>
                     </ul>
                 </div>
             </c:forEach>
         </ul>
+
+        <div class="addbuttdiv">
+            <a href="create" class="btn btn-danger mx-1" id="addbutt">add new customer</a>
+        </div>
 
 
     </c:when>

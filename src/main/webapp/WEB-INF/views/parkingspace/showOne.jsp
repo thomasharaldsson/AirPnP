@@ -10,7 +10,7 @@
 <body>
 
 <jsp:include page="/WEB-INF/views/header.jsp"/>
-<h1>Here is the parking space:</h1>
+<h2>Here is the parking space:</h2>
 
 <ul>
     <li>ID: ${parkingspace.id}</li>
