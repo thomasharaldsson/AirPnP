@@ -24,6 +24,17 @@
                     </a>
                 </security:authorize>
 
+                <%-- Show "Available parkingspaces" button except when on that page or on the home page: --%>
+                <div>
+                    <c:choose>
+                        <c:when test="${!requestPath.equals('/parkingspace/showall') && !requestPath.equals('/')}">
+                            <a href="/parkingspace/showall" class="btn btn-danger mx-1">
+                                Available parkingspaces
+                            </a>
+                        </c:when>
+                    </c:choose>
+                </div>
+
                 <%-- Show dropdown menu if user is logged in: --%>
                 <security:authorize access="isAuthenticated()">
                     <div class="dropdown">

@@ -21,30 +21,6 @@
         Dont miss out on the opportunity to earn some extra cash. Sign up today.
     </pre>
 
-    <ul>
-
-        <li><a href="customer/showall">Manage customers</a> (for all users)</li>
-
-        <security:authorize access="isAnonymous()">
-            <li>Please login to gain access to other functionality.</li>
-        </security:authorize>
-
-        <security:authorize access="hasRole('CUSTOMER')">
-            <li><a href="vehicle/showall">Manage vehicles</a> (only for customers)</li>
-        </security:authorize>
-
-
-        <security:authorize access="hasRole('ADMIN')">
-            <li>Show all my parkingspaces</li>
-            <li><a href="http://localhost:8080/parkingspace/create">create</a> a new parkingpsace</li>
-        </security:authorize>
-
-        <security:authorize access="hasRole('CUSTOMER')">
-            <li>Show all my rental tickets</li>
-            <li><a href="http://localhost:8080/rentalticket/showall">Manage Rental Tickets</a></li>
-        </security:authorize>
-
-    </ul>
     <%-- Show "Available parkingspaces" button except when on that page: --%>
     <div>
         <c:choose>
