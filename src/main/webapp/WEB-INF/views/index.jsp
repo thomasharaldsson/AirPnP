@@ -12,7 +12,15 @@
 <body>
 <jsp:include page="/WEB-INF/views/header.jsp"/>
 <div>
-    <h2>Main menu:</h2>
+    <br>
+    <h2>Welcome to AirPnP</h2>
+    <br>
+    <br>
+    <pre>
+        Want to become rich? Look no further. We offer a cutting edge, modern and user friendly
+        app for users to publish their unused parking space's for others to rent.
+        Dont miss out on the opportunity to earn some extra cash. Sign up today.
+    </pre>
 
     <ul>
 
@@ -38,7 +46,27 @@
         </security:authorize>
 
     </ul>
+    <%-- Show "Available parkingspaces" button except when on that page: --%>
+    <div>
+        <c:choose>
+            <c:when test="${!requestPath.equals('/parkingspace/showall')}">
+                <a href="/parkingspace/showall" class="btn btn-danger mx-1">
+                    Available parkingspaces
+                </a>
+            </c:when>
+        </c:choose>
+    </div>
 </div>
 <jsp:include page="/WEB-INF/views/footer.jsp"/>
 </body>
 </html>
+
+<style>
+    h2{
+        text-align: center;
+    }
+    pre{
+        text-align: center;
+        font-family: sans-serif;
+    }
+</style>
