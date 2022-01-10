@@ -24,6 +24,11 @@ a.deco-none:hover {
     background-color: mediumslateblue;
 }
 
+#availblebutt{
+    background-color: white;
+    color: red;
+}
+
 .list{
     display: grid;
     grid-template-columns: auto auto auto;

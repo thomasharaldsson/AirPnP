@@ -47,10 +47,10 @@
 
     </ul>
     <%-- Show "Available parkingspaces" button except when on that page: --%>
-    <div>
+    <div class="addbuttdiv">
         <c:choose>
             <c:when test="${!requestPath.equals('/parkingspace/showall')}">
-                <a href="/parkingspace/showall" class="btn btn-danger mx-1">
+                <a href="/parkingspace/showall" class="btn btn-danger mx-1" id="availblebutt">
                     Available parkingspaces
                 </a>
             </c:when>
