@@ -51,7 +51,6 @@
 </security:authorize>
 <security:authorize access="hasRole('ADMIN')">(admin)</security:authorize>
 <security:authorize access="hasRole('CUSTOMER')">(customer)</security:authorize>
-<security:authorize access="isAnonymous()">anonymous user</security:authorize>
 
 </p>
 </div>
