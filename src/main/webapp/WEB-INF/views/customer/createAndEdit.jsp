@@ -16,6 +16,9 @@
                 let agreeCheckboxValue = $(this).prop('checked')
                 $("#registerButton").prop('disabled', !agreeCheckboxValue);
             })
+
+            $('[data-bs-toggle="tooltip"]').tooltip();
+
         });
     </script>
 </head>
@@ -60,7 +63,8 @@
             <c:otherwise>
 
                 <div class="col">
-                    <form:input path="username" placeholder="Username" autocomplete="off"/>
+                    <form:input path="username" placeholder="Username" autocomplete="off" data-bs-toggle="tooltip"
+                                data-bs-placement="right" title="Username"/>
                     <form:errors path="username"/>
                 </div>
 
@@ -71,32 +75,37 @@
 
     <div class="row">
         <div class="col">
-            <form:password path="password" placeholder="Password" autocomplete="new-password"/>
+            <form:password path="password" placeholder="Password" autocomplete="new-password" data-bs-toggle="tooltip"
+                           data-bs-placement="right" title="Password"/>
             <form:errors path="password"/>
         </div>
     </div>
 
     <div class="row">
         <div class="col">
-            <form:input path="firstName" placeholder="Firstname" autocomplete="off"/>
+            <form:input path="firstName" placeholder="Firstname" autocomplete="off" data-bs-toggle="tooltip"
+                        data-bs-placement="right" title="Firstname"/>
             <form:errors path="firstName"/>
         </div>
     </div>
     <div class="row">
         <div class="col">
-            <form:input path="surName" placeholder="Surname" autocomplete="off"/>
+            <form:input path="surName" placeholder="Surname" autocomplete="off" data-bs-toggle="tooltip"
+                        data-bs-placement="right" title="Surname"/>
             <form:errors path="surName"/>
         </div>
     </div>
     <div class="row">
         <div class="col">
-            <form:input path="email" placeholder="Email" autocomplete="off"/>
+            <form:input path="email" placeholder="Email" autocomplete="off" data-bs-toggle="tooltip"
+                        data-bs-placement="right" title="Email"/>
             <form:errors path="email"/>
         </div>
     </div>
     <div class="row">
         <div class="col">
-            <form:input path="phoneNumber" placeholder="Phonenumber" autocomplete="off"/>
+            <form:input path="phoneNumber" placeholder="Phonenumber" autocomplete="off" data-bs-toggle="tooltip"
+                        data-bs-placement="right" title="Phone number"/>
             <form:errors path="phoneNumber"/>
         </div>
     </div>
