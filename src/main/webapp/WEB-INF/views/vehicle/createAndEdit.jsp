@@ -13,10 +13,12 @@
 <jsp:include page="/WEB-INF/views/header.jsp"/>
 <c:choose>
     <c:when test="${edit != null && edit == true}">
-        <h1>Edit vehicle</h1>
+        <h2>Edit vehicle</h2>
     </c:when>
     <c:otherwise>
         <h1>Create new vehicle</h1>
+        <br>
+        <br>
     </c:otherwise>
 </c:choose>
 
@@ -24,48 +26,52 @@
 <form:form modelAttribute="vehicle" action="${action}">
 
 
-    <form:errors path="" element="div"/>
-    ID: ${vehicle.id}
-    <form:hidden path="id" value="${id}"/>
-    <div>
-        <form:label path="registrationNumber">Registration number: </form:label>
-        <form:input path="registrationNumber"/>
-        <form:errors path="registrationNumber"/>
-    </div>
-    <div>
-        Owner:
+    <div class="createps">
 
-        <c:choose>
-            <c:when test="${customers.size() > 0}">
-                <select name="owner_id">
-                    <c:forEach var="customer" items="${customers}">
-                        <option value="${customer.id}"
-                                <c:choose>
-                                    <c:when test="${vehicle.getOwner() != null && customer.id == vehicle.getOwner().getId()}">
-                                        SELECTED
-                                    </c:when>
-                                </c:choose>
-                        >
-                                ${customer.getFirstName()} ${customer.getSurName()}
-                        </option>
-                    </c:forEach>
+        <div class="form">
+            <form:label path="registrationNumber">Registration number</form:label><br>
+            <form:input path="registrationNumber"/>
+            <form:errors path="registrationNumber"/>
+        </div>
 
-                </select>
-            </c:when>
-            <c:otherwise>
-                You have not added any customers yet. Please <a href="/customer/create">add some</a> first.
-            </c:otherwise>
-        </c:choose>
+        <div class="form">
+            Owner<br>
+
+            <c:choose>
+                <c:when test="${customers.size() > 0}">
+                    <select name="owner_id">
+                        <c:forEach var="customer" items="${customers}">
+                            <option value="${customer.id}"
+                                    <c:choose>
+                                        <c:when test="${vehicle.getOwner() != null && customer.id == vehicle.getOwner().getId()}">
+                                            SELECTED
+                                        </c:when>
+                                    </c:choose>
+                            >
+                                    ${customer.getFirstName()} ${customer.getSurName()}
+                            </option>
+                        </c:forEach>
+
+                    </select>
+                </c:when>
+                <c:otherwise>
+                    You have not added any customers yet. Please <a href="/customer/create">add some</a> first.
+                </c:otherwise>
+            </c:choose>
+        </div>
     </div>
-    <div>
-        <input type="submit"
+
+    <br>
+    <br>
+    <div class="addbuttdiv">
+        <input type="submit" class="btn btn-danger mx-1" id="addbutt"
                 <c:choose>
                     <c:when test="${customers.size() == 0}">
                         disabled="disabled"
                     </c:when>
-                </c:choose>
-        />
+                </c:choose>/>
     </div>
+
 </form:form>
 <jsp:include page="/WEB-INF/views/footer.jsp"/>
 </body>

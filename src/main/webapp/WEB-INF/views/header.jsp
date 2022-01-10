@@ -57,11 +57,6 @@
                                 <li><a class="dropdown-item" href="/vehicle/showall">Manage vehicles</a></li>
                             </security:authorize>
 
-                            <security:authorize access="hasRole('CUSTOMER')">
-                                <li><a class="dropdown-item" href="/vehicle/showall">Manage vehicles</a></li>
-                            </security:authorize>
-
-
                             <security:authorize access="hasRole('ADMIN')">
                                 <li><a class="dropdown-item" href="#">Show all my parkingspaces</a></li>
                                 <li><a class="dropdown-item" href="/parkingspace/create">create</a> a new parkingpsace

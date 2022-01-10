@@ -9,26 +9,27 @@
 </head>
 <body>
 <jsp:include page="/WEB-INF/views/header.jsp"/>
-<br/>Menu: <a href="create">add new vehicle</a>
-<h1>All vehicles: </h1>
+
+<h2>My vehicles</h2>
 
 <c:choose>
     <c:when test="${vehicles.size() > 0}">
-        <ul>
+        <ul class="list">
             <c:forEach items="${vehicles}" var="vehicle">
                 <div class="card">
-                    <ul>
+                    <ul class="itemlist">
                         <li>ID: ${vehicle.getId()}</li>
                         <li>Registration number: ${vehicle.getRegistrationNumber()}</li>
                         <li>Owner: ${vehicle.owner.getFirstName()} ${vehicle.owner.getSurName()}</li>
-                        <li>(<a href="show/${vehicle.id}">open</a>)</li>
+                        <li><a href="show/${vehicle.id}" class="btn btn-danger mx-1">Edit</a></li>
                     </ul>
                 </div>
-                <br/>
-                <br/>
             </c:forEach>
         </ul>
 
+        <div class="addbuttdiv">
+            <a href="create" class="btn btn-danger mx-1" id="addbutt">add new vehicle</a>
+        </div>
 
     </c:when>
     <c:otherwise>
