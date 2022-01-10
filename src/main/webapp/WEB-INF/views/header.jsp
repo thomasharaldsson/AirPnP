@@ -9,7 +9,15 @@
 
         <%-- This div element is left justified --%>
         <div class="p-2 h1 text-danger">
-            <a class="deco-none" href="/">AirPnP</a>
+            <c:choose>
+                <c:when test="${requestPath.equals('/')}">
+                    AirPnP
+                </c:when>
+                <c:otherwise>
+                    <%-- Link to homepage if not on it already: --%>
+                    <a class="deco-none" href="/" data-toggle="tooltip" data-placement="bottom" title="Return to start page">AirPnP</a>
+                </c:otherwise>
+            </c:choose>
         </div>
 
         <div class="p-2">
