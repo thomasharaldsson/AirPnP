@@ -33,6 +33,17 @@ a.deco-none:hover {
     display: grid;
     grid-template-columns: auto auto auto;
 }
+
+.createps{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.form{
+    margin: 1em;
+}
+
 .itemlist{
     margin: 0.5em;
     list-style-type: none;
