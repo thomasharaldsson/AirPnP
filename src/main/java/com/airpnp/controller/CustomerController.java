@@ -28,15 +28,7 @@ public class CustomerController {
 
     @RequestMapping(value = "/create", method = RequestMethod.GET)
     public ModelAndView createCustomer() {
-        //Customer customer = new Customer(3, "Bosse", "Svensson", "boknows@hotmail.com", "0735551533");
         Customer customer = new Customer();
-
-//        customer.setFirstName("Bosse");
-//        customer.setSurName("Bossesson");
-//        customer.setPhoneNumber("0735551533");
-//        customer.setEmail("boknows@hotmail.com");
-//        customer.addRating(new Rating(3));
-//        customer.addRating(new Rating(5));
         ModelAndView modelAndView = new ModelAndView("customer/createAndEdit", "customer", customer);
         modelAndView.addObject("action", "");
         return modelAndView;

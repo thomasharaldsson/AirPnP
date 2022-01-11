@@ -65,6 +65,7 @@
 
                             <security:authorize access="hasRole('CUSTOMER')">
                                 <li><a class="dropdown-item" href="/rentalticket/showall">Manage Rental Tickets</a></li>
+                                <li><a class="dropdown-item" href="/customer/edit/<security:authentication property="principal.customer.id"/>">My user profile</a></li>
                             </security:authorize>
                         </ul>
                     </div>
