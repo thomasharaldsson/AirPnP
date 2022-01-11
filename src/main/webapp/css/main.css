@@ -70,3 +70,10 @@ a.deco-none:hover {
 .dropdown-menu.show{
     background-color: #dc3545;
 }
+
+.front-image {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
+}
