@@ -26,7 +26,7 @@
 <jsp:include page="/WEB-INF/views/header.jsp"/>
 
 
-<div class="d-flex justify-content-center">
+<div class="d-flex justify-content-center registratioForm">
 
     <form:form modelAttribute="customer" action="${action}" autocomplete="off">
         <form:errors path="" element="div"/>
@@ -34,7 +34,7 @@
         <form:hidden path="id" value="${id}"/>
 
 
-    <div class="row">
+    <div class="row registrationFormRow">
         <div class="col">
             <c:choose>
                 <c:when test="${edit != null && edit == true}">
@@ -48,7 +48,7 @@
     </div>
 
 
-    <div class="row">
+    <div class="row registrationFormRow">
         <div class="col">
             <c:choose>
                 <c:when test="${edit != null && edit == true}">
@@ -69,7 +69,7 @@
         </div>
     </div>
 
-    <div class="row">
+    <div class="row registrationFormRow">
         <div class="col">
             <form:password class="form-control"  path="password" placeholder="Password" autocomplete="new-password"
                            data-bs-toggle="tooltip"
