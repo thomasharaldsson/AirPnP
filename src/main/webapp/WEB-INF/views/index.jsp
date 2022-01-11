@@ -16,7 +16,7 @@
     <br>
     <img class="front-image" alt="image" src='https://images.unsplash.com/photo-1506521781263-d8422e82f27a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80' />
     <br>
-    <pre>
+    <pre class="front-text">
         Want to become rich? Look no further. We offer a cutting edge, modern and user friendly
         app for users to publish their unused parking space's for others to rent.
         Dont miss out on the opportunity to earn some extra cash. Sign up today.
