@@ -19,6 +19,7 @@
         <ul class="list">
             <c:forEach items="${rentalTickets}" var="rentalticket">
                 <div class="card">
+                    <img src="https://thumbs.dreamstime.com/b/red-ticket-icons-%C3%A2%E2%82%AC-stock-vector-red-ticket-icons-vector-117693776.jpg" height="60px" width="60px" style="margin-left: 2em">
                     <ul class="itemlist">
                         <li>ID: ${rentalticket.getId()}</li>
                         <li>Vehicle (registration number): ${rentalticket.getVehicle().getRegistrationNumber()}</li>
