@@ -64,7 +64,6 @@
                             </security:authorize>
 
                             <security:authorize access="hasRole('CUSTOMER')">
-                                <li><a class="dropdown-item">Show all my rental tickets</a></li>
                                 <li><a class="dropdown-item" href="/rentalticket/showall">Manage Rental Tickets</a></li>
                             </security:authorize>
                         </ul>

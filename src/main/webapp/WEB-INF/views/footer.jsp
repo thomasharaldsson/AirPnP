@@ -47,7 +47,7 @@
 
 <!-- Print out user role of current user: -->
 <security:authorize access="isAuthenticated()">
-    username: <security:authentication property="principal.username"/>
+    Signed in as: <security:authentication property="principal.username"/>
 </security:authorize>
 <security:authorize access="hasRole('ADMIN')">(admin)</security:authorize>
 <security:authorize access="hasRole('CUSTOMER')">(customer)</security:authorize>
