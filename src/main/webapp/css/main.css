@@ -66,3 +66,7 @@ a.deco-none:hover {
 .registratioForm div.row {
     margin: 12px;
 }
+
+.dropdown-menu.show{
+    background-color: #dc3545;
+}
