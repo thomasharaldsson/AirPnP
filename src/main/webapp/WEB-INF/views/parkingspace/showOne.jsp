@@ -11,15 +11,24 @@
 
 <jsp:include page="/WEB-INF/views/header.jsp"/>
 <h2>Here is the parking space:</h2>
+<br>
+<br>
 
-<ul>
+<ul class="itemlist">
     <li>ID: ${parkingspace.id}</li>
     <li>street address: ${parkingspace.streetAddress}</li>
     <li>start date: ${parkingspace.startDate}</li>
     <li>end date: ${parkingspace.endDate}</li>
-    <li>price: ${parkingspace.price}</li>
-    <li>(<a href="/parkingspace/edit/${parkingspace.id}">edit</a>) (<a href="/parkingspace/delete/${parkingspace.id}">delete</a>)
+    <li>price: ${parkingspace.price}</li><br>
+    <li><a href="/parkingspace/edit/${parkingspace.id}" class="btn btn-danger mx-1" id="addbutt">edit</a> <a href="/parkingspace/delete/${parkingspace.id}" class="btn btn-danger mx-1" id="addbutt">delete</a>
     </li>
 </ul>
+
 <jsp:include page="/WEB-INF/views/footer.jsp"/>
 </body>
+
+<style>
+    h2, ul{
+        text-align: center;
+    }
+</style>
