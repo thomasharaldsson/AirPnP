@@ -77,3 +77,8 @@ a.deco-none:hover {
     margin-right: auto;
     width: 70%;
 }
+
+.front-text {
+    font-size: large;
+    font-weight: bold;
+}
