@@ -34,102 +34,119 @@
         <form:hidden path="id" value="${id}"/>
 
 
-    <div class="row registrationFormRow">
-        <div class="col">
-            <c:choose>
-                <c:when test="${edit != null && edit == true}">
-                    <h1>Edit profile</h1>
-                </c:when>
-                <c:otherwise>
-                    <h1>Register account</h1>
-                </c:otherwise>
-            </c:choose>
+        <div class="row registrationFormRow">
+            <div class="col">
+                <c:choose>
+                    <c:when test="${edit != null && edit == true}">
+                        <h1>Edit profile</h1>
+                    </c:when>
+                    <c:otherwise>
+                        <h1>Register account</h1>
+                    </c:otherwise>
+                </c:choose>
+            </div>
         </div>
-    </div>
 
 
-    <div class="row registrationFormRow">
-        <div class="col">
-            <c:choose>
-                <c:when test="${edit != null && edit == true}">
+        <div class="row registrationFormRow">
+            <div class="col">
+                <c:choose>
+                    <c:when test="${edit != null && edit == true}">
 
-                    <!-- Editing customer: you can't edit username after it's been created. -->
-                    Username: ${customer.username}
-                    <form:hidden path="username" value="${username}"/>
+                        <!-- Editing customer: you can't edit username after it's been created. -->
+                        Username: ${customer.username}
+                        <form:hidden path="username" value="${username}"/>
 
-                </c:when>
-                <c:otherwise>
+                    </c:when>
+                    <c:otherwise>
 
-                    <form:input class="form-control" path="username" placeholder="Username" autocomplete="off" data-bs-toggle="tooltip"
-                                data-bs-placement="right" title="Username"/>
-                    <form:errors path="username"/>
+                        <form:input class="form-control" path="username" placeholder="Username" autocomplete="off"
+                                    data-bs-toggle="tooltip"
+                                    data-bs-placement="right" title="Username"/>
+                        <form:errors path="username"/>
 
-                </c:otherwise>
-            </c:choose>
+                    </c:otherwise>
+                </c:choose>
+            </div>
         </div>
-    </div>
 
-    <div class="row registrationFormRow">
-        <div class="col">
-            <form:password class="form-control"  path="password" placeholder="Password" autocomplete="new-password"
-                           data-bs-toggle="tooltip"
-                           data-bs-placement="right" title="Password"/>
-            <form:errors path="password"/>
+        <div class="row registrationFormRow">
+            <div class="col">
+                <form:password class="form-control" path="password" placeholder="Password" autocomplete="new-password"
+                               data-bs-toggle="tooltip"
+                               data-bs-placement="right" title="Password"/>
+                <form:errors path="password"/>
+            </div>
         </div>
-    </div>
 
-    <div class="row">
-        <div class="col">
-            <form:input class="form-control" path="firstName" placeholder="Firstname" autocomplete="off" data-bs-toggle="tooltip"
-                        data-bs-placement="right" title="Firstname"/>
-            <form:errors path="firstName"/>
+        <div class="row">
+            <div class="col">
+                <form:input class="form-control" path="firstName" placeholder="Firstname" autocomplete="off"
+                            data-bs-toggle="tooltip"
+                            data-bs-placement="right" title="Firstname"/>
+                <form:errors path="firstName"/>
+            </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col">
-            <form:input class="form-control" path="surName" placeholder="Surname" autocomplete="off" data-bs-toggle="tooltip"
-                        data-bs-placement="right" title="Surname"/>
-            <form:errors path="surName"/>
+        <div class="row">
+            <div class="col">
+                <form:input class="form-control" path="surName" placeholder="Surname" autocomplete="off"
+                            data-bs-toggle="tooltip"
+                            data-bs-placement="right" title="Surname"/>
+                <form:errors path="surName"/>
+            </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col">
-            <form:input class="form-control" path="email" placeholder="Email" autocomplete="off" data-bs-toggle="tooltip"
-                        data-bs-placement="right" title="Email"/>
-            <form:errors path="email"/>
+        <div class="row">
+            <div class="col">
+                <form:input class="form-control" path="email" placeholder="Email" autocomplete="off"
+                            data-bs-toggle="tooltip"
+                            data-bs-placement="right" title="Email"/>
+                <form:errors path="email"/>
+            </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col">
-            <form:input class="form-control" path="phoneNumber" placeholder="Phonenumber" autocomplete="off" data-bs-toggle="tooltip"
-                        data-bs-placement="right" title="Phone number"/>
-            <form:errors path="phoneNumber"/>
+        <div class="row">
+            <div class="col">
+                <form:input class="form-control" path="phoneNumber" placeholder="Phonenumber" autocomplete="off"
+                            data-bs-toggle="tooltip"
+                            data-bs-placement="right" title="Phone number"/>
+                <form:errors path="phoneNumber"/>
+            </div>
         </div>
-    </div>
 
-    <div class="row">
+        <div class="row">
 
-        <div class="col">
+            <div class="col">
 
-            <div class="d-flex">
+                <div class="d-flex">
 
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="agreeCheckbox">
-                    <label class="form-check-label" for="agreeCheckbox">
-                        Agree to terms
-                    </label>
-                </div>
+                        <%-- show agree to terms if on registration page- --%>
+                    <c:if test="${!edit}">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="agreeCheckbox">
+                            <label class="form-check-label" for="agreeCheckbox">
+                                Agree to terms
+                            </label>
+                        </div>
+                    </c:if>
 
-                <div class="ms-auto">
-                    <input class="btn btn-info" type="submit" value="Register" id="registerButton" disabled/>
+                    <c:if test="${!edit}">
+                        <div class="ms-auto">
+                            <input class="btn btn-info" type="submit" value="Register" id="registerButton" disabled/>
+                        </div>
+                    </c:if>
+
+                    <c:if test="${edit}">
+                        <div class="ms-auto">
+                            <input class="btn btn-info" type="submit" value="Save"/>
+                        </div>
+                    </c:if>
                 </div>
             </div>
         </div>
 
 
-        </form:form>
-    </div>
+    </form:form>
+</div>
 
-    <jsp:include page="/WEB-INF/views/footer.jsp"/>
+<jsp:include page="/WEB-INF/views/footer.jsp"/>
 </body>
 </html>
