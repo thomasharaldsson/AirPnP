@@ -11,7 +11,8 @@
 <jsp:include page="/WEB-INF/views/header.jsp"/>
 
 <h2>My vehicles</h2>
-
+<br>
+<br>
 <c:choose>
     <c:when test="${vehicles.size() > 0}">
         <ul class="list">

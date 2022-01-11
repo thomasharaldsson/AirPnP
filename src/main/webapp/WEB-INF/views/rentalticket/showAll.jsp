@@ -12,7 +12,8 @@
 
 
 <h2>All my rental tickets</h2>
-
+<br>
+<br>
 <c:choose>
     <c:when test="${rentalTickets.size() > 0}">
         <ul class="list">

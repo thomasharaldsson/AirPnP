@@ -10,8 +10,9 @@
 <jsp:include page="/WEB-INF/views/header.jsp"/>
 
 
-<h1>All customers: </h1>
-
+<h2>All customers</h2>
+<br>
+<br>
 <c:choose>
     <c:when test="${customers.size() > 0}">
         <ul class="list">
