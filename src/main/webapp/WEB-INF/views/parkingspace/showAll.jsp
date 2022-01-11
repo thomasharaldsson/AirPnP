@@ -18,6 +18,7 @@
         <ul class="list">
             <c:forEach items="${parkingSpaces}" var="parkingspace">
                 <div class="card">
+                    <img src="https://cdn-icons-png.flaticon.com/512/1788/1788637.png" height="40px" width="40px" style="margin-left: 2.5em">
                 <ul class="itemlist">
                     <li class="hide">ID: ${parkingspace.id}</li>
                     <li>${parkingspace.streetAddress}</li>
