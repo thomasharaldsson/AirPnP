@@ -18,6 +18,7 @@
         <ul class="list">
             <c:forEach items="${vehicles}" var="vehicle">
                 <div class="card">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Circle-icons-car.svg/512px-Circle-icons-car.svg.png" height="40px" width="40px" style="margin-left: 2.5em">
                     <ul class="itemlist">
                         <li>ID: ${vehicle.getId()}</li>
                         <li>Registration number: ${vehicle.getRegistrationNumber()}</li>
@@ -41,3 +42,4 @@
 <jsp:include page="/WEB-INF/views/footer.jsp"/>
 </body>
 </html>
+
