@@ -6,7 +6,9 @@
 <head>
     <title>AirPnP Incorporated International 2021</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/css/main.css">
 </head>
 <body>
@@ -24,34 +26,34 @@
 
 <form:form modelAttribute="parkingspace" action="${action}">
 
-<form:hidden path="id" value="${id}"/>
+    <form:hidden path="id" value="${id}"/>
 
-<div class="createps">
+    <div class="createps">
 
-    <div class="form">
-        <form:label path="price">Price/hour</form:label><br>
-        <form:input path="price"/>
-        <form:errors path="price"/>
+        <div class="form">
+            <form:label path="price">Price/hour</form:label><br>
+            <form:input path="price"/>
+            <form:errors path="price"/>
+        </div>
+
+        <div class="form">
+            <form:label path="startDate">Start date</form:label><br>
+            <form:input path="startDate"/>
+            <form:errors path="startDate"/>
+        </div>
+
+        <div class="form">
+            <form:label path="endDate">End date</form:label><br>
+            <form:input path="endDate"/>
+            <form:errors path="endDate"/>
+        </div>
+
+        <div class="form">
+            <form:label path="streetAddress">Address</form:label><br>
+            <form:input path="streetAddress"/>
+            <form:errors path="streetAddress"/>
+        </div>
     </div>
-
-    <div class="form">
-        <form:label path="startDate">Start date</form:label><br>
-        <form:input path="startDate"/>
-        <form:errors path="startDate"/>
-    </div>
-
-    <div class="form">
-        <form:label path="endDate">End date</form:label><br>
-        <form:input path="endDate"/>
-        <form:errors path="endDate"/>
-    </div>
-
-    <div class="form">
-        <form:label path="streetAddress">Address</form:label><br>
-        <form:input path="streetAddress"/>
-        <form:errors path="streetAddress"/>
-    </div>
-</div>
 
     <br>
     <br>
