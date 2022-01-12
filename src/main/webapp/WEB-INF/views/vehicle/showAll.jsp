@@ -21,12 +21,18 @@
                     <c:choose>
                         <c:when test="${vehicle.type.name.equals('Car')}">
                         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Circle-icons-car.svg/512px-Circle-icons-car.svg.png"
-                                    height="40px"
-                                    width="40px"
-                                    style="margin-left: 2.5em">
+                                height="40px"
+                                width="40px"
+                                style="margin-left: 2.5em">
                         </c:when>
-                        <c:when test="${vehicle.type.name.equals('Bike')}">
-                            <img class="itemicon" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Circle-icons-motorcycle.svg/512px-Circle-icons-motorcycle.svg.png"
+                        <c:when test="${vehicle.type.name.equals('Motorcycle')}">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Circle-icons-motorcycle.svg/512px-Circle-icons-motorcycle.svg.png"
+                                 height="40px"
+                                 width="40px"
+                                 style="margin-left: 2.5em">
+                        </c:when>
+                        <c:when test="${vehicle.type.name.equals('Big rig truck & trailer')}">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Circle-icons-truck.svg/512px-Circle-icons-truck.svg.png"
                                  height="40px"
                                  width="40px"
                                  style="margin-left: 2.5em">
