@@ -18,6 +18,9 @@ public class AirPnPApplication {
 	private VehicleService vehicleService;
 
 	@Autowired
+	private VehicleTypeService vehicleTypeService;
+
+	@Autowired
 	private CustomerService customerService;
 
 	@Autowired
@@ -43,6 +46,7 @@ public class AirPnPApplication {
 			// Delete all vehicles, customers and lenders from database:
 			rentalTicketService.deleteAll();
 			vehicleService.deleteAll();
+			vehicleTypeService.deleteAll();
 			customerService.deleteAll();
 			adminService.deleteAll();
 			parkingSpaceService.deleteAll();

@@ -3,10 +3,13 @@ package com.airpnp.controller;
 import com.airpnp.authorization.SecurityConfig;
 import com.airpnp.data.exception.CustomerNotFoundException;
 import com.airpnp.data.exception.VehicleNotFoundException;
+import com.airpnp.data.exception.VehicleTypeNotFoundException;
 import com.airpnp.domainmodel.Customer;
 import com.airpnp.domainmodel.Vehicle;
+import com.airpnp.domainmodel.VehicleType;
 import com.airpnp.service.CustomerService;
 import com.airpnp.service.VehicleService;
+import com.airpnp.service.VehicleTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
@@ -22,6 +25,9 @@ public class VehicleController {
 
     @Autowired
     VehicleService vehicleService;
+
+    @Autowired
+    VehicleTypeService vehicleTypeService;
 
     @Autowired
     CustomerService customerService;
@@ -41,6 +47,7 @@ public class VehicleController {
         List<Customer> allCustomers = customerService.getAll();
         ModelAndView modelAndView = new ModelAndView("vehicle/createAndEdit", "vehicle", vehicle);
         modelAndView.addObject("customers", allCustomers);
+        modelAndView.addObject("vehicleTypes", vehicleTypeService.getAll());
         modelAndView.addObject("action", "");
         return modelAndView;
 
@@ -55,6 +62,7 @@ public class VehicleController {
         List<Customer> allCustomers = customerService.getAll();
         modelAndView.addObject("edit", Boolean.valueOf(true));
         modelAndView.addObject("vehicle", vehicle);
+        modelAndView.addObject("vehicleTypes", vehicleTypeService.getAll());
         modelAndView.addObject("action", "/vehicle/edit");
         modelAndView.addObject("customers", allCustomers);
 
@@ -63,18 +71,22 @@ public class VehicleController {
 
     //@Secured(USER_ROLE_CUSTOMER)
     @RequestMapping(value = "/edit", method = RequestMethod.POST)
-    public String editVehicle(Vehicle vehicle, int owner_id) throws VehicleNotFoundException, CustomerNotFoundException {
+    public String editVehicle(Vehicle vehicle, int owner_id, int type_id) throws VehicleNotFoundException, CustomerNotFoundException, VehicleTypeNotFoundException {
         Customer owner = customerService.getCustomer(owner_id);
         vehicle.setOwner(owner);
+        VehicleType type = vehicleTypeService.getVehicleTypeById(type_id);
+        vehicle.setType(type);
         vehicleService.updateVehicle(vehicle);
         return "redirect:/vehicle/showall";
     }
 
     @Secured(USER_ROLE_CUSTOMER)
     @RequestMapping(value = "/create", method = RequestMethod.POST)
-    public String createVehicle(Vehicle vehicle, int owner_id) throws CustomerNotFoundException {
+    public String createVehicle(Vehicle vehicle, int owner_id, int type_id) throws CustomerNotFoundException, VehicleTypeNotFoundException {
         Customer owner = customerService.getCustomer(owner_id);
         vehicle.setOwner(owner);
+        VehicleType type = vehicleTypeService.getVehicleTypeById(type_id);
+        vehicle.setType(type);
         vehicleService.addVehicle(vehicle);
         return "redirect:/vehicle/showall";
     }
