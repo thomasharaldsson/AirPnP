@@ -24,6 +24,7 @@
 
 <form:form modelAttribute="parkingspace" action="${action}">
 
+<form:hidden path="id" value="${id}"/>
 
 <div class="createps">
 
