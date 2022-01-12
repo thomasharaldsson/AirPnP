@@ -23,6 +23,7 @@
                         <li>ID: ${vehicle.getId()}</li>
                         <li>Registration number: ${vehicle.getRegistrationNumber()}</li>
                         <li>Owner: ${vehicle.owner.getFirstName()} ${vehicle.owner.getSurName()}</li>
+                        <li>Type: ${vehicle.type.name} </li>
                         <li><a href="show/${vehicle.id}" class="btn btn-danger mx-1">Edit</a></li>
                     </ul>
                 </div>

@@ -17,6 +17,7 @@
 <ul class="itemlist">
     <li>ID: ${vehicle.getId()}</li>
     <li>Registration number: ${vehicle.getRegistrationNumber()}</li>
+    <li>Type: ${vehicle.type.name} </li>
     <li>Owner: ${vehicle.getOwner().getFirstName()} ${vehicle.getOwner().getSurName()}</li>
     <li>E-mail: ${vehicle.getOwner().getEmail()}</li>
     <li>Phonenumber: ${vehicle.getOwner().getPhoneNumber()}</li><br>

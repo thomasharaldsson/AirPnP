@@ -11,18 +11,20 @@ public class Vehicle {
     @ManyToOne
     @JoinColumn(name = "owner_id")
     private Customer owner;
+    @ManyToOne(cascade=CascadeType.PERSIST)
+    private VehicleType type;
 
     public Vehicle() {
     }
 
     /**
-     *
      * @param registrationNumber Registartion number of vehicle.
-     * @param owner Customer ID of person who owns this vehicle.
+     * @param owner              Customer ID of person who owns this vehicle.
      */
-    public Vehicle(String registrationNumber, Customer owner) {
+    public Vehicle(String registrationNumber, Customer owner, VehicleType type) {
         this.registrationNumber = registrationNumber;
         this.owner = owner;
+        this.type = type;
     }
 
     public Integer getId() {
@@ -47,5 +49,13 @@ public class Vehicle {
 
     public void setOwner(Customer owner) {
         this.owner = owner;
+    }
+
+    public VehicleType getType() {
+        return type;
+    }
+
+    public void setType(VehicleType type) {
+        this.type = type;
     }
 }

@@ -67,11 +67,16 @@ public class AirPnPApplication {
 			Admin a3 = new Admin("Franny", "Middleston", "fran@flashback.se", "3453366", "franny", "bike");
 			adminService.addAdmin(a3);
 
+			// Create some vehicle types
+			VehicleType typeCar = new VehicleType("Car");
+			VehicleType typeMotorcycle = new VehicleType("Motorcycle");
+			VehicleType typeBike = new VehicleType("Bike");
+
 			// Create some vehicles:
-			Vehicle v1 = new Vehicle("JON-141", c1);
+			Vehicle v1 = new Vehicle("JON-141", c1, typeCar);
 			vehicleService.addVehicle(v1);
 
-			Vehicle v2 = new Vehicle("TOP-221", c3);
+			Vehicle v2 = new Vehicle("TOP-221", c3, typeBike);
 			vehicleService.addVehicle(v2);
 
 			//Create some parkingspaces:
