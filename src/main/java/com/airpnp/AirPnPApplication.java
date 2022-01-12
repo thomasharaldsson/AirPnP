@@ -74,7 +74,7 @@ public class AirPnPApplication {
 			// Create some vehicle types
 			VehicleType typeCar = new VehicleType("Car");
 			VehicleType typeMotorcycle = new VehicleType("Motorcycle");
-			VehicleType typeBike = new VehicleType("Bike");
+			VehicleType typeBike = new VehicleType("Big rig truck & trailer");
 
 			// Create some vehicles:
 			Vehicle v1 = new Vehicle("JON-141", c1, typeCar);
