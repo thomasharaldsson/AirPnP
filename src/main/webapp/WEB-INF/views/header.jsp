@@ -12,7 +12,7 @@
         <div class="p-2 h1 text-danger">
             <c:choose>
                 <c:when test="${requestPath.equals('/')}">
-                    AirPnP
+                    AirPnP ©
                 </c:when>
                 <c:otherwise>
                     <%-- Link to homepage if not on it already: --%>
