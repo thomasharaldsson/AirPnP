@@ -1,6 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s" %>
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
+<%@ page contentType="text/html; charset=UTF-8" %>
 <c:set var="requestPath" value="${requestScope['javax.servlet.forward.request_uri']}"/>
 <!DOCTYPE HTML>
 <div class="container">
