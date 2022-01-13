@@ -18,6 +18,10 @@
         <ul class="list">
             <c:forEach items="${customers}" var="customer">
                 <div class="card">
+                    <img src="https://icons.iconarchive.com/icons/graphicloads/flat-finance/256/person-icon.png"
+                         height="40px"
+                         width="40px"
+                         style="margin-left: 2.5em">
                     <ul class="itemlist">
                         <li>ID: ${customer.id}</li>
                         <li>Username: ${customer.username}</li>
