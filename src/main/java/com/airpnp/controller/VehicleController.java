@@ -1,6 +1,7 @@
 package com.airpnp.controller;
 
 import com.airpnp.authorization.SecurityConfig;
+import com.airpnp.authorization.proxy.UserPrincipal;
 import com.airpnp.data.exception.CustomerNotFoundException;
 import com.airpnp.data.exception.VehicleNotFoundException;
 import com.airpnp.data.exception.VehicleTypeNotFoundException;
@@ -41,7 +42,7 @@ public class VehicleController {
     @Secured(USER_ROLE_CUSTOMER)
     @RequestMapping(value = "/create", method = RequestMethod.GET)
     public ModelAndView createVehicle() {
-        Customer currentCustomer = SecurityConfig.getCurrentlyLoggedInUserPrincipal().getCustomer();
+        Customer currentCustomer = UserPrincipal.getCurrentlyLoggedInUserPrincipal().getCustomer();
         Vehicle vehicle = new Vehicle();
         vehicle.setId(null);
         List<Customer> allCustomers = customerService.getAll();
