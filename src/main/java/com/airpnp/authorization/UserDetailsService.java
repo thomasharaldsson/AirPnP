@@ -22,7 +22,7 @@ public class UserDetailsService implements org.springframework.security.core.use
     @Override
     public UserDetails loadUserByUsername(String username) {
         Customer customer = null;
-        Admin lender = null;
+        Admin admin = null;
 
         // First look for users among customers. If user isn't there look among lenders.
         customer = customerRepository.findByUsername(username);
@@ -30,9 +30,9 @@ public class UserDetailsService implements org.springframework.security.core.use
             return new UserPrincipal(customer);
         }
 
-        lender = lenderRepository.findByUsername(username);
-        if (lender != null) {
-            return new UserPrincipal(lender);
+        admin = lenderRepository.findByUsername(username);
+        if (admin != null) {
+            return new UserPrincipal(admin);
         }
 
         // User was not found among customers or lenders.
