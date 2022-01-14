@@ -30,11 +30,9 @@ public class ParkingSpaceController {
     public ModelAndView showAllParkingspace() {
 
         UserPrincipal user = authenticationFacade.getAuthenticatedUser();
-        if (user.getCustomer() != null) {
-            System.out.println("Currently logged in customer has user id=" + user.getCustomer().getId());
-        }
-        if (user.getAdmin() != null) {
-            System.out.println("Currently logged in Admin has user id=" + user.getAdmin().getId());
+
+        if (user != null) {
+            System.out.println("Currently logged in customer has user id=" + user);
         }
 
         List<ParkingSpace> allParkingSpaces = parkingSpaceService.getAllParkingSpaces();
