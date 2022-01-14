@@ -18,7 +18,7 @@ public class ParkingSpace {
     private String streetAddress;
     @ManyToOne
     @PrimaryKeyJoinColumn
-    private Admin owner;
+    private Customer owner;
 
 
     public ParkingSpace(int price, Date startDate, Date endDate, String streetAddress) {
