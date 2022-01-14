@@ -73,24 +73,4 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
 
-    /**
-     *
-     * @return username of logged in user. Or null if no user is logged in.
-     */
-    public static UserPrincipal getCurrentlyLoggedInUserPrincipal() {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-
-        if (authentication == null) {
-            return null;
-        }
-
-        if (!(authentication instanceof AnonymousAuthenticationToken)) {
-            UserPrincipal userPrincipal = (UserPrincipal) authentication.getPrincipal();
-
-            return userPrincipal;
-        }
-
-        return null;
-    }
-
 }
