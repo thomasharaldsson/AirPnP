@@ -24,9 +24,12 @@ a.deco-none:hover {
     background-color: mediumslateblue;
 }
 
-#availblebutt{
-    background-color: white;
-    color: red;
+#availblebutt {
+    color: white;
+    font-weight: bold;
+    font-size: 1.2em;
+    margin-top: -1em;
+    padding: 0.5em;
 }
 
 .list{
