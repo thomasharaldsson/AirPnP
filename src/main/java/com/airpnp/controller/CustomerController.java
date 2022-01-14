@@ -3,13 +3,11 @@ package com.airpnp.controller;
 import com.airpnp.data.exception.CustomerNotFoundException;
 import com.airpnp.data.exception.UsernameAlreadyInUseException;
 import com.airpnp.domainmodel.Customer;
-import com.airpnp.domainmodel.Rating;
 import com.airpnp.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-
 import java.util.List;
 
 @Controller
