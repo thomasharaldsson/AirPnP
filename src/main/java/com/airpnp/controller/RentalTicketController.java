@@ -23,8 +23,6 @@ import static com.airpnp.authorization.SecurityConfig.USER_ROLE_CUSTOMER;
 
 @Controller
 @RequestMapping("/rentalticket")
-
-
 public class RentalTicketController {
 
     @Autowired
