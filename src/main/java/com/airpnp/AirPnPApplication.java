@@ -84,7 +84,7 @@ public class AirPnPApplication {
 			vehicleService.addVehicle(v2);
 
 			Vehicle v3 = new Vehicle("TOP-221", c3, typeMotorcycle);
-			vehicleService.addVehicle(v2);
+			vehicleService.addVehicle(v3);
 
 			//Create some parkingspaces:
 			SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
