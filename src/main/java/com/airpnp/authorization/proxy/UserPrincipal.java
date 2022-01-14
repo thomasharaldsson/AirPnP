@@ -25,10 +25,20 @@ public class UserPrincipal implements UserDetails {
         this.admin = admin;
     }
 
+    /**
+     * Get Entity from domain model representing currently logged in Customer user.
+     *
+     * @return Entity or currently logged in Customer user. Or null if an Customer user is not currently logged in.
+     */
     public Customer getCustomer() {
         return customer;
     }
 
+    /**
+     * Get Entity from domain model representing currently logged in Admin user.
+     *
+     * @return Entity or currently logged in Admin user. Or null if an Admin user is not currently logged in.
+     */
     public Admin getAdmin() {
         return admin;
     }

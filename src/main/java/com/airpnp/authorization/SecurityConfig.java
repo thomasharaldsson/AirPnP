@@ -74,8 +74,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 
     /**
+     *  This method can be used from e.g. Controller classes to get currently logged in user.
+     *  Please note that in order to get hold of the actual Entity (in package com.airpnp.domainmodel) representing this
+     *  user you have to call either the getCustomer() or the getAdmin() in the UserPrincipal class.
      *
-     * @return username of logged in user. Or null if no user is logged in.
+     *  Example #1:
+     *  Customer currentCustomer = SecurityConfig.getCurrentlyLoggedInUserPrincipal().getCustomer();
+     *
+     *  Example #2:
+     *  Admin currentAdmin = SecurityConfig.getCurrentlyLoggedInUserPrincipal().getAdmin();
+     *
+     * @return Security object representing the currently logged in user. Or null if no user is currently logged in.
      */
     public static UserPrincipal getCurrentlyLoggedInUserPrincipal() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
