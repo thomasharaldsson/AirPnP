@@ -7,7 +7,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface RentalTicketRepository extends JpaRepository<RentalTicket, Integer> {
-
     void deleteRentalTicketById(Integer id);
-
 }
