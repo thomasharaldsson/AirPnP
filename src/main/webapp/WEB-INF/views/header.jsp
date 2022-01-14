@@ -59,8 +59,8 @@
                             </security:authorize>
 
                             <security:authorize access="hasRole('ADMIN')">
-                                <li><a class="dropdown-item" href="#" style="color: white">Show all my parkingspaces</a></li>
-                                <li><a class="dropdown-item" href="/parkingspace/create">create</a> a new parkingpsace
+                                <li><a class="dropdown-item" href="/parkingspace/showall" style="color: white">Show all parking spaces</a></li>
+                                <li><a class="dropdown-item" href="/parkingspace/create" style="color: white">Create a new parkingpsace</a>
                                 </li>
                             </security:authorize>
 
