@@ -1,15 +1,19 @@
 package com.airpnp.service.implementations;
 
+import com.airpnp.authorization.UserDetailsService;
+import com.airpnp.authorization.proxy.UserPrincipal;
 import com.airpnp.data.ParkingSpaceRepository;
 import com.airpnp.data.RentalTicketRepository;
 import com.airpnp.domainmodel.ParkingSpace;
 import com.airpnp.domainmodel.RentalTicket;
+import com.airpnp.service.AdminService;
 import com.airpnp.service.ParkingSpaceService;
 import com.airpnp.service.RentalTicketService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service("rentalTicketsServiceMock")
 public class RentalTicketProductionImpl implements RentalTicketService {
@@ -22,7 +26,7 @@ public class RentalTicketProductionImpl implements RentalTicketService {
 
     @Override
     public List<RentalTicket> getAllRentalTickets() {
-        return data.findAll();
+        return data.findAll().stream().filter( r -> r.getCustomer().getId() == UserPrincipal.getCurrentlyLoggedInUserPrincipal().getCustomer().getId()).collect(Collectors.toList());
     }
 
     @Override
