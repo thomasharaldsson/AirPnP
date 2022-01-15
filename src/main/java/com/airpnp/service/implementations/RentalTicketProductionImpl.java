@@ -2,6 +2,7 @@ package com.airpnp.service.implementations;
 
 import com.airpnp.data.ParkingSpaceRepository;
 import com.airpnp.data.RentalTicketRepository;
+import com.airpnp.domainmodel.ParkingSpace;
 import com.airpnp.domainmodel.RentalTicket;
 import com.airpnp.service.ParkingSpaceService;
 import com.airpnp.service.RentalTicketService;
@@ -28,9 +29,13 @@ public class RentalTicketProductionImpl implements RentalTicketService {
     public void addRentalTicket(RentalTicket rentalTicket) {
         data.save(rentalTicket);
         try {
-            parkingSpaceService.getParkingSpaceById(rentalTicket.getParkingSpace().getId()).setTicket(rentalTicket);
+            ParkingSpace toUpdate = parkingSpaceService.getParkingSpaceById(rentalTicket.getParkingSpace().getId());
+            toUpdate.setTicket(rentalTicket);
+            parkingSpaceService.updateParkingSpace(toUpdate);
+            System.out.println("Prod impl");
         } catch (Exception e){
-
+            System.out.println(e.getMessage());
+            System.out.println("Prod impl");
         }
     }
 
