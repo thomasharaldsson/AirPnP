@@ -80,5 +80,12 @@ public class RentalTicketController {
         return "redirect:/rentalticket/showall";
     }
 
+    @RequestMapping(value = "/delete/{id}", method = {RequestMethod.DELETE, RequestMethod.GET})
+    public String deleteRentalTicket(@PathVariable(required = true) int id) {
+        System.out.println("Deleting rentalticket ID=" + id);
+        rentalTicketService.deleteRentalTicket(id);
+        return "redirect:/rentalticket/showall";
+    }
+
 
 }

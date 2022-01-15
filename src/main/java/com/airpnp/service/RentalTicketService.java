@@ -9,5 +9,7 @@ import java.util.List;
 public interface RentalTicketService {
     List<RentalTicket> getAllRentalTickets();
     void addRentalTicket(RentalTicket rentalTicket) throws ParkingSpaceNotFoundException;
+    void deleteRentalTicket(int id);
+    RentalTicket getRentalTicket(int id);
     void deleteAll();
 }

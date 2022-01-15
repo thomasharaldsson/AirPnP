@@ -25,6 +25,7 @@
                         <li>Vehicle (registration number): ${rentalticket.getVehicle().getRegistrationNumber()}</li>
                         <li>Customer: ${rentalticket.getCustomer().getFirstName()} ${rentalticket.getCustomer().getSurName()}</li>
                         <li>Parking Space (street address): ${rentalticket.getParkingSpace().getStreetAddress()}</li>
+                        <li><a href="/rentalticket/delete/${rentalticket.id}" class="btn btn-danger mx-1" id="delbutt">delete</a></li>
                     </ul>
                 </div>
             </c:forEach>
