@@ -36,10 +36,8 @@ public class RentalTicketProductionImpl implements RentalTicketService {
             ParkingSpace toUpdate = parkingSpaceService.getParkingSpaceById(rentalTicket.getParkingSpace().getId());
             toUpdate.setTicket(rentalTicket);
             parkingSpaceService.updateParkingSpace(toUpdate);
-            System.out.println("Prod impl");
         } catch (Exception e){
             System.out.println(e.getMessage());
-            System.out.println("Prod impl");
         }
     }
 

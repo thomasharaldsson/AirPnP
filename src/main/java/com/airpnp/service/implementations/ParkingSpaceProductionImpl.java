@@ -44,7 +44,6 @@ public class ParkingSpaceProductionImpl implements ParkingSpaceService {
                 toReturn.add(p);
             }
         }
-        System.out.println("Getting all parking spaces");
         return toReturn;
     }
 
@@ -54,7 +53,6 @@ public class ParkingSpaceProductionImpl implements ParkingSpaceService {
         if (!data.existsById(id)) {
             throw new ParkingSpaceNotFoundException("Unable to update space since parkingspace with that id=" + id + " doesn't exist");
         }
-        System.out.println("Parking space being updated");
         data.save(parkingSpace);
     }
 
