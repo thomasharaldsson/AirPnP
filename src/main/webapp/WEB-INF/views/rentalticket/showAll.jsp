@@ -38,6 +38,7 @@
     </c:when>
     <c:otherwise>
         You have not added any tickets yet.
+        <a href="create" class="btn btn-danger mx-1" id="addbutt">add new rental tickets</a>
     </c:otherwise>
 </c:choose>
 

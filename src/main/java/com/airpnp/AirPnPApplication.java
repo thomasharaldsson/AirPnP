@@ -47,9 +47,11 @@ public class AirPnPApplication {
 			rentalTicketService.deleteAll();
 			vehicleService.deleteAll();
 			vehicleTypeService.deleteAll();
+
 			customerService.deleteAll();
-			adminService.deleteAll();
 			parkingSpaceService.deleteAll();
+			adminService.deleteAll();
+
 
 			// Create some customers:
 			Customer c1 = new Customer("Jonas", "Backlund", "jonas@outlook.com", "555.1234", "jonas", "space123");
