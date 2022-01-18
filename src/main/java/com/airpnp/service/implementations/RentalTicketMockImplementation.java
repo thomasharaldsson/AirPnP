@@ -46,7 +46,7 @@ public class RentalTicketMockImplementation implements RentalTicketService {
         data.save(rentalTicket);
         try {
             ParkingSpace toUpdate = parkingSpaceService.getParkingSpaceById(rentalTicket.getParkingSpace().getId());
-            toUpdate.setTicket(rentalTicket);
+            //toUpdate.setTicket(rentalTicket);
             parkingSpaceService.updateParkingSpace(toUpdate);
         } catch (Exception e){
             System.out.println(e.getMessage());
@@ -57,7 +57,7 @@ public class RentalTicketMockImplementation implements RentalTicketService {
     public void deleteRentalTicket(int id) {
         try {
             ParkingSpace toUpdate = parkingSpaceService.getParkingSpaceById(data.getById(id).getParkingSpace().getId());
-            toUpdate.setTicket(null);
+            //toUpdate.setTicket(null);
             parkingSpaceService.updateParkingSpace(toUpdate);
         } catch (Exception e){
             System.out.println(e.getMessage());

@@ -9,8 +9,6 @@ public class ParkingSpace {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Id
     private Integer id;
-    @OneToOne
-    private RentalTicket ticket;
     private int price;
     private Date startDate;
     private Date endDate;
@@ -68,15 +66,6 @@ public class ParkingSpace {
 
     public void setStreetAddress(String streetAddress) {
         this.streetAddress = streetAddress;
-    }
-
-
-    public RentalTicket getTicket() {
-        return ticket;
-    }
-
-    public void setTicket(RentalTicket ticket) {
-        this.ticket = ticket;
     }
 
     @Override

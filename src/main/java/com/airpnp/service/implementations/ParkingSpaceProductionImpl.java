@@ -38,13 +38,7 @@ public class ParkingSpaceProductionImpl implements ParkingSpaceService {
 
     @Override
     public List<ParkingSpace> getAllParkingSpaces() {
-        List<ParkingSpace> toReturn = new ArrayList<>();
-        for(ParkingSpace p: data.findAll()) {
-            if(p.getTicket() == null) {
-                toReturn.add(p);
-            }
-        }
-        return toReturn;
+        return data.findAll();
     }
 
     @Override
