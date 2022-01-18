@@ -1,21 +1,16 @@
 package com.airpnp.service.implementations;
 
-import com.airpnp.data.ParkingSpaceRepository;
-import com.airpnp.data.RentalTicketRepository;
+import com.airpnp.data.repository.ParkingSpaceRepository;
+import com.airpnp.data.repository.RentalTicketRepository;
 import com.airpnp.data.exception.ParkingSpaceNotFoundException;
 import com.airpnp.domainmodel.ParkingSpace;
 import com.airpnp.service.ParkingSpaceService;
-import com.airpnp.service.RentalTicketService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.NoSuchElementException;
-import java.util.stream.Collectors;
 
 @Primary
 @Service("parkingSpaceService")

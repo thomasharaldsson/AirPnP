@@ -1,16 +1,12 @@
 package com.airpnp.service.implementations;
 
-import com.airpnp.data.VehicleRepository;
-import com.airpnp.data.exception.ParkingSpaceNotFoundException;
+import com.airpnp.data.repository.VehicleRepository;
 import com.airpnp.data.exception.VehicleNotFoundException;
-import com.airpnp.domainmodel.Customer;
 import com.airpnp.domainmodel.Vehicle;
 import com.airpnp.service.VehicleService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service("vehicleService")

@@ -1,4 +1,4 @@
-package com.airpnp.data;
+package com.airpnp.data.repository;
 
 import com.airpnp.domainmodel.ParkingSpace;
 import org.springframework.data.jpa.repository.JpaRepository;

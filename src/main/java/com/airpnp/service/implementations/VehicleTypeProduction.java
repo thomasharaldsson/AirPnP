@@ -1,7 +1,6 @@
 package com.airpnp.service.implementations;
 
-import com.airpnp.data.VehicleTypeRepository;
-import com.airpnp.data.exception.CustomerNotFoundException;
+import com.airpnp.data.repository.VehicleTypeRepository;
 import com.airpnp.data.exception.VehicleTypeNotFoundException;
 import com.airpnp.domainmodel.VehicleType;
 import com.airpnp.service.VehicleTypeService;

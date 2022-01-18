@@ -1,6 +1,6 @@
 package com.airpnp.service.implementations;
 
-import com.airpnp.data.AdminRepository;
+import com.airpnp.data.repository.AdminRepository;
 import com.airpnp.data.exception.UsernameAlreadyInUseException;
 import com.airpnp.domainmodel.Admin;
 import com.airpnp.service.CustomerService;

@@ -1,12 +1,9 @@
 package com.airpnp.service.implementations;
 
-import com.airpnp.authorization.UserDetailsService;
 import com.airpnp.authorization.proxy.UserPrincipal;
-import com.airpnp.data.ParkingSpaceRepository;
-import com.airpnp.data.RentalTicketRepository;
+import com.airpnp.data.repository.RentalTicketRepository;
 import com.airpnp.domainmodel.ParkingSpace;
 import com.airpnp.domainmodel.RentalTicket;
-import com.airpnp.service.AdminService;
 import com.airpnp.service.ParkingSpaceService;
 import com.airpnp.service.RentalTicketService;
 import org.springframework.beans.factory.annotation.Autowired;

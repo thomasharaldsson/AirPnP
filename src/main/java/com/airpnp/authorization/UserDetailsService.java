@@ -1,8 +1,8 @@
 package com.airpnp.authorization;
 
 import com.airpnp.authorization.proxy.UserPrincipal;
-import com.airpnp.data.CustomerRepository;
-import com.airpnp.data.AdminRepository;
+import com.airpnp.data.repository.CustomerRepository;
+import com.airpnp.data.repository.AdminRepository;
 import com.airpnp.domainmodel.Customer;
 import com.airpnp.domainmodel.Admin;
 import org.springframework.beans.factory.annotation.Autowired;

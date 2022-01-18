@@ -1,6 +1,6 @@
 package com.airpnp.service.implementations;
 
-import com.airpnp.data.CustomerRepository;
+import com.airpnp.data.repository.CustomerRepository;
 import com.airpnp.data.exception.CustomerNotFoundException;
 import com.airpnp.data.exception.UsernameAlreadyInUseException;
 import com.airpnp.domainmodel.Customer;
