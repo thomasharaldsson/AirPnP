@@ -1,5 +1,6 @@
 package com.airpnp.service.implementations;
 
+import com.airpnp.data.ParkingSpaceDao;
 import com.airpnp.data.repository.ParkingSpaceRepository;
 import com.airpnp.data.repository.RentalTicketRepository;
 import com.airpnp.data.exception.ParkingSpaceNotFoundException;
@@ -17,46 +18,31 @@ import java.util.NoSuchElementException;
 public class ParkingSpaceProductionImpl implements ParkingSpaceService {
 
     @Autowired
-    private ParkingSpaceRepository data;
-
-    @Autowired
-    private RentalTicketRepository rentalTicketRepository;
+    private ParkingSpaceDao data;
 
     @Override
     public ParkingSpace getParkingSpaceById(Integer id) throws ParkingSpaceNotFoundException {
-        if (data.findById(id).isPresent()) {
-            return data.findById(id).get();
-        } else {
-            throw new ParkingSpaceNotFoundException("There is no parking space with id = " + id + ".");
-        }
+        return data.getParkingSpaceById(id);
     }
 
     @Override
     public List<ParkingSpace> getAllParkingSpaces() {
-        return data.findAll();
+        return data.getAllParkingSpaces();
     }
 
     @Override
     public void updateParkingSpace(ParkingSpace parkingSpace) throws ParkingSpaceNotFoundException {
-        Integer id = parkingSpace.getId();
-        if (!data.existsById(id)) {
-            throw new ParkingSpaceNotFoundException("Unable to update space since parkingspace with that id=" + id + " doesn't exist");
-        }
-        data.save(parkingSpace);
+        data.updateParkingSpace(parkingSpace);
     }
 
     @Override
     public void addParkingSpace(ParkingSpace parkingSpace) {
-        if (parkingSpace == null) {
-            throw new NoSuchElementException("Can not add empty value");
-        } else {
-            data.save(parkingSpace);
-        }
+        data.addParkingSpace(parkingSpace);
     }
 
     @Override
-    public void deleteParkingSpace(int Id) throws ParkingSpaceNotFoundException {
-        data.delete(this.getParkingSpaceById(Id));
+    public void deleteParkingSpace(int id) throws ParkingSpaceNotFoundException {
+        data.deleteParkingSpace(id);
     }
 
     @Override
