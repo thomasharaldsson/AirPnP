@@ -5,8 +5,11 @@ import com.airpnp.data.repository.ParkingSpaceRepository;
 import com.airpnp.data.repository.RentalTicketRepository;
 import com.airpnp.domainmodel.ParkingSpace;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -15,6 +18,12 @@ public class ParkingSpaceRepositoryProduction implements ParkingSpaceDao {
 
     @Autowired
     private ParkingSpaceRepository data;
+
+    @Autowired
+    private JdbcTemplate jdbcTemplate;
+
+    private final static String QUERY_GET_ALL_AVAILABLE_PARKINGSPACES =
+            "SELECT * FROM PARKING_SPACE AS p WHERE p.id NOT IN (SELECT PARKING_SPACE_ID FROM RENTAL_TICKET);";
 
     @Override
     public ParkingSpace getParkingSpaceById(Integer id) throws ParkingSpaceNotFoundException {
@@ -29,6 +38,23 @@ public class ParkingSpaceRepositoryProduction implements ParkingSpaceDao {
     public List<ParkingSpace> getAllParkingSpaces() {
         return data.findAll();
     }
+
+    @Override
+    public List<ParkingSpace> getAllAvailableParkingSpaces() {
+
+        //return em.createQuery("select parkingSpace from ParkingSpace as parkingSpace").getResultList();
+        return jdbcTemplate.query(
+                QUERY_GET_ALL_AVAILABLE_PARKINGSPACES,
+                (rs, rowNum) ->
+                        new ParkingSpace(
+                                rs.getInt("price"),
+                                rs.getDate("start_date"),
+                                rs.getDate("end_date"),
+                                rs.getString("street_address")
+                        )
+        );
+    }
+
 
     @Override
     public void updateParkingSpace(ParkingSpace parkingSpace) throws ParkingSpaceNotFoundException {

@@ -38,7 +38,7 @@
                 <div>
                     <c:choose>
                         <c:when test="${!requestPath.equals('/parkingspace/showall') && !requestPath.equals('/')}">
-                            <a href="/parkingspace/showall" class="btn btn-danger mx-1">
+                            <a href="/parkingspace/showall/available" class="btn btn-danger mx-1">
                                 Available parkingspaces
                             </a>
                         </c:when>

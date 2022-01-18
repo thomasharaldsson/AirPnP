@@ -55,7 +55,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         security
                 .authorizeRequests().antMatchers("/", "/css/**").permitAll()
-                .antMatchers("/parkingspace/showall").permitAll()
+                .antMatchers("/parkingspace/showall/available").permitAll()
                 .antMatchers("/customer/*").permitAll()
                 .antMatchers("/vehicle/*").hasRole("CUSTOMER")
                 .anyRequest().authenticated()

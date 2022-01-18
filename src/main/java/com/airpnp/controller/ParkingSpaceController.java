@@ -39,6 +39,12 @@ public class ParkingSpaceController {
         return new ModelAndView("parkingspace/showAll", "parkingSpaces", allParkingSpaces);
     }
 
+    @RequestMapping(value = "/showall/available", method = RequestMethod.GET)
+    public ModelAndView showAllAvailableParkingspaces() {
+        List<ParkingSpace> parkingSpaces = parkingSpaceService.getAllAvailableParkingSpaces();
+        return new ModelAndView("parkingspace/showAll",  "parkingSpaces", parkingSpaces);
+    }
+
     @GetMapping(value = "/edit/{id}")
     @ResponseBody
     public ModelAndView editParkingspace(@PathVariable(required = true) int id) throws ParkingSpaceNotFoundException {

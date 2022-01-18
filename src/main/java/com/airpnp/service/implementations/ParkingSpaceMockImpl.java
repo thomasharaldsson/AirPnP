@@ -54,6 +54,11 @@ public class ParkingSpaceMockImpl implements ParkingSpaceService {
     }
 
     @Override
+    public List<ParkingSpace> getAllAvailableParkingSpaces() {
+        return null;
+    }
+
+    @Override
     public void updateParkingSpace(ParkingSpace parkingSpace) throws ParkingSpaceNotFoundException {
         //TODO: implement method.
     }

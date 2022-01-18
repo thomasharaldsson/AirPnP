@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -20,6 +22,9 @@ public class ParkingSpaceProductionImpl implements ParkingSpaceService {
     @Autowired
     private ParkingSpaceDao data;
 
+    @PersistenceContext
+    private EntityManager em;
+
     @Override
     public ParkingSpace getParkingSpaceById(Integer id) throws ParkingSpaceNotFoundException {
         return data.getParkingSpaceById(id);
@@ -28,6 +33,11 @@ public class ParkingSpaceProductionImpl implements ParkingSpaceService {
     @Override
     public List<ParkingSpace> getAllParkingSpaces() {
         return data.getAllParkingSpaces();
+    }
+
+    @Override
+    public List<ParkingSpace> getAllAvailableParkingSpaces() {
+        return data.getAllAvailableParkingSpaces();
     }
 
     @Override

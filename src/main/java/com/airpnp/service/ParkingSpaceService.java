@@ -11,6 +11,8 @@ public interface ParkingSpaceService {
 
     List<ParkingSpace> getAllParkingSpaces();
 
+    List<ParkingSpace> getAllAvailableParkingSpaces();
+
     void updateParkingSpace(ParkingSpace parkingSpace) throws ParkingSpaceNotFoundException;
 
     void addParkingSpace(ParkingSpace parkingSpace);
