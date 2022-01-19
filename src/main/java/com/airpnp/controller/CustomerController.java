@@ -4,6 +4,7 @@ import com.airpnp.data.exception.CustomerNotFoundException;
 import com.airpnp.data.exception.UsernameAlreadyInUseException;
 import com.airpnp.domainmodel.Customer;
 import com.airpnp.service.CustomerService;
+import com.airpnp.service.RatingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -16,6 +17,9 @@ public class CustomerController {
 
     @Autowired
     private CustomerService service;
+
+    @Autowired
+    private RatingService ratingService;
 
     //This method will save the customer into the database
     @RequestMapping(value = "/create", method = RequestMethod.POST)

@@ -32,6 +32,9 @@ public class AirPnPApplication {
 	@Autowired
 	private RentalTicketService rentalTicketService;
 
+	@Autowired
+	private RatingService ratingService;
+
 	public static void main(String[] args) {
 		SpringApplication.run(AirPnPApplication.class, args);
 	}
@@ -44,23 +47,31 @@ public class AirPnPApplication {
 			System.out.println("Initialize database..");
 
 			// Delete all vehicles, customers and lenders from database:
+
 			rentalTicketService.deleteAll();
 			vehicleService.deleteAll();
 			vehicleTypeService.deleteAll();
-
 			customerService.deleteAll();
 			parkingSpaceService.deleteAll();
 			adminService.deleteAll();
+			ratingService.deleteAll();
 
+			//create some ratings
+			Rating r1 = new Rating(2);
+			ratingService.addRating(r1);
+			Rating r2 = new Rating(3);
+			ratingService.addRating(r2);
+			Rating r3 = new Rating(4);
+			ratingService.addRating(r3);
 
 			// Create some customers:
-			Customer c1 = new Customer("Jonas", "Backlund", "jonas@outlook.com", "555.1234", "jonas", "space123");
+			Customer c1 = new Customer("Jonas", "Backlund", "jonas@outlook.com", "555.1234", "jonas", "space123", r1);
 			customerService.addCustomer(c1);
 
-			Customer c2 = new Customer("Stefan", "Lindell", "steffe@gov.au", "222265643", "stefan", "floor222");
+			Customer c2 = new Customer("Stefan", "Lindell", "steffe@gov.au", "222265643", "stefan", "floor222",r2);
 			customerService.addCustomer(c2);
 
-			Customer c3 = new Customer("Björn", "Borg", "bb@tennis.se", "11111133", "bjorn", "disc333");
+			Customer c3 = new Customer("Björn", "Borg", "bb@tennis.se", "11111133", "bjorn", "disc333",r3);
 			customerService.addCustomer(c3);
 
 			// Create some admins:

@@ -19,7 +19,8 @@
         <li>Firstname: ${customer.firstName}</li>
         <li>Lastname: ${customer.surName}</li>
         <li>E-mail: ${customer.email}</li>
-        <li>Phonenumber: ${customer.phoneNumber}</li><br>
+        <li>Phonenumber: ${customer.phoneNumber}</li>
+        <li>Rating: ${customer.rating}</li><br>
         <li><a href="/customer/edit/${customer.id}" class="btn btn-danger mx-1" id="addbutt">edit</a> <a href="/customer/delete/${customer.id}" class="btn btn-danger mx-1" id="addbutt">delete</a></li>
     </ul>
 <jsp:include page="/WEB-INF/views/footer.jsp"/>

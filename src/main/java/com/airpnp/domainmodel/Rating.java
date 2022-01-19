@@ -1,8 +1,6 @@
 package com.airpnp.domainmodel;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /** This is a simple rating class.
  *  A Person can take a rating.
@@ -13,6 +11,8 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "ratings")
 public class Rating {
+
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Id
     private int ratingId;
     private double rating;
@@ -24,6 +24,10 @@ public class Rating {
         setRating(rating);
     }
 
+
+    public int getRatingId() {
+        return ratingId;
+    }
 
     public void setRating(double rating) {
         if(rating > 0 && rating <= 5)

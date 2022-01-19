@@ -1,19 +1,14 @@
 package com.airpnp.service.implementations;
 
-import com.airpnp.data.repository.RentalTicketRepository;
 import com.airpnp.data.exception.ParkingSpaceNotFoundException;
-import com.airpnp.domainmodel.Customer;
+import com.airpnp.data.repository.RentalTicketRepository;
 import com.airpnp.domainmodel.ParkingSpace;
 import com.airpnp.domainmodel.RentalTicket;
-import com.airpnp.domainmodel.Vehicle;
 import com.airpnp.service.ParkingSpaceService;
 import com.airpnp.service.RentalTicketService;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.text.SimpleDateFormat;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class RentalTicketMockImplementation implements RentalTicketService {
 
@@ -23,19 +18,19 @@ public class RentalTicketMockImplementation implements RentalTicketService {
     @Autowired
     private ParkingSpaceService parkingSpaceService;
 
-    Map<Integer, RentalTicket> rentalTickets;
+    /*Map<Integer, RentalTicket> rentalTickets;
     public RentalTicketMockImplementation() {
         SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd");
         rentalTickets = new HashMap<>();
         try {
-            Customer currentCustomer = new Customer("George", "Silvant", "gs@france.com", "+99-234-7344", "123", "123");
+            Customer currentCustomer = new Customer("George", "Silvant", "gs@france.com", "+99-234-7344", "123", "123", new Rating(3));
             Vehicle vehicle = new Vehicle("ABC-123", currentCustomer, null);
             rentalTickets.put(1, new RentalTicket(currentCustomer, vehicle, new ParkingSpace(35, dateFormatter.parse("2020-03-07"), dateFormatter.parse("2020-03-14"), "Götaplatsen 3")));
         } catch (Exception e) {
 
         }
 
-    }
+    }*/
 
     //MUST CHANGE BEAN
     @Override
