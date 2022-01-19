@@ -34,11 +34,18 @@
     </select>
     <br/><br/>
     <h5> Select Parking Space (street address): </h5>
-    <select name="parkingSpace">
-        <c:forEach items="${listParkingSpace}" var="parkingspace">
-            <option value="${parkingspace.id}">${parkingspace.streetAddress}</option>
-        </c:forEach>
-    </select>
+    <c:choose>
+        <c:when test="${listParkingSpace.size() > 0}">
+            <select name="parkingSpace">
+                <c:forEach items="${listParkingSpace}" var="parkingspace">
+                    <option value="${parkingspace.id}">${parkingspace.streetAddress}</option>
+                </c:forEach>
+            </select>
+        </c:when>
+        <c:otherwise>
+            Sorry, no parkingspaces are available at the moment.
+        </c:otherwise>
+    </c:choose>
     <br/><br/>
     <h5> Select Vehicle (registration number): </h5>
     <select name="vehicle">
