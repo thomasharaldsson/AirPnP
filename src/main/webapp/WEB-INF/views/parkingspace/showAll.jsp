@@ -11,7 +11,7 @@
 <jsp:include page="/WEB-INF/views/header.jsp"/>
 
 <br/>
-<h2>All parking spaces</h2>
+<h2>${pageTitle}</h2>
 
 <c:choose>
     <c:when test="${parkingSpaces.size() > 0}">

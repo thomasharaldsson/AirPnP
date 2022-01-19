@@ -36,13 +36,17 @@ public class ParkingSpaceController {
         }
 
         List<ParkingSpace> allParkingSpaces = parkingSpaceService.getAllParkingSpaces();
-        return new ModelAndView("parkingspace/showAll", "parkingSpaces", allParkingSpaces);
+        ModelAndView modelAndView = new ModelAndView("parkingspace/showAll", "parkingSpaces", allParkingSpaces);
+        modelAndView.addObject("pageTitle", "All parkingspaces");
+        return modelAndView;
     }
 
     @RequestMapping(value = "/showall/available", method = RequestMethod.GET)
     public ModelAndView showAllAvailableParkingspaces() {
         List<ParkingSpace> parkingSpaces = parkingSpaceService.getAllAvailableParkingSpaces();
-        return new ModelAndView("parkingspace/showAll",  "parkingSpaces", parkingSpaces);
+        ModelAndView modelAndView = new ModelAndView("parkingspace/showAll",  "parkingSpaces", parkingSpaces);
+        modelAndView.addObject("pageTitle", "All currently available parkingspaces");
+        return modelAndView;
     }
 
     @GetMapping(value = "/edit/{id}")
@@ -62,7 +66,7 @@ public class ParkingSpaceController {
     @RequestMapping(value = "/edit", method = RequestMethod.POST)
     public String editParkingspace(ParkingSpace parkingspace) throws ParkingSpaceNotFoundException {
         parkingSpaceService.updateParkingSpace(parkingspace);
-        return "redirect:/parkingspace/showall";
+        return "redirect:/parkingspace/showall/";
     }
 
     @RequestMapping(value = "/delete/{id}", method = {RequestMethod.DELETE, RequestMethod.GET})
@@ -92,7 +96,7 @@ public class ParkingSpaceController {
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public String createParkingspace(ParkingSpace parkingspace) {
         parkingSpaceService.addParkingSpace(parkingspace);
-        return "redirect:/parkingspace/showall";
+        return "redirect:/parkingspace/showall/available";
     }
 
     public void lendParkingspace() {
