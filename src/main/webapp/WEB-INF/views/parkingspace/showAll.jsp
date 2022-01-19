@@ -24,20 +24,18 @@
                     <li>${parkingspace.streetAddress}</li>
                     <li><fmt:formatDate pattern="yyyy-MM-dd" value="${parkingspace.startDate}" /> until <fmt:formatDate pattern="yyyy-MM-dd" value="${parkingspace.endDate}" /></li>
                     <li>${parkingspace.price} SEK/day</li>
-                    <li><a href="show/${parkingspace.id}" class="btn btn-danger mx-1">open</a></li>
+                    <li><a href="/parkingspace/show/${parkingspace.id}" class="btn btn-danger mx-1">open</a>
                 </ul>
                 </div>
             </c:forEach>
         </ul>
 
         <div class="addbuttdiv">
-        <c:choose>
-            <c:when test="${!requestPath.equals('/parkingspace/create')}">
+            <c:if test="${!requestPath.equals('/parkingspace/create')}">
                 <a href="/parkingspace/create" class="btn btn-danger mx-1" id="addbutt">
                     Add new parkingspace
                 </a>
-            </c:when>
-        </c:choose>
+            </c:if>
         </div>
 
     </c:when>
