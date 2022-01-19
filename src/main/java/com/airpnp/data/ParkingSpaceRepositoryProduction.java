@@ -45,13 +45,15 @@ public class ParkingSpaceRepositoryProduction implements ParkingSpaceDao {
         //return em.createQuery("select parkingSpace from ParkingSpace as parkingSpace").getResultList();
         return jdbcTemplate.query(
                 QUERY_GET_ALL_AVAILABLE_PARKINGSPACES,
-                (rs, rowNum) ->
-                        new ParkingSpace(
-                                rs.getInt("price"),
-                                rs.getDate("start_date"),
-                                rs.getDate("end_date"),
-                                rs.getString("street_address")
-                        )
+                (rs, rowNum) -> {
+                        ParkingSpace parkingSpace = new ParkingSpace(
+                        rs.getInt("price"),
+                        rs.getDate("start_date"),
+                        rs.getDate("end_date"),
+                        rs.getString("street_address"));
+                        parkingSpace.setId(rs.getInt("id"));
+                        return parkingSpace;
+                }
         );
     }
 

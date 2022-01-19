@@ -22,8 +22,12 @@ public class RentalTicketProductionImpl implements RentalTicketService {
     private ParkingSpaceService parkingSpaceService;
 
     @Override
-    public List<RentalTicket> getAllRentalTickets() {
-        return data.findAll().stream().filter( r -> r.getCustomer().getId() == UserPrincipal.getCurrentlyLoggedInUserPrincipal().getCustomer().getId()).collect(Collectors.toList());
+    public List<RentalTicket> getAllRentalTicketsCurrentUser() {
+        int loggedInUserId = UserPrincipal.getCurrentlyLoggedInUserPrincipal().getCustomer().getId();
+        return data.findAll().stream().filter( ticket -> {
+            int ticketUserId = ticket.getCustomer().getId();
+            return ticketUserId == loggedInUserId;
+        }).collect(Collectors.toList());
     }
 
     @Override

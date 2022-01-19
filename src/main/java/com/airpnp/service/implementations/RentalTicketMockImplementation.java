@@ -70,7 +70,7 @@ public class RentalTicketMockImplementation implements RentalTicketService {
     }
 
     @Override
-    public List<RentalTicket> getAllRentalTickets() {
+    public List<RentalTicket> getAllRentalTicketsCurrentUser() {
         return data.findAll();
     }
 }
