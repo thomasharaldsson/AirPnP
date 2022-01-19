@@ -1,7 +1,7 @@
 package com.airpnp.domainmodel;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.util.*;
 
 @Entity
 public class ParkingSpace {
@@ -27,6 +27,21 @@ public class ParkingSpace {
 
     public ParkingSpace() {
     }
+
+    public List<Date> getAvailableDates() {
+        List<Date> dates = new ArrayList<Date>();
+        Calendar calendar = new GregorianCalendar();
+        calendar.setTime(this.startDate);
+
+        while (calendar.getTime().before(this.endDate))
+        {
+            Date result = calendar.getTime();
+            dates.add(result);
+            calendar.add(Calendar.DATE, 1);
+        }
+        return dates;
+    }
+
 
     public Integer getId() {
         return id;
