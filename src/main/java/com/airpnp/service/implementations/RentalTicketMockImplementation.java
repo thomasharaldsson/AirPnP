@@ -2,13 +2,15 @@ package com.airpnp.service.implementations;
 
 import com.airpnp.data.exception.ParkingSpaceNotFoundException;
 import com.airpnp.data.repository.RentalTicketRepository;
-import com.airpnp.domainmodel.ParkingSpace;
-import com.airpnp.domainmodel.RentalTicket;
+import com.airpnp.domainmodel.*;
 import com.airpnp.service.ParkingSpaceService;
 import com.airpnp.service.RentalTicketService;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.text.SimpleDateFormat;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class RentalTicketMockImplementation implements RentalTicketService {
 
@@ -18,7 +20,7 @@ public class RentalTicketMockImplementation implements RentalTicketService {
     @Autowired
     private ParkingSpaceService parkingSpaceService;
 
-    /*Map<Integer, RentalTicket> rentalTickets;
+    Map<Integer, RentalTicket> rentalTickets;
     public RentalTicketMockImplementation() {
         SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd");
         rentalTickets = new HashMap<>();
@@ -30,7 +32,7 @@ public class RentalTicketMockImplementation implements RentalTicketService {
 
         }
 
-    }*/
+    }
 
     //MUST CHANGE BEAN
     @Override
