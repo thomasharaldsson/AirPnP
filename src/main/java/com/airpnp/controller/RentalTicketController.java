@@ -40,7 +40,7 @@ public class RentalTicketController {
         ModelAndView modelAndView = new ModelAndView("rentalticket/createAndEdit", "rentalticket", rentalTicket);
         modelAndView.addObject("action", "");
         modelAndView.addObject("listCustomer", customerService.getAll());
-        modelAndView.addObject("listParkingSpace", parkingSpaceService.getAllParkingSpaces());
+        modelAndView.addObject("listParkingSpace", parkingSpaceService.getAllAvailableParkingSpaces());
         modelAndView.addObject("listVehicle", vehicleService.getAll());
         return modelAndView;
     }
