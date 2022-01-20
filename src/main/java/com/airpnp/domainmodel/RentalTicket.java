@@ -76,6 +76,10 @@ public class RentalTicket {
         this.customer = customer;
     }
 
+    public void removeCustomer() {
+        customer = null;
+    }
+
     public Vehicle getVehicle() {
         return vehicle;
     }
