@@ -17,6 +17,8 @@ public class Customer extends Person {
     @OneToMany(cascade = CascadeType.REMOVE)
     List<Vehicle> vehicles = new ArrayList<>();
 
+
+
     public Customer() {
 
     }
