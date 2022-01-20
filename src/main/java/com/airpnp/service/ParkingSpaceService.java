@@ -1,6 +1,7 @@
 package com.airpnp.service;
 
 import com.airpnp.data.exception.ParkingSpaceNotFoundException;
+import com.airpnp.domainmodel.Customer;
 import com.airpnp.domainmodel.ParkingSpace;
 
 import java.util.List;

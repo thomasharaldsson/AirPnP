@@ -10,7 +10,7 @@ public class Customer extends Person {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Id
     private Integer id;
-
+    boolean isAdmin;
     @ManyToMany
     List<Rating> ratings = new ArrayList<>();
 
@@ -18,8 +18,9 @@ public class Customer extends Person {
 
     }
 
-    public Customer(String firstName, String surName, String email, String phoneNumber, String username, String password, Rating r) {
+    public Customer(String firstName, String surName, String email, String phoneNumber, String username, String password, Rating r, boolean isAdmin) {
         super(firstName, surName, email, phoneNumber, username, password);
+        this.setAdmin(isAdmin);
         this.ratings.add(r);
     }
 
@@ -36,6 +37,14 @@ public class Customer extends Person {
         ratings.add(rating);
     }
 
+    public boolean isAdmin() {
+        return isAdmin;
+    }
+
+    public void setAdmin(boolean admin) {
+        isAdmin = admin;
+    }
+
     public double getRating() {
         double totalValueOfRatings = 0;
         for (Rating rating : ratings) {
@@ -49,4 +58,5 @@ public class Customer extends Person {
         return "Customer id=" + this.getId() + " name: " + this.getFirstName() + " "
                 + this.getSurName();// + " with average rating: " + getRating();
     }
+
 }

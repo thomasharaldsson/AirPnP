@@ -27,9 +27,6 @@ public class AirPnPApplication {
 	private ParkingSpaceService parkingSpaceService;
 
 	@Autowired
-	private AdminService adminService;
-
-	@Autowired
 	private RentalTicketService rentalTicketService;
 
 	@Autowired
@@ -53,7 +50,6 @@ public class AirPnPApplication {
 			vehicleTypeService.deleteAll();
 			customerService.deleteAll();
 			parkingSpaceService.deleteAll();
-			adminService.deleteAll();
 			ratingService.deleteAll();
 
 			//create some ratings
@@ -64,25 +60,32 @@ public class AirPnPApplication {
 			Rating r3 = new Rating(4);
 			ratingService.addRating(r3);
 
+			Rating rAdmin1 = new Rating(2);
+			ratingService.addRating(rAdmin1);
+			Rating rAdmin2 = new Rating(3);
+			ratingService.addRating(rAdmin2);
+			Rating rAdmin3 = new Rating(4);
+			ratingService.addRating(rAdmin3);
+
 			// Create some customers:
-			Customer c1 = new Customer("Jonas", "Backlund", "jonas@outlook.com", "555.1234", "jonas", "space123", r1);
+			Customer c1 = new Customer("Jonas", "Backlund", "jonas@outlook.com", "555.1234", "jonas", "space123", r1, false);
 			customerService.addCustomer(c1);
 
-			Customer c2 = new Customer("Stefan", "Lindell", "steffe@gov.au", "222265643", "stefan", "floor222",r2);
+			Customer c2 = new Customer("Stefan", "Lindell", "steffe@gov.au", "222265643", "stefan", "floor222",r2, false);
 			customerService.addCustomer(c2);
 
-			Customer c3 = new Customer("Björn", "Borg", "bb@tennis.se", "11111133", "bjorn", "disc333",r3);
+			Customer c3 = new Customer("Björn", "Borg", "bb@tennis.se", "11111133", "bjorn", "disc333",r3, false);
 			customerService.addCustomer(c3);
 
 			// Create some admins:
-			Admin a1 = new Admin("Lenny", "Bruce", "lenny@bbc.com", "08973247", "lenny", "motorzzz");
-			adminService.addAdmin(a1);
+			Customer a1 = new Customer("Lenny", "Bruce", "lenny@bbc.com", "08973247", "lenny", "motorzzz", rAdmin1, true);
+			customerService.addCustomer(a1);
 
-			Admin a2 = new Admin("Bo", "Breddahl", "bosse@flashback.se", "3456666", "bo", "cykel");
-			adminService.addAdmin(a2);
+			Customer a2 = new Customer("Bo", "Breddahl", "bosse@flashback.se", "3456666", "bo", "cykel", rAdmin2, true);
+			customerService.addCustomer(a2);
 
-			Admin a3 = new Admin("Franny", "Middleston", "fran@flashback.se", "3453366", "franny", "bike");
-			adminService.addAdmin(a3);
+			Customer a3 = new Customer("Franny", "Middleston", "fran@flashback.se", "3453366", "franny", "bike", rAdmin3, true);
+			customerService.addCustomer(a3);
 
 			// Create some vehicle types
 			VehicleType typeCar = new VehicleType("Car");
