@@ -22,9 +22,6 @@ public class ParkingSpaceProductionImpl implements ParkingSpaceService {
     @Autowired
     private ParkingSpaceDao data;
 
-    @PersistenceContext
-    private EntityManager em;
-
     @Override
     public ParkingSpace getParkingSpaceById(Integer id) throws ParkingSpaceNotFoundException {
         return data.getParkingSpaceById(id);
