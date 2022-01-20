@@ -103,8 +103,8 @@ public class ParkingSpaceController {
         //TODO
     }
 
-    @ExceptionHandler(ParkingSpaceNotFoundException.class)
-    public ModelAndView handleException(ParkingSpaceNotFoundException ex) {
+    @ExceptionHandler(Exception.class)
+    public ModelAndView handleException(Exception ex) {
         //Do something additional if required
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("parkingspace/error");
