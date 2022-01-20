@@ -1,11 +1,14 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <html>
 <head>
     <title>AirPnP Incorporated International 2021</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/css/main.css">
 </head>
 <body>
@@ -25,13 +28,28 @@
     <form:errors path="" element="div"/>
     ID: ${rentalticket.id}
     <form:hidden path="id" value="${id}"/>
-    <br/><br/>
-    <h5> Select Customer: </h5>
-    <select name="customer">
-        <c:forEach items="${listCustomer}" var="customer">
-            <option value="${customer.id}">${customer.firstName}</option>
-        </c:forEach>
-    </select>
+
+    <security:authorize access="hasRole('ADMIN')" var="isAdmin"/>
+    <security:authorize access="hasRole('CUSTOMER')" var="isCustomer"/>
+    <c:choose>
+        <c:when test="${isAdmin}">
+            <br/><br/>
+            <h5> Select Customer: </h5>
+            <select name="customer">
+                <c:forEach items="${listCustomer}" var="customer">
+                    <option value="${customer.id}">${customer.firstName}</option>
+                </c:forEach>
+            </select>
+        </c:when>
+        <c:when test="${isCustomer}">
+            <form:hidden path="customer" value="${UserPrincipal.getCurrentlyLoggedInUserPrincipal().customer.id}"/>
+        </c:when>
+        <c:otherwise>
+            Error: You need to be logged in to use this page.
+        </c:otherwise>
+    </c:choose>
+
+
     <br/><br/>
     <h5> Select Parking Space (street address): </h5>
     <c:choose>
