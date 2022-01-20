@@ -113,10 +113,10 @@ public class UserPrincipal implements UserDetails {
      *  user you have to call either the getCustomer() or the getAdmin() in the UserPrincipal class.
      *
      *  Example #1:
-     *  Customer currentCustomer = SecurityConfig.getCurrentlyLoggedInUserPrincipal().getCustomer();
+     *  Customer currentCustomer = UserPrincipal.getCurrentlyLoggedInUserPrincipal().getCustomer();
      *
      *  Example #2:
-     *  Admin currentAdmin = SecurityConfig.getCurrentlyLoggedInUserPrincipal().getAdmin();
+     *  Admin currentAdmin = UserPrincipal.getCurrentlyLoggedInUserPrincipal().getAdmin();
      *
      * @return Security object representing the currently logged in user. Or null if no user is currently logged in.
      */
