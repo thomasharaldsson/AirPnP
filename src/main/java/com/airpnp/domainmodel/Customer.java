@@ -11,7 +11,7 @@ public class Customer extends Person {
     @Id
     private Integer id;
     boolean isAdmin;
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.REMOVE)
     List<Rating> ratings = new ArrayList<>();
 
     @OneToMany(cascade = CascadeType.REMOVE)
