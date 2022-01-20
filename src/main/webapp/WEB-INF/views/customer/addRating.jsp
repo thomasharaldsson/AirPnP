@@ -9,8 +9,6 @@
 <body>
 
 <jsp:include page="/WEB-INF/views/header.jsp"/>
-
-<h2>Rate customer</h2>
 <br>
 <br>
 <h3>Rate your experince</h3>

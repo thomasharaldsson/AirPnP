@@ -15,11 +15,12 @@ public class RatingServiceProductionImplementation implements RatingService {
     @Autowired
     private RatingRepository data;
 
-
     @Override
-    public Rating updateRating(Rating rate) {
-        //Todo update rating
-        return null;
+    public void updateRating(Rating rate) throws RatingNotFoundException {
+        Integer ratingid = rate.getRatingId();
+        if (!data.existsById(ratingid)) {
+            throw new RatingNotFoundException("unable to update rating" + ratingid);
+        }
     }
 
     @Override

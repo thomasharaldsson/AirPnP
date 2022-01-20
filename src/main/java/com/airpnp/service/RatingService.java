@@ -6,7 +6,7 @@ import com.airpnp.domainmodel.Rating;
 import java.util.List;
 
 public interface RatingService {
-    Rating updateRating(Rating rate);
+    void updateRating(Rating rate) throws RatingNotFoundException;
     void addRating(Rating rate);
     List<Rating>getAll();
     void deleteAll();
