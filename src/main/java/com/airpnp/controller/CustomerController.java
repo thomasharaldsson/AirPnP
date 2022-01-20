@@ -57,6 +57,13 @@ public class CustomerController {
         // Problem: previous line is not returning a proper object from DB.
         return new ModelAndView("customer/showOne", "customer", customer);
     }
+    //rating
+    @GetMapping("/rate/{id}")
+    @ResponseBody
+    public ModelAndView rateCustomer(@PathVariable(required = true) int id) throws CustomerNotFoundException {
+        Customer customer = service.getCustomer(id);
+        return new ModelAndView("/customer/addRating", "customer", customer);
+    }
 
     @RequestMapping(value = "/edit", method = RequestMethod.POST)
     public String editCustomer(Customer customer) throws CustomerNotFoundException {
