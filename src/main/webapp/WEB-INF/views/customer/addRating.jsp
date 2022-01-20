@@ -13,24 +13,38 @@
 <h2>Rate customer</h2>
 <br>
 <br>
+<h3>Rate your experince</h3>
+<div class="rating">
+    <input type="radio" name="rating" value="5" id="5">
+        <label for="5">	&#9734;</label>
+    <input type="radio" name="rating" value="4" id="4">
+        <label for="4">	&#9734;</label>
+    <input type="radio" name="rating" value="3" id="3">
+        <label for="3">	&#9734;</label>
+    <input type="radio" name="rating" value="2" id="2">
+        <label for="2">	&#9734;</label>
+    <input type="radio" name="rating" value="1" id="1">
+        <label for="1">	&#9734;</label>
+</div>
 
-<ul class="itemlist">
-    <li>ID: ${vehicle.getId()}</li>
-    <li>Registration number: ${vehicle.getRegistrationNumber()}</li>
-    <li>Type: ${vehicle.type.name} </li>
-    <li>Owner: ${vehicle.getOwner().getFirstName()} ${vehicle.getOwner().getSurName()}</li>
-    <li>E-mail: ${vehicle.getOwner().getEmail()}</li>
-    <li>Phonenumber: ${vehicle.getOwner().getPhoneNumber()}</li><br>
-    <li><a href="/vehicle/edit/${vehicle.getId()}" class="btn btn-danger mx-1" id="addbutt">edit</a> <a href="/vehicle/delete/${vehicle.getId()}" class="btn btn-danger mx-1" id="addbutt">delete</a>
-    </li>
-</ul>
+<div class="addbuttdiv">
+    <a href="rate" class="btn btn-danger mx-1" id="addbutt">Submit (not working yet)</a>
+</div>
 
 <jsp:include page="/WEB-INF/views/footer.jsp"/>
 </body>
 </html>
 
 <style>
-    h2, ul{
+    h3 {
         text-align: center;
+        margin-top: 100px
+    }
+
+    @media only screen and (max-width: 600px) {
+        h3 {
+            font-size: 14px
+        }
+
     }
 </style>
