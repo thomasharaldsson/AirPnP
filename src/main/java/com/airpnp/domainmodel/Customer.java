@@ -58,6 +58,15 @@ public class Customer extends Person {
         return totalValueOfRatings;
     }
 
+    public void addVehicle(Vehicle vehicle) {
+        this.vehicles.add(vehicle);
+    }
+
+
+    public List<Vehicle> getVehicles() {
+        return this.vehicles;
+    }
+
     @Override
     public String toString() {
         return "Customer id=" + this.getId() + " name: " + this.getFirstName() + " "
