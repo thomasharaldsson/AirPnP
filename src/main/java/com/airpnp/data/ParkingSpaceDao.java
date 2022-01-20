@@ -13,6 +13,8 @@ public interface ParkingSpaceDao {
 
     List<ParkingSpace> getAllAvailableParkingSpaces();
 
+    boolean parkingSpaceIsAvailable(ParkingSpace parkingSpace);
+
     void updateParkingSpace(ParkingSpace parkingSpace) throws ParkingSpaceNotFoundException;
 
     void addParkingSpace(ParkingSpace parkingSpace);
