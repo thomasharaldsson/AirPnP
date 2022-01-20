@@ -1,5 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <html>
 <head>
     <title>AirPnP Incorporated International 2021</title>
@@ -29,10 +30,11 @@
                         <li>${parkingspace.price} SEK/day</li>
                         <li><a href="/parkingspace/show/${parkingspace.id}" class="btn btn-danger mx-1">open</a>
                             <security:authorize access="isAuthenticated()">
-                                <a href="#" class="btn btn-danger mx-1">
-                                    Rent (not working yet)
+                                <a href="/rentalticket/upcreate/${parkingspace.id}" class="btn btn-danger mx-1">
+                                    Rent
                                 </a>
-                            </security:authorize></li>
+                            </security:authorize>
+                        </li>
                     </ul>
                 </div>
             </c:forEach>

@@ -1,5 +1,9 @@
 package com.airpnp.controller;
 
+import com.airpnp.authorization.proxy.UserPrincipal;
+import com.airpnp.data.exception.ParkingSpaceNotFoundException;
+import com.airpnp.domainmodel.Customer;
+import com.airpnp.domainmodel.ParkingSpace;
 import com.airpnp.domainmodel.RentalTicket;
 import com.airpnp.service.CustomerService;
 import com.airpnp.service.ParkingSpaceService;
@@ -39,6 +43,24 @@ public class RentalTicketController {
         RentalTicket rentalTicket = new RentalTicket(customerService.getAll().get(0), vehicleService.getAll().get(0), parkingSpaceService.getAllParkingSpaces().get(0));
         ModelAndView modelAndView = new ModelAndView("rentalticket/createAndEdit", "rentalticket", rentalTicket);
         modelAndView.addObject("action", "");
+        modelAndView.addObject("listCustomer", customerService.getAll());
+        modelAndView.addObject("listParkingSpace", parkingSpaceService.getAllAvailableParkingSpaces());
+        modelAndView.addObject("listVehicle", vehicleService.getAll());
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/upcreate/{parkingSpaceId}", method = RequestMethod.GET)
+    public ModelAndView createRentalTicket(@PathVariable(required = true) int parkingSpaceId) throws ParkingSpaceNotFoundException {
+        ParkingSpace parkingSpace = parkingSpaceService.getParkingSpaceById(parkingSpaceId);
+        Customer selectedCustomer = UserPrincipal.getCurrentlyLoggedInUserPrincipal().getCustomer();
+        RentalTicket ticket = new RentalTicket();
+        ticket.setParkingSpace(parkingSpace);
+        ModelAndView modelAndView = new ModelAndView("rentalticket/createAndEdit");
+        modelAndView.addObject("rentalticket", ticket);
+        modelAndView.addObject("action", "/rentalticket/create");
+        modelAndView.addObject("selectedParkingSpace", parkingSpace);
+        modelAndView.addObject("selectedCustomer", selectedCustomer);
+        modelAndView.addObject("listVehicle", vehicleService.getAll());
         modelAndView.addObject("listCustomer", customerService.getAll());
         modelAndView.addObject("listParkingSpace", parkingSpaceService.getAllAvailableParkingSpaces());
         modelAndView.addObject("listVehicle", vehicleService.getAll());

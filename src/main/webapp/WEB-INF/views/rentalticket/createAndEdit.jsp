@@ -26,13 +26,14 @@
 
 
     <form:errors path="" element="div"/>
-    ID: ${rentalticket.id}
+    <%--ID: ${rentalticket.id}--%>
     <form:hidden path="id" value="${id}"/>
 
     <security:authorize access="hasRole('ADMIN')" var="isAdmin"/>
     <security:authorize access="hasRole('CUSTOMER')" var="isCustomer"/>
     <c:choose>
         <c:when test="${isAdmin}">
+            <%-- User is admin: let user select a customer for which rental ticket will be created: --%>
             <br/><br/>
             <h5> Select Customer: </h5>
             <select name="customer">
@@ -42,18 +43,25 @@
             </select>
         </c:when>
         <c:when test="${isCustomer}">
-            <form:hidden path="customer" value="${UserPrincipal.getCurrentlyLoggedInUserPrincipal().customer.id}"/>
+            <%-- User is not admin: don't show a drop-down menu. Rental ticket will automatically be created for the logged in user: --%>
+            Customer: ${selectedCustomer.firstName} ${selectedCustomer.surName}<br>
+            <form:hidden path="customer" value="${selectedCustomer.id}"/>
         </c:when>
         <c:otherwise>
             Error: You need to be logged in to use this page.
         </c:otherwise>
     </c:choose>
 
-
-    <br/><br/>
-    <h5> Select Parking Space (street address): </h5>
     <c:choose>
+        <c:when test="${selectedParkingSpace != null}">
+            <%-- User has already selected which parkingspace ID to use: don't show a drownmenu to select. --%>
+            Parkingspace: ${selectedParkingSpace.streetAddress}<br>
+            <form:hidden path="parkingSpace" value="${selectedParkingSpace.id}"/>
+        </c:when>
         <c:when test="${listParkingSpace.size() > 0}">
+            <%-- User has not yet selected which parkingspace ID to use: show a drownmenu to select. --%>
+            <br/><br/>
+            <h5> Select Parking Space (street address): </h5>
             <select name="parkingSpace">
                 <c:forEach items="${listParkingSpace}" var="parkingspace">
                     <option value="${parkingspace.id}">${parkingspace.streetAddress}</option>
@@ -61,6 +69,8 @@
             </select>
         </c:when>
         <c:otherwise>
+            <br/><br/>
+            <h5> Select Parking Space (street address): </h5>
             Sorry, no parkingspaces are available at the moment.
         </c:otherwise>
     </c:choose>
