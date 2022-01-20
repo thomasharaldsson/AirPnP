@@ -10,6 +10,7 @@ public class RentalTicket {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Id
     private Integer id;
+
     @ManyToOne
     private Customer customer;
 
