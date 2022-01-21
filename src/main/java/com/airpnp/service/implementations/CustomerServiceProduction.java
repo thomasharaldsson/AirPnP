@@ -1,5 +1,6 @@
 package com.airpnp.service.implementations;
 
+import ch.qos.logback.core.net.SyslogOutputStream;
 import com.airpnp.data.repository.CustomerRepository;
 import com.airpnp.data.exception.CustomerNotFoundException;
 import com.airpnp.data.exception.UsernameAlreadyInUseException;
@@ -73,8 +74,10 @@ public class CustomerServiceProduction implements CustomerService {
 
     @Override
     public void deleteCustomer(int id) throws CustomerNotFoundException {
-        List<RentalTicket> rentalTickets = this.rentalTicketService.getAllRentalTicketsCurrentUser();
+        Customer customerToDelete = this.getCustomer(id);
+        List<RentalTicket> rentalTickets = customerToDelete.getRentalTickets();
         for (RentalTicket rentalticket : rentalTickets) {
+            System.out.println("hghahahhahahahahahahaha" + rentalticket);
             rentalTicketService.deleteRentalTicket(rentalticket.getId());
         }
 
