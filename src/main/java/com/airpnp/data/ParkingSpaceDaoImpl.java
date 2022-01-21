@@ -19,9 +19,6 @@ public class ParkingSpaceDaoImpl implements ParkingSpaceDao {
     @Autowired
     private ParkingSpaceRepository data;
 
-    @Autowired
-    private JdbcTemplate jdbcTemplate;
-
     @PersistenceContext
     private EntityManager em;
 
