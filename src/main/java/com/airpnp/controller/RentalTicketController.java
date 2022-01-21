@@ -40,12 +40,13 @@ public class RentalTicketController {
 
     @RequestMapping(value = "/create", method = RequestMethod.GET)
     public ModelAndView createRentalTicket() {
+        Customer selectedCustomer = UserPrincipal.getCurrentlyLoggedInUserPrincipal().getCustomer();
         RentalTicket rentalTicket = new RentalTicket(customerService.getAll().get(0), vehicleService.getAll().get(0), parkingSpaceService.getAllParkingSpaces().get(0));
         ModelAndView modelAndView = new ModelAndView("rentalticket/create", "rentalticket", rentalTicket);
         modelAndView.addObject("action", "");
         modelAndView.addObject("listCustomer", customerService.getAll());
         modelAndView.addObject("listParkingSpace", parkingSpaceService.getAllAvailableParkingSpaces());
-        modelAndView.addObject("listVehicle", vehicleService.getAll());
+        modelAndView.addObject("listVehicle", vehicleService.getAll(selectedCustomer));
         return modelAndView;
     }
 
@@ -60,10 +61,9 @@ public class RentalTicketController {
         modelAndView.addObject("action", "/rentalticket/create");
         modelAndView.addObject("selectedParkingSpace", parkingSpace);
         modelAndView.addObject("selectedCustomer", selectedCustomer);
-        modelAndView.addObject("listVehicle", vehicleService.getAll());
+        modelAndView.addObject("listVehicle", vehicleService.getAll(selectedCustomer));
         modelAndView.addObject("listCustomer", customerService.getAll());
         modelAndView.addObject("listParkingSpace", parkingSpaceService.getAllAvailableParkingSpaces());
-        modelAndView.addObject("listVehicle", vehicleService.getAll());
         return modelAndView;
     }
 

@@ -7,6 +7,8 @@ import com.airpnp.domainmodel.Vehicle;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import java.util.List;
 
 @Repository
@@ -14,6 +16,11 @@ public class VehicleDaoImpl implements VehicleDao {
 
     @Autowired
     VehicleRepository data;
+
+    @PersistenceContext
+    private EntityManager em;
+
+    private final static String JPA_QUERY_GET_ALL_VEHICLE_FOR_CUSTOMER = "SELECT v FROM Vehicle v WHERE v.owner =: customer";
 
     @Override
     public void addVehicle(Vehicle newVehicle) {
@@ -27,7 +34,7 @@ public class VehicleDaoImpl implements VehicleDao {
 
     @Override
     public List<Vehicle> getAll(Customer customer) {
-        return null;
+        return em.createQuery(JPA_QUERY_GET_ALL_VEHICLE_FOR_CUSTOMER).setParameter("customer", customer).getResultList();
     }
 
     @Override

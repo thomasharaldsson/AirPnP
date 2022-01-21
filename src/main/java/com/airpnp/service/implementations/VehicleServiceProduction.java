@@ -29,8 +29,7 @@ public class VehicleServiceProduction implements VehicleService {
 
     @Override
     public List<Vehicle> getAll(Customer customer) {
-        // TODO: implement
-        return null;
+        return data.getAll(customer);
     }
 
     @Override
