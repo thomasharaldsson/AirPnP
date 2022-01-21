@@ -15,6 +15,8 @@ public class Customer extends Person {
     @ManyToMany(cascade = CascadeType.REMOVE)
     List<Rating> ratings = new ArrayList<>();
 
+    
+
     public Customer() {
 
     }
