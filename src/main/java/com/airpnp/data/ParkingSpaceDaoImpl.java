@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 @Repository
-public class ParkingSpaceRepositoryProduction implements ParkingSpaceDao {
+public class ParkingSpaceDaoImpl implements ParkingSpaceDao {
 
     @Autowired
     private ParkingSpaceRepository data;
