@@ -57,10 +57,7 @@ public class RentalTicketProductionImpl implements RentalTicketService {
         } catch (Exception e){
             System.out.println(e.getMessage());
         }
-        RentalTicket rentalTicketToDelete = this.getRentalTicket(id);
-        rentalTicketToDelete.removeCustomer();
-        data.save(rentalTicketToDelete);
-        data.delete(rentalTicketToDelete);
+        data.delete(this.getRentalTicket(id));
 
     }
 
