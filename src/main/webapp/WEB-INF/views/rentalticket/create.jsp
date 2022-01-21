@@ -13,11 +13,9 @@
 </head>
 <body>
 <jsp:include page="/WEB-INF/views/header.jsp"/>
-<c:choose>
-    <c:otherwise>
-        <h1>Create new rental ticket</h1>
-    </c:otherwise>
-</c:choose>
+
+<h1>Create new rental ticket</h1>
+
 
 <form:form modelAttribute="rentalticket" action="${action}">
 

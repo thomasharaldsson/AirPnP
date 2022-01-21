@@ -41,7 +41,7 @@ public class RentalTicketController {
     @RequestMapping(value = "/create", method = RequestMethod.GET)
     public ModelAndView createRentalTicket() {
         RentalTicket rentalTicket = new RentalTicket(customerService.getAll().get(0), vehicleService.getAll().get(0), parkingSpaceService.getAllParkingSpaces().get(0));
-        ModelAndView modelAndView = new ModelAndView("rentalticket/createAndEdit", "rentalticket", rentalTicket);
+        ModelAndView modelAndView = new ModelAndView("rentalticket/create", "rentalticket", rentalTicket);
         modelAndView.addObject("action", "");
         modelAndView.addObject("listCustomer", customerService.getAll());
         modelAndView.addObject("listParkingSpace", parkingSpaceService.getAllAvailableParkingSpaces());
@@ -55,7 +55,7 @@ public class RentalTicketController {
         Customer selectedCustomer = UserPrincipal.getCurrentlyLoggedInUserPrincipal().getCustomer();
         RentalTicket ticket = new RentalTicket();
         ticket.setParkingSpace(parkingSpace);
-        ModelAndView modelAndView = new ModelAndView("rentalticket/createAndEdit");
+        ModelAndView modelAndView = new ModelAndView("rentalticket/create");
         modelAndView.addObject("rentalticket", ticket);
         modelAndView.addObject("action", "/rentalticket/create");
         modelAndView.addObject("selectedParkingSpace", parkingSpace);
