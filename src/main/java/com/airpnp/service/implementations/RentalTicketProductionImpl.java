@@ -4,6 +4,7 @@ import com.airpnp.authorization.proxy.UserPrincipal;
 import com.airpnp.data.repository.RentalTicketRepository;
 import com.airpnp.domainmodel.ParkingSpace;
 import com.airpnp.domainmodel.RentalTicket;
+import com.airpnp.service.CustomerService;
 import com.airpnp.service.ParkingSpaceService;
 import com.airpnp.service.RentalTicketService;
 import org.springframework.beans.factory.annotation.Autowired;

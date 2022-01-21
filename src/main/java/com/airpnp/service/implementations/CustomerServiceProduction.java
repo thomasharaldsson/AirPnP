@@ -4,7 +4,9 @@ import com.airpnp.data.repository.CustomerRepository;
 import com.airpnp.data.exception.CustomerNotFoundException;
 import com.airpnp.data.exception.UsernameAlreadyInUseException;
 import com.airpnp.domainmodel.Customer;
+import com.airpnp.domainmodel.RentalTicket;
 import com.airpnp.service.CustomerService;
+import com.airpnp.service.RentalTicketService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -19,6 +21,10 @@ public class CustomerServiceProduction implements CustomerService {
 
     @Autowired
     private CustomerRepository data;
+
+    @Autowired
+    private RentalTicketService rentalTicketService;
+
     private final PasswordEncoder passwordEncoder;
 
     public CustomerServiceProduction() {
@@ -67,6 +73,11 @@ public class CustomerServiceProduction implements CustomerService {
 
     @Override
     public void deleteCustomer(int id) throws CustomerNotFoundException {
+        List<RentalTicket> rentalTickets = this.rentalTicketService.getAllRentalTicketsCurrentUser();
+        for (RentalTicket rentalticket : rentalTickets) {
+            rentalTicketService.deleteRentalTicket(rentalticket.getId());
+        }
+
         data.delete(this.getCustomer(id));
     }
 
