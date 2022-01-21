@@ -11,14 +11,9 @@ public class Customer extends Person {
     @Id
     private Integer id;
     boolean isAdmin;
+
     @ManyToMany(cascade = CascadeType.REMOVE)
     List<Rating> ratings = new ArrayList<>();
-
-    @OneToMany(cascade = CascadeType.REMOVE)
-    List<Vehicle> vehicles = new ArrayList<>();
-
-    @OneToMany(cascade = CascadeType.REMOVE)
-    List<RentalTicket> rentalTickets = new ArrayList<>();
 
     public Customer() {
 
@@ -57,23 +52,6 @@ public class Customer extends Person {
             totalValueOfRatings = (totalValueOfRatings + rating.getRating()) / ratings.size();
         }
         return totalValueOfRatings;
-    }
-
-    public void addVehicle(Vehicle vehicle) {
-        this.vehicles.add(vehicle);
-    }
-
-
-    public List<Vehicle> getVehicles() {
-        return this.vehicles;
-    }
-
-    public void addRentalTicket(RentalTicket rt) {
-        this.rentalTickets.add(rt);
-    }
-
-    public List<RentalTicket> getRentalTickets() {
-        return this.rentalTickets;
     }
 
     @Override

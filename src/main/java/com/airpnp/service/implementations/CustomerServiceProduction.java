@@ -74,13 +74,6 @@ public class CustomerServiceProduction implements CustomerService {
 
     @Override
     public void deleteCustomer(int id) throws CustomerNotFoundException {
-        Customer customerToDelete = this.getCustomer(id);
-        List<RentalTicket> rentalTickets = customerToDelete.getRentalTickets();
-        for (RentalTicket rentalticket : rentalTickets) {
-            System.out.println("hghahahhahahahahahahaha" + rentalticket);
-            rentalTicketService.deleteRentalTicket(rentalticket.getId());
-        }
-
         data.delete(this.getCustomer(id));
     }
 

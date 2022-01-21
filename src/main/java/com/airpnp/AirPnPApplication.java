@@ -92,7 +92,7 @@ public class AirPnPApplication {
 			VehicleType typeMotorcycle = new VehicleType("Motorcycle");
 			VehicleType typeBike = new VehicleType("Big rig truck & trailer");
 
-			// Create some vehicles and add to Customer:
+			// Create some vehicles
 			Vehicle v1 = new Vehicle("JON-141", c1, typeCar);
 			vehicleService.addVehicle(v1);
 
@@ -101,10 +101,6 @@ public class AirPnPApplication {
 
 			Vehicle v3 = new Vehicle("TOP-221", c3, typeMotorcycle);
 			vehicleService.addVehicle(v3);
-
-			c1.addVehicle(v1);
-			c3.addVehicle(v2);
-			c3.addVehicle(v3);
 
 
 			//Create some parkingspaces:
@@ -119,15 +115,12 @@ public class AirPnPApplication {
 			ParkingSpace p3 = new ParkingSpace(35, format.parse ( "2022-02-01" ), format.parse ( "2022-02-07" ), "Sjömansgatan 11");
 			parkingSpaceService.addParkingSpace(p3);
 
-			//Create some rental tickets and add to Customer:
+			//Create some rental tickets
 			RentalTicket t1 = new RentalTicket(c1, v1, p1);
 			rentalTicketService.addRentalTicket(t1);
 
 			RentalTicket t2 = new RentalTicket(c3, v2, p2);
 			rentalTicketService.addRentalTicket(t2);
-
-			c1.addRentalTicket(t1);
-			c3.addRentalTicket(t2);
 		};
 	}
 }

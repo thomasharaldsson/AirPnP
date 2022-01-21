@@ -11,7 +11,7 @@ public class RentalTicket {
     @Id
     private Integer id;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.REMOVE)
     private Customer customer;
 
     @ManyToOne
