@@ -86,7 +86,7 @@
             Sorry, no parkingspaces are available at the moment.
         </c:otherwise>
     </c:choose>
-    <br/><br/>
+    <br/>
 
     <%-- Select vehicle: display dropdown menu --%>
     <h5> Select Vehicle (registration number): </h5>
