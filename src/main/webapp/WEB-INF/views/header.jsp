@@ -70,10 +70,10 @@
                                 <li><hr class="dropdown-divider"></li>
                                 <li><a class="dropdown-item" href="/vehicle/showall" style="color: white">Manage all
                                     vehicles</a></li>
-                                <li><a class="dropdown-item " href="/customer/showall" style="color: white">Manage all
-                                    customers</a></li>
                                 <li><a class="dropdown-item" href="/parkingspace/showall" style="color: white">
                                     Show all parking spaces</a></li>
+                                <li><a class="dropdown-item " href="/customer/showall" style="color: white">Manage all
+                                    customers</a></li>
 
                             </security:authorize>
                         </ul>
