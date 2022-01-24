@@ -2,7 +2,7 @@ package com.airpnp.data;
 
 import com.airpnp.data.exception.RentalTicketNotFoundException;
 import com.airpnp.data.repository.RentalTicketRepository;
-import com.airpnp.data.repository.VehicleRepository;
+import com.airpnp.domainmodel.Customer;
 import com.airpnp.domainmodel.RentalTicket;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -18,16 +18,22 @@ public class RentalTicketDaoImpl implements RentalTicketDao {
     @PersistenceContext
     private EntityManager em;
 
-    private final static String JPA_QUERY_GET_RENTAL_TICKETS_FOR_CUSTOMER = "SELECT r FROM RentalTicket r WHERE r.customer =: customer";
+    private final static String JPA_QUERY_GET_RENTAL_TICKETS_FOR_CUSTOMER = "SELECT r FROM RENTAL_TICKETS r WHERE r.customer =: customer";
 
     @Override
     public void addRentalTicket(RentalTicket newRentalTicket) {
-
+        data.save(newRentalTicket);
     }
 
     @Override
     public List<RentalTicket> getAll() {
-        return null;
+        return data.findAll();
+    }
+
+    // Get all rental tickets from this customer
+    @Override
+    public List<RentalTicket> getAll(Customer customer) {
+        return em.createQuery(JPA_QUERY_GET_RENTAL_TICKETS_FOR_CUSTOMER).setParameter("customer", customer).getResultList();
     }
 
     @Override
@@ -44,7 +50,7 @@ public class RentalTicketDaoImpl implements RentalTicketDao {
     public void deleteRentalTicket(int id) throws RentalTicketNotFoundException {
 
     }
-
+    
     @Override
     public void deleteAll() {
 
