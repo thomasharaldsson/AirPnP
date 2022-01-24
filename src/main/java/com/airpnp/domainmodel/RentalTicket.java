@@ -79,6 +79,10 @@ public class RentalTicket {
         customer = null;
     }
 
+    public void removeParkingSpaces() {
+        parkingSpace = null;
+    }
+
     public Vehicle getVehicle() {
         return vehicle;
     }

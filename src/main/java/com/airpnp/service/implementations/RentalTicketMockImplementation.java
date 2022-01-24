@@ -67,6 +67,11 @@ public class RentalTicketMockImplementation implements RentalTicketService {
     }
 
     @Override
+    public List<RentalTicket> getRentalTicketsByCustomerId(Customer customer) {
+        return null;
+    }
+
+    @Override
     public void deleteAll() {
         // TODO: implement method.
     }

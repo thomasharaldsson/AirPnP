@@ -58,8 +58,9 @@ public class RentalTicketProductionImpl implements RentalTicketService {
         return data.findById(id).get();
     }
 
-    public RentalTicket getRentalTicketByCustomerId(int id) {
-        return null;
+    @Override
+    public List<RentalTicket> getRentalTicketsByCustomerId(Customer customer) {
+        return rentalTicketDao.getAll(customer);
     }
 
     @Override
@@ -72,15 +73,6 @@ public class RentalTicketProductionImpl implements RentalTicketService {
         } catch (Exception e){
             System.out.println(e.getMessage());
         }
-        Customer customer = customerService.findCustomerByRentalTicketId(id);
-        List<RentalTicket> customerRentalTickets = rentalTicketDao.getAll(customer);
-
-        for(RentalTicket ticket : customerRentalTickets) {
-            data.delete(ticket);
-        }
-
-        data.delete(this.getRentalTicket(id));
-
     }
 
     @Override
