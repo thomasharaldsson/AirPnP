@@ -48,6 +48,10 @@ public class RentalTicketProductionImpl implements RentalTicketService {
         return data.findById(id).get();
     }
 
+    public RentalTicket getRentalTicketByCustomerId(int id) {
+        return null;
+    }
+
     @Override
     public void deleteRentalTicket(int id) {
         try {

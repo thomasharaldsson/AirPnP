@@ -84,6 +84,16 @@ public class RentalTicket {
         return vehicle;
     }
 
+    public RentalTicket getRentalTicketByCustomerId(int id) {
+        if (id == customer.getId()) {
+            return this;
+        }
+        else {
+            System.out.println("Did not find a rental ticket containing this customer ID");
+            return null;
+        }
+    }
+
     public void setVehicle(Vehicle vehicle) {
         this.vehicle = vehicle;
     }
