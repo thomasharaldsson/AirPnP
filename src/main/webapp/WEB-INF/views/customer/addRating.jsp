@@ -12,6 +12,8 @@
 <br>
 <br>
 <h3>Rate your experince</h3>
+
+<form method="post">
 <div class="rating">
     <input type="radio" name="rating" value="5" id="5">
         <label for="5">	&#9734;</label>
@@ -26,9 +28,9 @@
 </div>
 
 <div class="addbuttdiv">
-    <a href="rate" class="btn btn-danger mx-1" id="addbutt">Submit (not working yet)</a>
+    <a href="/customer/showall" class="btn btn-danger mx-1" id="addbutt">Submit (not working yet)</a>
 </div>
-
+</form>
 <jsp:include page="/WEB-INF/views/footer.jsp"/>
 </body>
 </html>
