@@ -32,13 +32,13 @@
         </ul>
 
         <div class="addbuttdiv">
-            <a href="create" class="btn btn-danger mx-1" id="addbutt">add new rental tickets</a>
+            <h5> To buy a rental ticket, click Rent on an available parking space </h5>
         </div>
 
     </c:when>
     <c:otherwise>
         You have not added any tickets yet.
-        <a href="create" class="btn btn-danger mx-1" id="addbutt">add new rental tickets</a>
+        <h5> To buy a rental ticket, click Rent on an available parking space </h5>
     </c:otherwise>
 </c:choose>
 

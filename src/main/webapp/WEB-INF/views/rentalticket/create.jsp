@@ -73,11 +73,13 @@
 
             <br/><br/>
             <h5> Select Parking Space (street address): </h5>
-            <select name="parkingSpace">
+            <select name="parkingSpace" id="parkingSpaceId">
                 <c:forEach items="${listParkingSpace}" var="parkingspace">
                     <option value="${parkingspace.id}">${parkingspace.streetAddress}</option>
                 </c:forEach>
             </select>
+
+
         </c:when>
         <%-- No free parkingspaces could be found in database. --%>
         <c:otherwise>
@@ -96,6 +98,26 @@
         </c:forEach>
     </select>
     <br/><br/>
+
+    <h5> Start Date: </h5>
+
+    <select name="startDate" id="startDateId">
+        <c:forEach items="${listDates}" var="startDate">
+            <option value="${startDate}">${startDate.toString()}</option>
+        </c:forEach>
+    </select>
+    <br/><br/>
+
+    <h5> End Date: </h5>
+
+    <select name="endDate" id="endDateId">
+        <c:forEach items="${listDates}" var="endDate">
+            <option value="${endDate}">${endDate.toString()}</option>
+        </c:forEach>
+    </select>
+    <br/><br/>
+
+
     <div>
         <input type="submit"/>
     </div>
