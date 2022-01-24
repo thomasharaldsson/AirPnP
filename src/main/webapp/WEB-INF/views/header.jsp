@@ -58,7 +58,7 @@
                             <li><a class="dropdown-item " href="/customer/showall" style="color: white" >Manage customers</a></li>
                             </security:authorize>
                             <security:authorize access="hasRole('CUSTOMER')">
-                                <li><a class="dropdown-item" href="/vehicle/showall" style="color: white">My vehicles</a></li>
+                                <li><a class="dropdown-item" href="/vehicle/showall/currentuser" style="color: white">My vehicles</a></li>
                             </security:authorize>
 
                             <security:authorize access="hasRole('ADMIN')">

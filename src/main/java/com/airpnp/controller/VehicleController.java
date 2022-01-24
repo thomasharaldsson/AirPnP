@@ -16,8 +16,10 @@ import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+
 import java.util.List;
 
+import static com.airpnp.authorization.SecurityConfig.USER_ROLE_ADMIN;
 import static com.airpnp.authorization.SecurityConfig.USER_ROLE_CUSTOMER;
 
 @Controller
@@ -34,9 +36,25 @@ public class VehicleController {
     CustomerService customerService;
 
     @RequestMapping(value = "/showall", method = RequestMethod.GET)
+    @Secured({USER_ROLE_CUSTOMER, USER_ROLE_ADMIN})
     public ModelAndView showAllVehicles() {
+        Customer currentCustomer = UserPrincipal.getCurrentlyLoggedInUserPrincipal().getCustomer();
         List<Vehicle> allVehicles = vehicleService.getAll();
-        return new ModelAndView("vehicle/showAll", "vehicles", allVehicles);
+        ModelAndView modelAndView = new ModelAndView("vehicle/showAll", "vehicles", allVehicles);
+        modelAndView.addObject("currentUser", currentCustomer);
+        modelAndView.addObject("pageTitle", "All vehicles vehicles in AirPnP");
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/showall/currentuser", method = RequestMethod.GET)
+    @Secured({USER_ROLE_CUSTOMER, USER_ROLE_ADMIN})
+    public ModelAndView showAllVehiclesForCurrentUser() {
+        Customer currentCustomer = UserPrincipal.getCurrentlyLoggedInUserPrincipal().getCustomer();
+        List<Vehicle> allVehicles = vehicleService.getAll(currentCustomer);
+        ModelAndView modelAndView = new ModelAndView("vehicle/showAll");
+        modelAndView.addObject("vehicles", allVehicles);
+        modelAndView.addObject("pageTitle", "All vehicles for username " + currentCustomer.getUsername());
+        return modelAndView;
     }
 
     @Secured(USER_ROLE_CUSTOMER)
