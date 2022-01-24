@@ -52,7 +52,7 @@
         </ul>
 
         <div class="addbuttdiv">
-            <a href="create" class="btn btn-danger mx-1" id="addbutt">add new vehicle</a>
+            <a href="/vehicle/create" class="btn btn-danger mx-1" id="addbutt">add new vehicle</a>
         </div>
 
     </c:when>
