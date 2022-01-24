@@ -3,12 +3,14 @@ package com.airpnp.controller;
 import com.airpnp.data.exception.CustomerNotFoundException;
 import com.airpnp.data.exception.UsernameAlreadyInUseException;
 import com.airpnp.domainmodel.Customer;
+import com.airpnp.domainmodel.Rating;
 import com.airpnp.service.CustomerService;
 import com.airpnp.service.RatingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+
 import java.util.List;
 
 @Controller
@@ -63,6 +65,14 @@ public class CustomerController {
     public ModelAndView rateCustomer(@PathVariable(required = true) int id) throws CustomerNotFoundException {
         Customer customer = service.getCustomer(id);
         return new ModelAndView("/customer/addRating", "customer", customer);
+    }
+
+    @RequestMapping(value = "/addRating", method = RequestMethod.POST)
+    public String addRating(int customerId) throws CustomerNotFoundException {
+        Customer customer = service.getCustomer(customerId);
+        Rating rating = new Rating();
+        customer.addRating(rating);
+        return "redirect:/customer/showall";
     }
 
     @RequestMapping(value = "/edit", method = RequestMethod.POST)
