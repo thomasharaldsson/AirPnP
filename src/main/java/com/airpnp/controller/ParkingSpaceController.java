@@ -99,7 +99,8 @@ public class ParkingSpaceController {
     @ResponseBody
     public ModelAndView showParkingspace(@PathVariable(required = true) int id) throws ParkingSpaceNotFoundException {
         ParkingSpace parkingspace = parkingSpaceService.getParkingSpaceById(Integer.valueOf(id));
-        return new ModelAndView("parkingspace/showOne", "parkingspace", parkingspace);
+        Customer currentUser = UserPrincipal.getCurrentlyLoggedInUserPrincipal().getCustomer();
+        return new ModelAndView("parkingspace/showOne", "parkingspace", parkingspace).addObject("currentUser", currentUser);
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.GET)
