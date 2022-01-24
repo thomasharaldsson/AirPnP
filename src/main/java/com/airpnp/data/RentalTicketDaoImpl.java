@@ -18,7 +18,7 @@ public class RentalTicketDaoImpl implements RentalTicketDao {
     @PersistenceContext
     private EntityManager em;
 
-    private final static String JPA_QUERY_GET_RENTAL_TICKETS_FOR_CUSTOMER = "SELECT v FROM RentalTicket v WHERE v.owner =: customer";
+    private final static String JPA_QUERY_GET_RENTAL_TICKETS_FOR_CUSTOMER = "SELECT r FROM RentalTicket r WHERE r.customer =: customer";
 
     @Override
     public void addRentalTicket(RentalTicket newRentalTicket) {
