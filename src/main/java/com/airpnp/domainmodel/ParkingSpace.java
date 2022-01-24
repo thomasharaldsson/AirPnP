@@ -15,14 +15,14 @@ public class ParkingSpace {
     private String streetAddress;
     @ManyToOne
     @PrimaryKeyJoinColumn
-    private Customer owner;
+    private Customer customer;
 
     public ParkingSpace(int price, Date startDate, Date endDate, String streetAddress, Customer owner) {
         this.price = price;
         this.startDate = startDate;
         this.endDate = endDate;
         this.streetAddress = streetAddress;
-        this.owner = owner;
+        this.customer = owner;
     }
 
     public ParkingSpace() {
@@ -83,12 +83,12 @@ public class ParkingSpace {
         this.streetAddress = streetAddress;
     }
 
-    public Customer getOwner() {
-        return owner;
+    public Customer getCustomer() {
+        return customer;
     }
 
-    public void setOwner(Customer owner) {
-        this.owner = owner;
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 
     @Override
