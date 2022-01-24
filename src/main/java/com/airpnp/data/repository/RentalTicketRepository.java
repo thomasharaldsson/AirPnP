@@ -6,5 +6,4 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 public interface RentalTicketRepository extends JpaRepository<RentalTicket, Integer> {
-    void deleteRentalTicketById(Integer id);
 }
