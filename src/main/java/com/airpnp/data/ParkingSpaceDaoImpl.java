@@ -25,7 +25,7 @@ public class ParkingSpaceDaoImpl implements ParkingSpaceDao {
 
     private final static String JPA_QUERY_GET_ALL_AVAILABLE_PARKINGSPACES = "SELECT p FROM ParkingSpace p WHERE p NOT IN (SELECT t.parkingSpace FROM RentalTicket t)";
     private final static String JPA_QUERY_PARKINGSPACE_IS_AVAILABLE = "SELECT t.parkingSpace FROM RentalTicket t WHERE t.parkingSpace =: parkingSpace";
-    private final static String JPA_QUERY_GET_ALL_PARKINGSPACES_CREATED_BY_USER = "SELECT p FROM ParkingSpace p WHERE p.customer =: selectedCustomer";
+    private final static String JPA_QUERY_GET_ALL_PARKINGSPACES_CREATED_BY_USER = "SELECT p FROM ParkingSpace p WHERE p.owner =: selectedCustomer";
 
     @Override
     public ParkingSpace getParkingSpaceById(Integer id) throws ParkingSpaceNotFoundException {
