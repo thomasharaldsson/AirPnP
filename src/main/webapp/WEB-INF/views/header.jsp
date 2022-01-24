@@ -68,7 +68,7 @@
 
                             <security:authorize access="hasRole('ADMIN')">
                                 <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="/vehicle/showall/" style="color: white">Manage all
+                                <li><a class="dropdown-item" href="/vehicle/showall" style="color: white">Manage all
                                     vehicles</a></li>
                                 <li><a class="dropdown-item " href="/customer/showall" style="color: white">Manage all
                                     customers</a></li>
