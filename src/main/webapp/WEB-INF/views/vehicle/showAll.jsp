@@ -10,7 +10,7 @@
 <body>
 <jsp:include page="/WEB-INF/views/header.jsp"/>
 
-<h2>My vehicles</h2>
+<h2>${pageTitle}</h2>
 <br>
 <br>
 <c:choose>
@@ -43,7 +43,9 @@
                         <li>Registration number: ${vehicle.getRegistrationNumber()}</li>
                         <li>Owner: ${vehicle.owner.getFirstName()} ${vehicle.owner.getSurName()}</li>
                         <li>Type: ${vehicle.type.name} </li>
-                        <li><a href="show/${vehicle.id}" class="btn btn-danger mx-1">Edit</a></li>
+                        <c:if test="${(currentUser.id == vehicle.owner.id) || currentUser.admin}">
+                            <li><a href="show/${vehicle.id}" class="btn btn-danger mx-1">Edit</a></li>
+                        </c:if>
                     </ul>
                 </div>
             </c:forEach>
