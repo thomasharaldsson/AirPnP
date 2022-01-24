@@ -77,6 +77,11 @@ public class ParkingSpaceController {
 
     @RequestMapping(value = "/edit", method = RequestMethod.POST)
     public String editParkingspace(ParkingSpace parkingspace) throws ParkingSpaceNotFoundException {
+        // Owner of parkingspace is not supplied by HTML form on JSP page and that's why we have to get it now.
+        ParkingSpace existingParkingSpace =  parkingSpaceService.getParkingSpaceById(parkingspace.getId());
+        parkingspace.setOwner(existingParkingSpace.getOwner());
+
+        // Save the parkingspace
         parkingSpaceService.updateParkingSpace(parkingspace);
         return "redirect:/parkingspace/showall/";
     }
