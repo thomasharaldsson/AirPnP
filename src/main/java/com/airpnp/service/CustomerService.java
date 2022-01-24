@@ -20,4 +20,6 @@ public interface CustomerService {
     void deleteAll();
 
     Customer findByUsername(String username);
+
+    public Customer findCustomerByRentalTicketId(int id);
 }

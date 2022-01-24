@@ -89,4 +89,10 @@ public class CustomerServiceProduction implements CustomerService {
     public Customer findByUsername(String username) {
         return data.findByUsername(username);
     }
+
+    @Override
+    public Customer findCustomerByRentalTicketId(int id) {
+        Customer customer = rentalTicketService.getRentalTicket(id).getCustomer();
+        return customer;
+    }
 }

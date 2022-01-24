@@ -1,7 +1,10 @@
 package com.airpnp.service.implementations;
 
 import com.airpnp.authorization.proxy.UserPrincipal;
+import com.airpnp.data.CustomerDaoImpl;
+import com.airpnp.data.RentalTicketDaoImpl;
 import com.airpnp.data.repository.RentalTicketRepository;
+import com.airpnp.domainmodel.Customer;
 import com.airpnp.domainmodel.ParkingSpace;
 import com.airpnp.domainmodel.RentalTicket;
 import com.airpnp.service.CustomerService;
@@ -20,7 +23,14 @@ public class RentalTicketProductionImpl implements RentalTicketService {
     private RentalTicketRepository data;
 
     @Autowired
+    private RentalTicketDaoImpl rentalTicketDao;
+
+    @Autowired
     private ParkingSpaceService parkingSpaceService;
+
+    @Autowired
+    private CustomerService customerService;
+
 
     @Override
     public List<RentalTicket> getAllRentalTicketsCurrentUser() {
@@ -54,6 +64,7 @@ public class RentalTicketProductionImpl implements RentalTicketService {
 
     @Override
     public void deleteRentalTicket(int id) {
+
         try {
             ParkingSpace toUpdate = parkingSpaceService.getParkingSpaceById(data.getById(id).getParkingSpace().getId());
             //toUpdate.setTicket(null);
@@ -61,6 +72,13 @@ public class RentalTicketProductionImpl implements RentalTicketService {
         } catch (Exception e){
             System.out.println(e.getMessage());
         }
+        Customer customer = customerService.findCustomerByRentalTicketId(id);
+        List<RentalTicket> customerRentalTickets = rentalTicketDao.getAll(customer);
+
+        for(RentalTicket ticket : customerRentalTickets) {
+            data.delete(ticket);
+        }
+
         data.delete(this.getRentalTicket(id));
 
     }
