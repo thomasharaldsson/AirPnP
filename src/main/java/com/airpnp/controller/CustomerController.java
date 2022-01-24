@@ -62,10 +62,7 @@ public class CustomerController {
     @ResponseBody
     public ModelAndView rateCustomer(@PathVariable(required = true) int id) throws CustomerNotFoundException {
         Customer customer = service.getCustomer(id);
-
-        ModelAndView modelAndView = new ModelAndView("/customer/addRating");
-
-        return new ModelAndView("/customer/addRating");
+        return new ModelAndView("/customer/addRating", "customer", customer);
     }
 
     @RequestMapping(value = "/edit", method = RequestMethod.POST)
