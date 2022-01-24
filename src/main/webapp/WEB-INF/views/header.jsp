@@ -54,9 +54,11 @@
                         </button>
 
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                            <security:authorize access="hasRole('ADMIN')">
                             <li><a class="dropdown-item " href="/customer/showall" style="color: white" >Manage customers</a></li>
+                            </security:authorize>
                             <security:authorize access="hasRole('CUSTOMER')">
-                                <li><a class="dropdown-item" href="/vehicle/showall" style="color: white">Manage vehicles</a></li>
+                                <li><a class="dropdown-item" href="/vehicle/showall" style="color: white">My vehicles</a></li>
                             </security:authorize>
 
                             <security:authorize access="hasRole('ADMIN')">
@@ -66,7 +68,7 @@
                             </security:authorize>
 
                             <security:authorize access="hasRole('CUSTOMER')">
-                                <li><a class="dropdown-item" href="/rentalticket/showall" style="color: white">Manage Rental Tickets</a></li>
+                                <li><a class="dropdown-item" href="/rentalticket/showall" style="color: white">My reserved parkingspaces</a></li>
                                 <li><a class="dropdown-item" href="/customer/edit/<security:authentication property="principal.customer.id"/>" style="color: white">My user profile</a></li>
                             </security:authorize>
                         </ul>
