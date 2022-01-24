@@ -10,9 +10,7 @@ import java.util.List;
 public interface CustomerDao {
     void addCustomer(Customer newCustomer);
 
-    List<Vehicle> getAll();
-
-    List<Vehicle> getAll(Customer customer);
+    List<Customer> getAll();
 
     Customer getCustomerById(Integer id) throws CustomerNotFoundException;
 
