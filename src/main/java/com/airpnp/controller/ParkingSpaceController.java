@@ -30,23 +30,32 @@ public class ParkingSpaceController {
 
     @RequestMapping(value = "/showall", method = RequestMethod.GET)
     public ModelAndView showAllParkingspace() {
+        List<ParkingSpace> allParkingSpaces = parkingSpaceService.getAllParkingSpaces();
 
-        UserPrincipal user = authenticationFacade.getAuthenticatedUser();
-
-        if (user != null) {
-            System.out.println("Currently logged in customer has user id=" + user);
+        // If user is logged in: get currently logged in user.
+        Customer currentCustomer = null;
+        if (UserPrincipal.getCurrentlyLoggedInUserPrincipal() != null) {
+            currentCustomer = UserPrincipal.getCurrentlyLoggedInUserPrincipal().getCustomer();
         }
 
-        List<ParkingSpace> allParkingSpaces = parkingSpaceService.getAllParkingSpaces();
         ModelAndView modelAndView = new ModelAndView("parkingspace/showAll", "parkingSpaces", allParkingSpaces);
         modelAndView.addObject("pageTitle", "All parkingspaces");
+        modelAndView.addObject("currentUser", currentCustomer);
         return modelAndView;
     }
 
     @RequestMapping(value = "/showall/available", method = RequestMethod.GET)
     public ModelAndView showAllAvailableParkingspaces() {
         List<ParkingSpace> parkingSpaces = parkingSpaceService.getAllAvailableParkingSpaces();
+
+        // If user is logged in: get currently logged in user.
+        Customer currentCustomer = null;
+        if (UserPrincipal.getCurrentlyLoggedInUserPrincipal() != null) {
+            currentCustomer = UserPrincipal.getCurrentlyLoggedInUserPrincipal().getCustomer();
+        }
+
         ModelAndView modelAndView = new ModelAndView("parkingspace/showAll",  "parkingSpaces", parkingSpaces);
+        modelAndView.addObject("currentUser", currentCustomer);
         modelAndView.addObject("pageTitle", "All currently available parkingspaces");
         return modelAndView;
     }
@@ -54,10 +63,11 @@ public class ParkingSpaceController {
     @Secured({"ROLE_ADMIN", "ROLE_CUSTOMER"})
     @RequestMapping(value = "/showall/currentuser", method = RequestMethod.GET)
     public ModelAndView showAllAvailableParkingspacesForCurrentUser() {
-        Customer selectedCustomer = UserPrincipal.getCurrentlyLoggedInUserPrincipal().getCustomer();
-        List<ParkingSpace> parkingSpaces = parkingSpaceService.getAllParkingSpaces(selectedCustomer);
+        Customer currentCustomer = UserPrincipal.getCurrentlyLoggedInUserPrincipal().getCustomer();
+        List<ParkingSpace> parkingSpaces = parkingSpaceService.getAllParkingSpaces(currentCustomer);
         ModelAndView modelAndView = new ModelAndView("parkingspace/showAll",  "parkingSpaces", parkingSpaces);
-        modelAndView.addObject("pageTitle", "All parkingspaces for " + selectedCustomer.getUsername());
+        modelAndView.addObject("pageTitle", "All parkingspaces for " + currentCustomer.getUsername());
+        modelAndView.addObject("currentUser", currentCustomer);
         return modelAndView;
     }
 
@@ -100,7 +110,9 @@ public class ParkingSpaceController {
     public ModelAndView showParkingspace(@PathVariable(required = true) int id) throws ParkingSpaceNotFoundException {
         ParkingSpace parkingspace = parkingSpaceService.getParkingSpaceById(Integer.valueOf(id));
         Customer currentUser = UserPrincipal.getCurrentlyLoggedInUserPrincipal().getCustomer();
-        return new ModelAndView("parkingspace/showOne", "parkingspace", parkingspace).addObject("currentUser", currentUser);
+        ModelAndView modelAndView = new ModelAndView("parkingspace/showOne", "parkingspace", parkingspace);
+        modelAndView.addObject("currentUser", currentUser);
+        return modelAndView;
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.GET)

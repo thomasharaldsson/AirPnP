@@ -21,7 +21,8 @@
         <ul class="list">
             <c:forEach items="${parkingSpaces}" var="parkingspace">
                 <div class="card">
-                    <img src="https://cdn-icons-png.flaticon.com/512/1788/1788637.png" height="40px" width="40px" style="margin-left: 2.5em">
+                    <img src="https://cdn-icons-png.flaticon.com/512/1788/1788637.png" height="40px" width="40px"
+                         style="margin-left: 2.5em">
                     <ul class="itemlist">
                         <li class="hide">ID: ${parkingspace.id}</li>
                         <li>${parkingspace.streetAddress}</li>
@@ -31,9 +32,12 @@
                         <li>Username: ${parkingspace.owner.username}</li>
                         <li><a href="/parkingspace/show/${parkingspace.id}" class="btn btn-danger mx-1">open</a>
                             <security:authorize access="isAuthenticated()">
-                                <a href="/rentalticket/upcreate/${parkingspace.id}" class="btn btn-danger mx-1">
-                                    Rent
-                                </a>
+                                <%-- Prevent user from renting their own parkingspace: --%>
+                                <c:if test="${parkingspace.owner.id != currentUser.id}">
+                                    <a href="/rentalticket/upcreate/${parkingspace.id}" class="btn btn-danger mx-1">
+                                        Rent
+                                    </a>
+                                </c:if>
                             </security:authorize>
                         </li>
                     </ul>
