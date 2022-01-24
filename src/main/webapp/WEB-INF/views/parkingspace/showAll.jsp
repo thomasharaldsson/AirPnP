@@ -28,6 +28,7 @@
                         <li><fmt:formatDate pattern="yyyy-MM-dd" value="${parkingspace.startDate}"/> until
                             <fmt:formatDate pattern="yyyy-MM-dd" value="${parkingspace.endDate}"/></li>
                         <li>${parkingspace.price} SEK/day</li>
+                        <li>Username: ${parkingspace.owner.username}</li>
                         <li><a href="/parkingspace/show/${parkingspace.id}" class="btn btn-danger mx-1">open</a>
                             <security:authorize access="isAuthenticated()">
                                 <a href="/rentalticket/upcreate/${parkingspace.id}" class="btn btn-danger mx-1">

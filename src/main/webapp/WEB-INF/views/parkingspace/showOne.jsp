@@ -19,7 +19,8 @@
     <li>street address: ${parkingspace.streetAddress}</li>
     <li>start date: <fmt:formatDate pattern="yyyy-MM-dd" value="${parkingspace.startDate}" /></li>
     <li>end date: <fmt:formatDate pattern="yyyy-MM-dd" value="${parkingspace.endDate}" /></li>
-    <li>price: ${parkingspace.price}</li><br>
+    <li>price: ${parkingspace.price}</li>
+    <li>Username: ${parkingspace.owner.username}</li><br>
     <li><a href="/parkingspace/edit/${parkingspace.id}" class="btn btn-danger mx-1" id="addbutt">edit</a> <a href="/parkingspace/delete/${parkingspace.id}" class="btn btn-danger mx-1" id="addbutt">delete</a>
     </li>
 </ul>
