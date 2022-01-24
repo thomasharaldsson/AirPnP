@@ -3,9 +3,11 @@ package com.airpnp.controller;
 import com.airpnp.authorization.loggedinuser.IAuthenticationFacade;
 import com.airpnp.authorization.proxy.UserPrincipal;
 import com.airpnp.data.exception.ParkingSpaceNotFoundException;
+import com.airpnp.domainmodel.Customer;
 import com.airpnp.domainmodel.ParkingSpace;
 import com.airpnp.service.ParkingSpaceService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -87,14 +89,18 @@ public class ParkingSpaceController {
 
     @RequestMapping(value = "/create", method = RequestMethod.GET)
     public ModelAndView createParkingspace() {
-        ParkingSpace parkingSpace = new ParkingSpace(35, new Date(), new Date(), "Sparregatan 10");
+        Customer selectedCustomer = UserPrincipal.getCurrentlyLoggedInUserPrincipal().getCustomer();
+        ParkingSpace parkingSpace = new ParkingSpace(35, new Date(), new Date(), "Sparregatan 10", selectedCustomer);
         ModelAndView modelAndView = new ModelAndView("parkingspace/createAndEdit", "parkingspace", parkingSpace);
         modelAndView.addObject("action", "");
         return modelAndView;
     }
 
+    @Secured({"ROLE_ADMIN", "ROLE_CUSTOMER"})
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public String createParkingspace(ParkingSpace parkingspace) {
+        Customer selectedCustomer = UserPrincipal.getCurrentlyLoggedInUserPrincipal().getCustomer();
+        parkingspace.setOwner(selectedCustomer);
         parkingSpaceService.addParkingSpace(parkingspace);
         return "redirect:/parkingspace/showall/available";
     }

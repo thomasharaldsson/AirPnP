@@ -17,12 +17,12 @@ public class ParkingSpace {
     @PrimaryKeyJoinColumn
     private Customer owner;
 
-
-    public ParkingSpace(int price, Date startDate, Date endDate, String streetAddress) {
+    public ParkingSpace(int price, Date startDate, Date endDate, String streetAddress, Customer owner) {
         this.price = price;
         this.startDate = startDate;
         this.endDate = endDate;
         this.streetAddress = streetAddress;
+        this.owner = owner;
     }
 
     public ParkingSpace() {
@@ -81,6 +81,14 @@ public class ParkingSpace {
 
     public void setStreetAddress(String streetAddress) {
         this.streetAddress = streetAddress;
+    }
+
+    public Customer getOwner() {
+        return owner;
+    }
+
+    public void setOwner(Customer owner) {
+        this.owner = owner;
     }
 
     @Override

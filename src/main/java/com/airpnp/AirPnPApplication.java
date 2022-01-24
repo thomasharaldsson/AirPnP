@@ -48,8 +48,8 @@ public class AirPnPApplication {
 			rentalTicketService.deleteAll();
 			vehicleService.deleteAll();
 			vehicleTypeService.deleteAll();
-			customerService.deleteAll();
 			parkingSpaceService.deleteAll();
+			customerService.deleteAll();
 			ratingService.deleteAll();
 
 			//create some ratings
@@ -106,13 +106,13 @@ public class AirPnPApplication {
 			//Create some parkingspaces:
 			SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 
-			ParkingSpace p1 = new ParkingSpace(50, format.parse ( "2022-02-31" ), format.parse ( "2022-03-15" ), "Slottskogen 2");
+			ParkingSpace p1 = new ParkingSpace(50, format.parse ( "2022-02-31" ), format.parse ( "2022-03-15" ), "Slottskogen 2", c1);
 			parkingSpaceService.addParkingSpace(p1);
 
-			ParkingSpace p2 = new ParkingSpace(35, format.parse ( "2022-01-14" ), format.parse ( "2022-02-15" ), "Storgatan 52");
+			ParkingSpace p2 = new ParkingSpace(35, format.parse ( "2022-01-14" ), format.parse ( "2022-02-15" ), "Storgatan 52", c1);
 			parkingSpaceService.addParkingSpace(p2);
 
-			ParkingSpace p3 = new ParkingSpace(35, format.parse ( "2022-02-01" ), format.parse ( "2022-02-07" ), "Sjömansgatan 11");
+			ParkingSpace p3 = new ParkingSpace(35, format.parse ( "2022-02-01" ), format.parse ( "2022-02-07" ), "Sjömansgatan 11", c2);
 			parkingSpaceService.addParkingSpace(p3);
 
 			//Create some rental tickets
