@@ -4,6 +4,7 @@ import com.airpnp.data.ParkingSpaceDao;
 import com.airpnp.data.repository.ParkingSpaceRepository;
 import com.airpnp.data.repository.RentalTicketRepository;
 import com.airpnp.data.exception.ParkingSpaceNotFoundException;
+import com.airpnp.domainmodel.Customer;
 import com.airpnp.domainmodel.ParkingSpace;
 import com.airpnp.service.ParkingSpaceService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,5 +56,16 @@ public class ParkingSpaceProductionImpl implements ParkingSpaceService {
     @Override
     public void deleteAll() {
         data.deleteAll();
+    }
+
+    /**
+     * Get all parkingspaces that have been created by this user.
+     *
+     * @param selectedCustomer User whose parkingspaces to list.
+     * @return All parkingspaces that have been created by this user
+     */
+    @Override
+    public List<ParkingSpace> getAllParkingSpaces(Customer selectedCustomer) {
+        return data.getAllParkingSpaces(selectedCustomer);
     }
 }

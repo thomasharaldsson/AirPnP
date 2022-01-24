@@ -1,6 +1,7 @@
 package com.airpnp.data;
 
 import com.airpnp.data.exception.ParkingSpaceNotFoundException;
+import com.airpnp.domainmodel.Customer;
 import com.airpnp.domainmodel.ParkingSpace;
 
 import java.util.List;
@@ -23,4 +24,5 @@ public interface ParkingSpaceDao {
 
     void deleteAll();
 
+    List<ParkingSpace> getAllParkingSpaces(Customer selectedCustomer);
 }

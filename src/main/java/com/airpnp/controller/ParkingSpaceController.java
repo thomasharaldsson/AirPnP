@@ -51,6 +51,16 @@ public class ParkingSpaceController {
         return modelAndView;
     }
 
+    @Secured({"ROLE_ADMIN", "ROLE_CUSTOMER"})
+    @RequestMapping(value = "/showall/currentuser", method = RequestMethod.GET)
+    public ModelAndView showAllAvailableParkingspacesForCurrentUser() {
+        Customer selectedCustomer = UserPrincipal.getCurrentlyLoggedInUserPrincipal().getCustomer();
+        List<ParkingSpace> parkingSpaces = parkingSpaceService.getAllParkingSpaces(selectedCustomer);
+        ModelAndView modelAndView = new ModelAndView("parkingspace/showAll",  "parkingSpaces", parkingSpaces);
+        modelAndView.addObject("pageTitle", "All parkingspaces for " + selectedCustomer.getUsername());
+        return modelAndView;
+    }
+
     @GetMapping(value = "/edit/{id}")
     @ResponseBody
     public ModelAndView editParkingspace(@PathVariable(required = true) int id) throws ParkingSpaceNotFoundException {

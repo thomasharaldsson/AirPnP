@@ -21,4 +21,6 @@ public interface ParkingSpaceService {
     void deleteParkingSpace(int Id) throws ParkingSpaceNotFoundException;
 
     void deleteAll();
+
+    List<ParkingSpace> getAllParkingSpaces(Customer selectedCustomer);
 }
