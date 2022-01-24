@@ -116,10 +116,10 @@ public class AirPnPApplication {
 			parkingSpaceService.addParkingSpace(p3);
 
 			//Create some rental tickets
-			RentalTicket t1 = new RentalTicket(c1, v1, p1);
+			RentalTicket t1 = new RentalTicket(c1, v1, p1, format.parse ( "2022-02-31" ), format.parse ( "2022-03-15" ));
 			rentalTicketService.addRentalTicket(t1);
 
-			RentalTicket t2 = new RentalTicket(c3, v2, p2);
+			RentalTicket t2 = new RentalTicket(c3, v2, p2, format.parse ( "2022-01-14" ), format.parse ( "2022-02-15" ));
 			rentalTicketService.addRentalTicket(t2);
 		};
 	}

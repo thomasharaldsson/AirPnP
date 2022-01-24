@@ -1,7 +1,7 @@
 package com.airpnp.domainmodel;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.util.*;
 
 @Entity
 public class RentalTicket {
@@ -39,6 +39,13 @@ public class RentalTicket {
 
     private Date endDate;
 
+    public RentalTicket(Customer customer, Vehicle vehicle, ParkingSpace parkingSpace, Date startDate, Date endDate) {
+        this.customer = customer;
+        this.vehicle = vehicle;
+        this.parkingSpace = parkingSpace;
+        this.startDate = startDate;
+        this.endDate = endDate;
+    }
 
     public RentalTicket() {
 
@@ -52,12 +59,6 @@ public class RentalTicket {
         this.parkingSpace = parkingSpace;
     }
 
-    public RentalTicket(Customer customer, Vehicle vehicle, ParkingSpace parkingSpace) {
-
-        this.customer = customer;
-        this.vehicle = vehicle;
-        this.parkingSpace = parkingSpace;
-    }
 
     public Integer getId() {
         return id;
@@ -99,5 +100,19 @@ public class RentalTicket {
 
     public void setVehicle(Vehicle vehicle) {
         this.vehicle = vehicle;
+    }
+
+    public List<Date> getIncludedDates() {
+        List<Date> dates = new ArrayList<Date>();
+        Calendar calendar = new GregorianCalendar();
+        calendar.setTime(this.startDate);
+
+        while (calendar.getTime().before(this.endDate))
+        {
+            Date result = calendar.getTime();
+            dates.add(result);
+            calendar.add(Calendar.DATE, 1);
+        }
+        return dates;
     }
 }

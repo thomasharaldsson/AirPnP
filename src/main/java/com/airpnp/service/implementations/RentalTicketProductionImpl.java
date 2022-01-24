@@ -13,6 +13,7 @@ import com.airpnp.service.RentalTicketService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -78,5 +79,17 @@ public class RentalTicketProductionImpl implements RentalTicketService {
     @Override
     public void deleteAll() {
         data.deleteAll();
+    }
+
+    @Override
+    public List<RentalTicket> getRentalTicketsByParkingSpace(ParkingSpace parkingSpace) {
+        List<RentalTicket> toReturn = new ArrayList<>();
+        List<RentalTicket> alLRentalTickets = data.findAll();
+        for (RentalTicket rt: alLRentalTickets) {
+            if(rt.getParkingSpace().getStreetAddress().trim().equalsIgnoreCase(parkingSpace.getStreetAddress().trim())) {
+                toReturn.add(rt);
+            }
+        }
+        return toReturn;
     }
 }

@@ -1,18 +1,23 @@
 package com.airpnp.service.implementations;
 
 import com.airpnp.data.ParkingSpaceDao;
+import com.airpnp.data.RentalTicketDao;
 import com.airpnp.data.repository.ParkingSpaceRepository;
 import com.airpnp.data.repository.RentalTicketRepository;
 import com.airpnp.data.exception.ParkingSpaceNotFoundException;
 import com.airpnp.domainmodel.Customer;
 import com.airpnp.domainmodel.ParkingSpace;
+import com.airpnp.domainmodel.RentalTicket;
 import com.airpnp.service.ParkingSpaceService;
+import com.airpnp.service.RentalTicketService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -22,6 +27,9 @@ public class ParkingSpaceProductionImpl implements ParkingSpaceService {
 
     @Autowired
     private ParkingSpaceDao data;
+
+    @Autowired
+    private RentalTicketService rentalTicketService;
 
     @Override
     public ParkingSpace getParkingSpaceById(Integer id) throws ParkingSpaceNotFoundException {
@@ -35,7 +43,19 @@ public class ParkingSpaceProductionImpl implements ParkingSpaceService {
 
     @Override
     public List<ParkingSpace> getAllAvailableParkingSpaces() {
-        return data.getAllAvailableParkingSpaces();
+        List<ParkingSpace> allParkingSpaces = data.getAllParkingSpaces();
+        List<ParkingSpace> toReturn = new ArrayList<>();
+        for (ParkingSpace ps: allParkingSpaces) {
+            List<RentalTicket> rentalTicketsForParkingSpace = rentalTicketService.getRentalTicketsByParkingSpace(ps);
+            List<Date> usedDatesForParkingSpace = new ArrayList<>();
+            for (RentalTicket rt: rentalTicketsForParkingSpace) {
+                usedDatesForParkingSpace.addAll(rt.getIncludedDates());
+            }
+            if(usedDatesForParkingSpace.size() < ps.getAvailableDates().size()){
+                toReturn.add(ps);
+            }
+        }
+        return toReturn;
     }
 
     @Override

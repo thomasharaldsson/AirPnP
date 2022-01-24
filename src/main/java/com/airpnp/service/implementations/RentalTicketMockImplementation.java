@@ -8,6 +8,7 @@ import com.airpnp.service.RentalTicketService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -27,7 +28,7 @@ public class RentalTicketMockImplementation implements RentalTicketService {
         try {
             Customer currentCustomer = new Customer("George", "Silvant", "gs@france.com", "+99-234-7344", "123", "123", new Rating(3), false);
             Vehicle vehicle = new Vehicle("ABC-123", currentCustomer, null);
-            rentalTickets.put(1, new RentalTicket(currentCustomer, vehicle, new ParkingSpace(35, dateFormatter.parse("2020-03-07"), dateFormatter.parse("2020-03-14"), "Götaplatsen 3", currentCustomer)));
+            rentalTickets.put(1, new RentalTicket(currentCustomer, vehicle, new ParkingSpace(35, dateFormatter.parse("2020-03-07"), dateFormatter.parse("2020-03-14"), "Götaplatsen 3", currentCustomer), dateFormatter.parse("2020-03-07"), dateFormatter.parse("2020-03-14")));
         } catch (Exception e) {
 
         }
@@ -79,5 +80,17 @@ public class RentalTicketMockImplementation implements RentalTicketService {
     @Override
     public List<RentalTicket> getAllRentalTicketsCurrentUser() {
         return data.findAll();
+    }
+
+    @Override
+    public List<RentalTicket> getRentalTicketsByParkingSpace(ParkingSpace parkingSpace) {
+        List<RentalTicket> toReturn = new ArrayList<>();
+        List<RentalTicket> alLRentalTickets = data.findAll();
+        for (RentalTicket rt: alLRentalTickets) {
+            if(rt.getParkingSpace().getStreetAddress().trim().equalsIgnoreCase(parkingSpace.getStreetAddress().trim())) {
+                toReturn.add(rt);
+            }
+        }
+        return toReturn;
     }
 }

@@ -47,7 +47,6 @@ public class ParkingSpaceController {
     @RequestMapping(value = "/showall/available", method = RequestMethod.GET)
     public ModelAndView showAllAvailableParkingspaces() {
         List<ParkingSpace> parkingSpaces = parkingSpaceService.getAllAvailableParkingSpaces();
-
         // If user is logged in: get currently logged in user.
         Customer currentCustomer = null;
         if (UserPrincipal.getCurrentlyLoggedInUserPrincipal() != null) {
@@ -142,7 +141,8 @@ public class ParkingSpaceController {
         //Do something additional if required
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("parkingspace/error");
-        modelAndView.addObject("message", ex.getMessage());
+        ex.printStackTrace();
+        modelAndView.addObject("message", ex.toString());
         return modelAndView;
     }
 
