@@ -121,6 +121,10 @@ public class AirPnPApplication {
 
 			RentalTicket t2 = new RentalTicket(c3, v2, p2, format.parse ( "2022-01-14" ), format.parse ( "2022-02-15" ));
 			rentalTicketService.addRentalTicket(t2);
+
+			//Test to check if availability still works if a portion of the parking space dates are free
+			RentalTicket t3 = new RentalTicket(c2, v2, p3, format.parse ( "2022-02-01" ), format.parse ( "2022-02-05" ));
+			rentalTicketService.addRentalTicket(t2);
 		};
 	}
 }
