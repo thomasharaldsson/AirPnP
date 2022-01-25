@@ -1,6 +1,7 @@
 package com.airpnp.controller;
 
 import com.airpnp.data.exception.CustomerNotFoundException;
+import com.airpnp.data.exception.RatingNotFoundException;
 import com.airpnp.data.exception.UsernameAlreadyInUseException;
 import com.airpnp.domainmodel.Customer;
 import com.airpnp.domainmodel.Rating;
@@ -70,11 +71,12 @@ public class CustomerController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/addRating", method = RequestMethod.POST)
-    public String addRating(int customerId) throws CustomerNotFoundException {
+    @RequestMapping(value = "/rate", method = RequestMethod.POST)
+    public String addRating(int customerId) throws CustomerNotFoundException, RatingNotFoundException {
         Customer customer = service.getCustomer(customerId);
         Rating rating = new Rating();
         customer.addRating(rating);
+        ratingService.updateRating(rating);
         return "redirect:/customer/showall";
     }
 
