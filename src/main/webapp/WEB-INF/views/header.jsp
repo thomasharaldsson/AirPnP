@@ -55,7 +55,9 @@
                         </button>
 
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-
+                            <security:authorize access="hasRole('ADMIN')">
+                                <h6 class="dropdown-header">Customer:</h6>
+                            </security:authorize>
                             <security:authorize access="hasRole('ROLE_ADMIN') or hasRole('ROLE_CUSTOMER')">
                                 <li><a class="dropdown-item" href="/vehicle/showall/currentuser" style="color: white">My
                                     vehicles</a></li>
@@ -68,6 +70,7 @@
 
                             <security:authorize access="hasRole('ADMIN')">
                                 <li><hr class="dropdown-divider"></li>
+                                <h6 class="dropdown-header">Administration:</h6>
                                 <li><a class="dropdown-item" href="/vehicle/showall" style="color: white">Manage all
                                     vehicles</a></li>
                                 <li><a class="dropdown-item" href="/parkingspace/showall" style="color: white">
