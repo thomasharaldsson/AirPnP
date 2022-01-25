@@ -37,7 +37,7 @@
         <label for="2">	&#9734;</label>
     <input type="radio" name="rating" value="1" id="1">
         <label for="1">	&#9734;</label>
-</div>
+</div>-->
 
 <div class="addbuttdiv">
     <a href="/customer/showall" class="btn btn-danger mx-1" id="addbutt">Submit (not working yet)</a>
