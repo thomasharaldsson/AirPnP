@@ -18,10 +18,10 @@
 <form:form action="rating" method="post" modelAttribute="rating">
     <form:label path="rating">Rate your experience</form:label>
     <form:radiobutton path="rating" value="1"/>1
-    <form:radiobutton path="rating" value="1"/>2
-    <form:radiobutton path="rating" value="1"/>3
-    <form:radiobutton path="rating" value="1"/>4
-    <form:radiobutton path="rating" value="1"/>5
+    <form:radiobutton path="rating" value="2"/>2
+    <form:radiobutton path="rating" value="3"/>3
+    <form:radiobutton path="rating" value="4"/>4
+    <form:radiobutton path="rating" value="5"/>5
 </form:form>
 
 <!--
