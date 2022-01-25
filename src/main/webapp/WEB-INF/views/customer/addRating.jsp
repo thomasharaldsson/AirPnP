@@ -1,4 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html>
 <head>
     <title>AirPnP Incorporated International 2021</title>
@@ -13,6 +14,17 @@
 <br>
 <h3>Rate your experince</h3>
 
+
+<form:form action="rating" method="post" modelAttribute="rating">
+    <form:label path="rating">Rate your experience</form:label>
+    <form:radiobutton path="rating" value="1"/>1
+    <form:radiobutton path="rating" value="1"/>2
+    <form:radiobutton path="rating" value="1"/>3
+    <form:radiobutton path="rating" value="1"/>4
+    <form:radiobutton path="rating" value="1"/>5
+</form:form>
+
+<!--
 <form method="post">
 <div class="rating">
     <input type="radio" name="rating" value="5" id="5">

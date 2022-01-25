@@ -63,8 +63,11 @@ public class CustomerController {
     @GetMapping("/rate/{id}")
     @ResponseBody
     public ModelAndView rateCustomer(@PathVariable(required = true) int id) throws CustomerNotFoundException {
+        System.out.println("Rating customer with id: " + id);
         Customer customer = service.getCustomer(id);
-        return new ModelAndView("/customer/addRating", "customer", customer);
+        ModelAndView modelAndView = new ModelAndView("/customer/addRating", "customer", customer);
+        modelAndView.addObject("rating", new Rating());
+        return modelAndView;
     }
 
     @RequestMapping(value = "/addRating", method = RequestMethod.POST)
