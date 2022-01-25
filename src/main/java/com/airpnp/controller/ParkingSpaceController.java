@@ -18,6 +18,9 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.Date;
 import java.util.List;
 
+import static com.airpnp.authorization.SecurityConfig.USER_ROLE_ADMIN;
+import static com.airpnp.authorization.SecurityConfig.USER_ROLE_CUSTOMER;
+
 @Controller
 @RequestMapping("/parkingspace")
 public class ParkingSpaceController {
@@ -28,6 +31,7 @@ public class ParkingSpaceController {
     @Autowired
     private IAuthenticationFacade authenticationFacade;
 
+    @Secured(USER_ROLE_ADMIN)
     @RequestMapping(value = "/showall", method = RequestMethod.GET)
     public ModelAndView showAllParkingspace() {
         List<ParkingSpace> allParkingSpaces = parkingSpaceService.getAllParkingSpaces();
