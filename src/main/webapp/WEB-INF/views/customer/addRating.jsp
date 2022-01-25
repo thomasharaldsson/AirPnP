@@ -39,7 +39,7 @@
         <label for="1">	&#9734;</label>
 </div>-->
 
-<div class="addbuttdiv">
+<div class="addbuttdiv" type="submit" value="submit rating">
     <a href="/customer/showall" class="btn btn-danger mx-1" id="addbutt">Submit (not working yet)</a>
 </div>
 </form>
