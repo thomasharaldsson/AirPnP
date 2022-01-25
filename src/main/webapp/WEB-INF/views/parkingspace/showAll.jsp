@@ -1,6 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
+<c:set var="requestPath" value="${requestScope['javax.servlet.forward.request_uri']}"/>
 <html>
 <head>
     <title>AirPnP Incorporated International 2021</title>
@@ -34,9 +35,12 @@
                             <security:authorize access="isAuthenticated()">
                                 <%-- Prevent user from renting their own parkingspace: --%>
                                 <c:if test="${parkingspace.owner.id != currentUser.id}">
-                                    <a href="/rentalticket/upcreate/${parkingspace.id}" class="btn btn-danger mx-1">
-                                        Rent
-                                    </a>
+                                    <%-- Also: don't show rent button on showall view (that admin uses): --%>
+                                    <c:if test="${!requestPath.equals('/parkingspace/showall')}">
+                                        <a href="/rentalticket/upcreate/${parkingspace.id}" class="btn btn-danger mx-1">
+                                            Rent
+                                        </a>
+                                    </c:if>
                                 </c:if>
                             </security:authorize>
                         </li>
