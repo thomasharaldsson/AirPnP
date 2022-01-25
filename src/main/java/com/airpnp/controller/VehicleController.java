@@ -23,6 +23,7 @@ import static com.airpnp.authorization.SecurityConfig.USER_ROLE_ADMIN;
 import static com.airpnp.authorization.SecurityConfig.USER_ROLE_CUSTOMER;
 
 @Controller
+@Secured({USER_ROLE_CUSTOMER, USER_ROLE_ADMIN})
 @RequestMapping("/vehicle")
 public class VehicleController {
 
@@ -36,7 +37,7 @@ public class VehicleController {
     CustomerService customerService;
 
     @RequestMapping(value = "/showall", method = RequestMethod.GET)
-    @Secured({USER_ROLE_CUSTOMER, USER_ROLE_ADMIN})
+    @Secured({USER_ROLE_ADMIN})
     public ModelAndView showAllVehicles() {
         Customer currentCustomer = UserPrincipal.getCurrentlyLoggedInUserPrincipal().getCustomer();
         List<Vehicle> allVehicles = vehicleService.getAll();
@@ -47,7 +48,6 @@ public class VehicleController {
     }
 
     @RequestMapping(value = "/showall/currentuser", method = RequestMethod.GET)
-    @Secured({USER_ROLE_CUSTOMER, USER_ROLE_ADMIN})
     public ModelAndView showAllVehiclesForCurrentUser() {
         Customer currentCustomer = UserPrincipal.getCurrentlyLoggedInUserPrincipal().getCustomer();
         List<Vehicle> allVehicles = vehicleService.getAll(currentCustomer);
@@ -57,7 +57,6 @@ public class VehicleController {
         return modelAndView;
     }
 
-    @Secured(USER_ROLE_CUSTOMER)
     @RequestMapping(value = "/create", method = RequestMethod.GET)
     public ModelAndView createVehicle() {
         Customer currentCustomer = UserPrincipal.getCurrentlyLoggedInUserPrincipal().getCustomer();
@@ -72,7 +71,6 @@ public class VehicleController {
 
     }
 
-    //@Secured(USER_ROLE_CUSTOMER)
     @GetMapping(value = "/edit/{id}")
     @ResponseBody
     public ModelAndView editVehicle(@PathVariable(required = true) int id) throws VehicleNotFoundException {
@@ -88,7 +86,7 @@ public class VehicleController {
         return modelAndView;
     }
 
-    //@Secured(USER_ROLE_CUSTOMER)
+
     @RequestMapping(value = "/edit", method = RequestMethod.POST)
     public String editVehicle(Vehicle vehicle, int owner_id, int type_id) throws VehicleNotFoundException, CustomerNotFoundException, VehicleTypeNotFoundException {
         Customer owner = customerService.getCustomer(owner_id);
@@ -99,7 +97,6 @@ public class VehicleController {
         return "redirect:/vehicle/showall";
     }
 
-    @Secured(USER_ROLE_CUSTOMER)
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public String createVehicle(Vehicle vehicle, int owner_id, int type_id) throws CustomerNotFoundException, VehicleTypeNotFoundException {
         Customer owner = customerService.getCustomer(owner_id);
