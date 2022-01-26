@@ -89,8 +89,13 @@ public class AirPnPApplication {
 
 			// Create some vehicle types
 			VehicleType typeCar = new VehicleType("Car");
+			vehicleTypeService.add(typeCar);
+
 			VehicleType typeMotorcycle = new VehicleType("Motorcycle");
+			vehicleTypeService.add(typeMotorcycle);
+
 			VehicleType typeBike = new VehicleType("Big rig truck & trailer");
+			vehicleTypeService.add(typeBike);
 
 			// Create some vehicles
 			Vehicle v1 = new Vehicle("JON-141", c1, typeCar);
@@ -102,6 +107,8 @@ public class AirPnPApplication {
 			Vehicle v3 = new Vehicle("TOP-221", c3, typeMotorcycle);
 			vehicleService.addVehicle(v3);
 
+			Vehicle v4 = new Vehicle("LEN-1", a1, typeCar);
+			vehicleService.addVehicle(v4);
 
 			//Create some parkingspaces:
 			SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");

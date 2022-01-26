@@ -16,6 +16,11 @@ public class VehicleTypeProduction implements VehicleTypeService {
     VehicleTypeRepository data;
 
     @Override
+    public void add(VehicleType vehicleType) {
+        data.save(vehicleType);
+    }
+
+    @Override
     public List<VehicleType> getAll() {
         return data.findAll();
     }

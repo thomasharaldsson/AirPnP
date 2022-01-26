@@ -11,7 +11,7 @@ public class Vehicle {
     @ManyToOne
     @JoinColumn(name = "owner_id")
     private Customer owner;
-    @ManyToOne(cascade=CascadeType.PERSIST)
+    @ManyToOne
     private VehicleType type;
 
     public Vehicle() {
