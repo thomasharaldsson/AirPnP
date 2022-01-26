@@ -26,14 +26,16 @@
 
     <%--
         Select customer for which rental ticket will be created:
-        - display a dropdown menu (if user is admin)
+        - display a dropdown menu if user is admin (this option has now been removed)
             OR
         - add a hidden field that contains value of customerID (if user is not an admin).
     --%>
     <security:authorize access="hasRole('ADMIN')" var="isAdmin"/>
     <security:authorize access="hasRole('CUSTOMER')" var="isCustomer"/>
     <c:choose>
+
         <%-- Display dropdown menu --%>
+        <%--
         <c:when test="${isAdmin}">
             <br/><br/>
             <h5> Select Customer: </h5>
@@ -43,8 +45,9 @@
                 </c:forEach>
             </select>
         </c:when>
+        --%>
         <%-- Add hidden field --%>
-        <c:when test="${isCustomer}">
+        <c:when test="${isCustomer || isAdmin}">
             Customer: ${selectedCustomer.firstName} ${selectedCustomer.surName}<br>
             <form:hidden path="customer" value="${selectedCustomer.id}"/>
         </c:when>
