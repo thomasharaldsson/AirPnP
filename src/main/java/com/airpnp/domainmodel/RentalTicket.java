@@ -19,32 +19,12 @@ public class RentalTicket {
     @OneToOne
     private ParkingSpace parkingSpace;
 
-    public Date getStartDate() {
-        return startDate;
-    }
 
-    public void setStartDate(Date startDate) {
-        this.startDate = startDate;
-    }
-
-    public Date getEndDate() {
-        return endDate;
-    }
-
-    public void setEndDate(Date endDate) {
-        this.endDate = endDate;
-    }
-
-    private Date startDate;
-
-    private Date endDate;
-
-    public RentalTicket(Customer customer, Vehicle vehicle, ParkingSpace parkingSpace, Date startDate, Date endDate) {
+    public RentalTicket(Customer customer, Vehicle vehicle, ParkingSpace parkingSpace) {
         this.customer = customer;
         this.vehicle = vehicle;
         this.parkingSpace = parkingSpace;
-        this.startDate = startDate;
-        this.endDate = endDate;
+
     }
 
     public RentalTicket() {
@@ -91,8 +71,7 @@ public class RentalTicket {
     public RentalTicket getRentalTicketByCustomerId(int id) {
         if (id == customer.getId()) {
             return this;
-        }
-        else {
+        } else {
             System.out.println("Did not find a rental ticket containing this customer ID");
             return null;
         }
@@ -102,17 +81,4 @@ public class RentalTicket {
         this.vehicle = vehicle;
     }
 
-    public List<Date> getIncludedDates() {
-        List<Date> dates = new ArrayList<Date>();
-        Calendar calendar = new GregorianCalendar();
-        calendar.setTime(this.startDate);
-
-        while (calendar.getTime().before(this.endDate))
-        {
-            Date result = calendar.getTime();
-            dates.add(result);
-            calendar.add(Calendar.DATE, 1);
-        }
-        return dates;
-    }
 }

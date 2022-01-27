@@ -28,7 +28,7 @@ public class RentalTicketMockImplementation implements RentalTicketService {
         try {
             Customer currentCustomer = new Customer("George", "Silvant", "gs@france.com", "+99-234-7344", "123", "123", new Rating(3), false);
             Vehicle vehicle = new Vehicle("ABC-123", currentCustomer, null);
-            rentalTickets.put(1, new RentalTicket(currentCustomer, vehicle, new ParkingSpace(35, dateFormatter.parse("2020-03-07"), dateFormatter.parse("2020-03-14"), "Götaplatsen 3", currentCustomer), dateFormatter.parse("2020-03-07"), dateFormatter.parse("2020-03-14")));
+            rentalTickets.put(1, new RentalTicket(currentCustomer, vehicle, new ParkingSpace(35, dateFormatter.parse("2020-03-07"), dateFormatter.parse("2020-03-14"), "Götaplatsen 3", currentCustomer)));
         } catch (Exception e) {
 
         }

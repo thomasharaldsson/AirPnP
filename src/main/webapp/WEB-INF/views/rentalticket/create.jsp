@@ -102,24 +102,6 @@
     </select>
     <br/><br/>
 
-    <h5> Start Date: </h5>
-
-    <select name="startDate" id="startDateId">
-        <c:forEach items="${listDates}" var="startDate">
-            <option value="${startDate}">${startDate.toString()}</option>
-        </c:forEach>
-    </select>
-    <br/><br/>
-
-    <h5> End Date: </h5>
-
-    <select name="endDate" id="endDateId">
-        <c:forEach items="${listDates}" var="endDate">
-            <option value="${endDate}">${endDate.toString()}</option>
-        </c:forEach>
-    </select>
-    <br/><br/>
-
 
     <div>
         <input type="submit"/>

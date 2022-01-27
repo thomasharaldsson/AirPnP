@@ -123,14 +123,14 @@ public class AirPnPApplication {
 			parkingSpaceService.addParkingSpace(p3);
 
 			//Create some rental tickets
-			RentalTicket t1 = new RentalTicket(c1, v1, p1, format.parse ( "2022-02-31" ), format.parse ( "2022-03-15" ));
+			RentalTicket t1 = new RentalTicket(c1, v1, p1);
 			rentalTicketService.addRentalTicket(t1);
 
-			RentalTicket t2 = new RentalTicket(c3, v2, p2, format.parse ( "2022-01-14" ), format.parse ( "2022-02-15" ));
+			RentalTicket t2 = new RentalTicket(c3, v2, p2);
 			rentalTicketService.addRentalTicket(t2);
 
 			//Test to check if availability still works if a portion of the parking space dates are free
-			RentalTicket t3 = new RentalTicket(c2, v2, p3, format.parse ( "2022-02-01" ), format.parse ( "2022-02-05" ));
+			RentalTicket t3 = new RentalTicket(c2, v2, p3);
 			rentalTicketService.addRentalTicket(t2);
 		};
 	}

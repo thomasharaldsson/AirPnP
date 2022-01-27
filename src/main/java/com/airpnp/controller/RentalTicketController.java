@@ -41,7 +41,7 @@ public class RentalTicketController {
     @RequestMapping(value = "/create", method = RequestMethod.GET)
     public ModelAndView createRentalTicket() {
         Customer selectedCustomer = UserPrincipal.getCurrentlyLoggedInUserPrincipal().getCustomer();
-        RentalTicket rentalTicket = new RentalTicket(customerService.getAll().get(0), vehicleService.getAll().get(0), parkingSpaceService.getAllParkingSpaces().get(0), parkingSpaceService.getAllParkingSpaces().get(0).getAvailableDates().get(0), parkingSpaceService.getAllParkingSpaces().get(0).getAvailableDates().get(parkingSpaceService.getAllParkingSpaces().get(0).getAvailableDates().size() - 1) );
+        RentalTicket rentalTicket = new RentalTicket(customerService.getAll().get(0), vehicleService.getAll().get(0), parkingSpaceService.getAllParkingSpaces().get(0));
         ModelAndView modelAndView = new ModelAndView("rentalticket/create", "rentalticket", rentalTicket);
         modelAndView.addObject("action", "");
         modelAndView.addObject("listCustomer", customerService.getAll());
@@ -66,12 +66,11 @@ public class RentalTicketController {
         modelAndView.addObject("listVehicle", vehicleService.getAll(selectedCustomer));
         modelAndView.addObject("listCustomer", customerService.getAll());
         modelAndView.addObject("listParkingSpace", parkingSpaceService.getAllAvailableParkingSpaces());
-        modelAndView.addObject("listDates", parkingSpace.getAvailableDates());
         return modelAndView;
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
-    public String createRentalTicket(int customer, int parkingSpace, int vehicle, int startDateIndex, int endDateIndex) {
+    public String createRentalTicket(int customer, int parkingSpace, int vehicle) {
         System.out.println("CUST" + customer);
         System.out.println("VEH" + parkingSpace);
         System.out.println("PS" + vehicle);
@@ -88,7 +87,7 @@ public class RentalTicketController {
         }
         try{
             if(flag){
-                rentalTicketService.addRentalTicket(new RentalTicket(customerService.getCustomer(customer), vehicleService.getVehicleById(vehicle), parkingSpaceService.getParkingSpaceById(parkingSpace), parkingSpaceService.getParkingSpaceById(parkingSpace).getAvailableDates().get(startDateIndex), parkingSpaceService.getParkingSpaceById(parkingSpace).getAvailableDates().get(endDateIndex)));
+                rentalTicketService.addRentalTicket(new RentalTicket(customerService.getCustomer(customer), vehicleService.getVehicleById(vehicle), parkingSpaceService.getParkingSpaceById(parkingSpace)));
             }
         } catch (Exception e) {
             e.printStackTrace();
