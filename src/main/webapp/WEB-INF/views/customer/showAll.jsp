@@ -31,7 +31,6 @@
                         <li>Phone: ${customer.phoneNumber}</li>
                         <li>Rating: ${customer.rating}</li>
                         <li><a href="show/${customer.id}" class="btn btn-danger mx-1">open</a>
-                            <a href="rate/${customer.id}" class="btn btn-danger mx-1">rate</a>
                         </li>
                     </ul>
                 </div>
