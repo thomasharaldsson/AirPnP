@@ -66,10 +66,9 @@ public class RentalTicketProductionImpl implements RentalTicketService {
 
     @Override
     public void deleteRentalTicket(int id) {
-
+        data.deleteById(id);
         try {
             ParkingSpace toUpdate = parkingSpaceService.getParkingSpaceById(data.getById(id).getParkingSpace().getId());
-            //toUpdate.setTicket(null);
             parkingSpaceService.updateParkingSpace(toUpdate);
         } catch (Exception e){
             System.out.println(e.getMessage());

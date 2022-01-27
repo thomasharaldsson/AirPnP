@@ -51,6 +51,15 @@ public class RentalTicketDaoImpl implements RentalTicketDao {
     @Override
     public void deleteRentalTicket(int id) throws RentalTicketNotFoundException {
 
+        RentalTicket rentalTicketToDelete = null;
+
+        rentalTicketToDelete = data.getById(id);
+
+        if (rentalTicketToDelete == null) {
+            throw new RentalTicketNotFoundException("Rental ticket for id = " + id + " not found");
+        }
+
+        data.deleteById(id);
     }
 
     @Override
