@@ -43,19 +43,7 @@ public class ParkingSpaceProductionImpl implements ParkingSpaceService {
 
     @Override
     public List<ParkingSpace> getAllAvailableParkingSpaces() {
-        List<ParkingSpace> allParkingSpaces = data.getAllParkingSpaces();
-        List<ParkingSpace> toReturn = new ArrayList<>();
-        for (ParkingSpace ps: allParkingSpaces) {
-            List<RentalTicket> rentalTicketsForParkingSpace = rentalTicketService.getRentalTicketsByParkingSpace(ps);
-            List<Date> usedDatesForParkingSpace = new ArrayList<>();
-            for (RentalTicket rt: rentalTicketsForParkingSpace) {
-                usedDatesForParkingSpace.addAll(rt.getIncludedDates());
-            }
-            if(usedDatesForParkingSpace.size() < ps.getAvailableDates().size()){
-                toReturn.add(ps);
-            }
-        }
-        return toReturn;
+        return data.getAllAvailableParkingSpaces();
     }
 
     @Override
