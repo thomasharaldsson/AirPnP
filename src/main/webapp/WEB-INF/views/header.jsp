@@ -38,7 +38,7 @@
                 <%-- Show "Available parkingspaces" button except when on that page or on the home page: --%>
                 <div>
                     <c:choose>
-                        <c:when test="${!requestPath.equals('/parkingspace/showall') && !requestPath.equals('/')}">
+                        <c:when test="${!requestPath.equals('/parkingspace/showall/available') && !requestPath.equals('/')}">
                             <a href="/parkingspace/showall/available" class="btn btn-danger mx-1">
                                 Available parkingspaces
                             </a>
