@@ -1,4 +1,4 @@
-package com.airpnp.authentication.proxy;
+package com.airpnp.authentication.decorator;
 
 import com.airpnp.domainmodel.Customer;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;

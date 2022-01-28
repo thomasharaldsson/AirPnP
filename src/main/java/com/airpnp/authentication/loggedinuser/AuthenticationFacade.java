@@ -1,6 +1,6 @@
 package com.airpnp.authentication.loggedinuser;
 
-import com.airpnp.authentication.proxy.UserPrincipal;
+import com.airpnp.authentication.decorator.UserPrincipal;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;

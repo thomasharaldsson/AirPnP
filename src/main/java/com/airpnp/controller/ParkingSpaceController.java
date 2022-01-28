@@ -1,7 +1,7 @@
 package com.airpnp.controller;
 
 import com.airpnp.authentication.loggedinuser.IAuthenticationFacade;
-import com.airpnp.authentication.proxy.UserPrincipal;
+import com.airpnp.authentication.decorator.UserPrincipal;
 import com.airpnp.data.exception.ParkingSpaceNotFoundException;
 import com.airpnp.domainmodel.Customer;
 import com.airpnp.domainmodel.ParkingSpace;

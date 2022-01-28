@@ -1,6 +1,6 @@
 package com.airpnp.authentication;
 
-import com.airpnp.authentication.proxy.UserPrincipal;
+import com.airpnp.authentication.decorator.UserPrincipal;
 import com.airpnp.data.repository.CustomerRepository;
 import com.airpnp.domainmodel.Customer;
 import org.springframework.beans.factory.annotation.Autowired;

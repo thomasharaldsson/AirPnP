@@ -1,6 +1,6 @@
 package com.airpnp.controller;
 
-import com.airpnp.authentication.proxy.UserPrincipal;
+import com.airpnp.authentication.decorator.UserPrincipal;
 import com.airpnp.data.exception.CustomerNotFoundException;
 import com.airpnp.data.exception.VehicleNotFoundException;
 import com.airpnp.data.exception.VehicleTypeNotFoundException;
