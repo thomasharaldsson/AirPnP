@@ -14,6 +14,11 @@ public class UserDetailsService implements org.springframework.security.core.use
     @Autowired
     private CustomerRepository customerRepository;
 
+    /**
+     * This method is called by Spring Security once user has filled and submitted in the automatic login form provided by Spring Security.
+     * @param username of user who is attempting to login to (web)application.
+     * @return Object representing the user that is attempting to login.
+     */
     @Override
     public UserDetails loadUserByUsername(String username) {
         Customer customer = null;

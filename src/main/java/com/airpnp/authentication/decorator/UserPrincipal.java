@@ -14,6 +14,9 @@ import static com.airpnp.authentication.SecurityConfig.USER_ROLE_CUSTOMER;
 import static com.airpnp.authentication.SecurityConfig.USER_ROLE_ADMIN;
 
 
+/**
+ * Datastructure that Spring uses access information regarding currently logged in user.
+ */
 public class UserPrincipal implements UserDetails {
 
     private Customer customer;
@@ -25,12 +28,17 @@ public class UserPrincipal implements UserDetails {
     /**
      * Get Entity from domain model representing currently logged in Customer user.
      *
-     * @return Entity or currently logged in Customer user. Or null if an Customer user is not currently logged in.
+     * @return Entity or currently logged in Customer user. Or null if a Customer user is not currently logged in.
      */
     public Customer getCustomer() {
         return customer;
     }
 
+    /**
+     * Supply Spring Security library with an object that represents user roles for currently logged in user.
+     *
+     * @return Spring Security authorities for currently logged in user.
+     */
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         List<GrantedAuthority> authorities = new ArrayList<>();
@@ -45,11 +53,22 @@ public class UserPrincipal implements UserDetails {
         return authorities;
     }
 
+    /**
+     * Get password.
+     *
+     * @return Password of current user.
+     */
+
     @Override
     public String getPassword() {
         return customer.getPassword();
     }
 
+    /**
+     * Get username.
+     *
+     * @return Username of current user.
+     */
     @Override
     public String getUsername() {
         return customer.getUsername();
