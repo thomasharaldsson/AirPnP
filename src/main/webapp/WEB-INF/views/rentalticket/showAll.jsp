@@ -11,7 +11,7 @@
 <jsp:include page="/WEB-INF/views/header.jsp"/>
 
 
-<h2>All my rental tickets</h2>
+<h2>All my reserved parking spaces</h2>
 <br>
 <br>
 <c:choose>
