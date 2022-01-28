@@ -19,7 +19,10 @@ import static com.airpnp.authentication.SecurityConfig.USER_ROLE_ADMIN;
  */
 public class UserPrincipal implements UserDetails {
 
-    private Customer customer;
+    /**
+     * User in AirPnP application.
+     */
+    private final Customer customer;
 
     public UserPrincipal(Customer customer) {
         this.customer = customer;
@@ -54,48 +57,67 @@ public class UserPrincipal implements UserDetails {
     }
 
     /**
-     * Get password.
+     * Returns the password used to authenticate the user.
      *
-     * @return Password of current user.
+     * @return password
      */
-
     @Override
     public String getPassword() {
         return customer.getPassword();
     }
 
     /**
-     * Get username.
+     * Returns the username used to authenticate the user. Cannot return null.
      *
-     * @return Username of current user.
+     * @return the username (never null)
      */
     @Override
     public String getUsername() {
         return customer.getUsername();
     }
 
+    /**
+     * Indicates whether the user's account has expired. An expired account cannot be authenticated.
+     *
+     * @return true if the user's account is valid (ie non-expired), false if no longer valid (ie expired)
+     */
     @Override
     public boolean isAccountNonExpired() {
         return true;
     }
 
+    /**
+     * Indicates whether the user is locked or unlocked. A locked user cannot be authenticated.
+     *
+     * @return true if the user is not locked, false otherwise
+     */
     @Override
     public boolean isAccountNonLocked() {
         return true;
     }
 
+    /**
+     * Indicates whether the user's credentials (password) has expired. Expired credentials prevent authentication.
+     *
+     * @return true if the user's credentials are valid (ie non-expired), false if no longer valid (ie expired)
+     */
     @Override
     public boolean isCredentialsNonExpired() {
         return true;
     }
 
+    /**
+     * Indicates whether the user is enabled or disabled. A disabled user cannot be authenticated.
+     *
+     * @return true if the user is enabled, false otherwise
+     */
     @Override
     public boolean isEnabled() {
         return true;
     }
 
     /**
-     *  This method can be used from e.g. Controller classes to get currently logged in user.
+     *  This convenience method can be used from e.g. Controller classes to get currently logged in user.
      *  Please note that in order to get hold of the actual Entity (in package com.airpnp.domainmodel) representing this
      *  user you have to call the getCustomer() method in the UserPrincipal class.
      *
