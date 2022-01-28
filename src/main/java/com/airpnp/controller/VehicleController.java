@@ -103,7 +103,7 @@ public class VehicleController {
         VehicleType type = vehicleTypeService.getVehicleTypeById(type_id);
         vehicle.setType(type);
         vehicleService.addVehicle(vehicle);
-        return "redirect:/vehicle/showall";
+        return "redirect:/vehicle/showall/currentuser";
     }
 
     @GetMapping("/show/{id}")
