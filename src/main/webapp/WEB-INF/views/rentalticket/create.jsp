@@ -19,7 +19,6 @@
 
 <form:form modelAttribute="rentalticket" action="${action}">
 
-
     <form:errors path="" element="div"/>
     <%--ID: ${rentalticket.id}--%>
     <form:hidden path="id" value="${id}"/>
@@ -32,6 +31,7 @@
     --%>
     <security:authorize access="hasRole('ADMIN')" var="isAdmin"/>
     <security:authorize access="hasRole('CUSTOMER')" var="isCustomer"/>
+    <div class="addbuttdiv">
     <c:choose>
 
         <%-- Display dropdown menu --%>
@@ -47,6 +47,7 @@
         </c:when>
         --%>
         <%-- Add hidden field --%>
+
         <c:when test="${isCustomer || isAdmin}">
             Customer: ${selectedCustomer.firstName} ${selectedCustomer.surName}<br>
             <form:hidden path="customer" value="${selectedCustomer.id}"/>
@@ -55,6 +56,9 @@
             Error: You need to be logged in to use this page.
         </c:otherwise>
     </c:choose>
+    </div>
+
+    <br/>
 
     <%--
         Select parkingspace for which rental ticket will be created:
@@ -65,6 +69,7 @@
         - show error message that no available parkingspaces could be found
 
     --%>
+<div class="addbuttdiv">
     <c:choose>
         <%-- Parkingspace has already been provided by controller. --%>
         <c:when test="${selectedParkingSpace != null}">
@@ -92,20 +97,24 @@
         </c:otherwise>
     </c:choose>
     <br/>
-
+</div>
     <%-- Select vehicle: display dropdown menu --%>
-    <h5> Select Vehicle (registration number): </h5>
+<div class="addbuttdiv">
+    Select Vehicle (registration number):
     <select name="vehicle">
         <c:forEach items="${listVehicle}" var="vehicle">
             <option value="${vehicle.id}">${vehicle.registrationNumber}</option>
         </c:forEach>
     </select>
     <br/><br/>
+</div>
 
 
-    <div>
-        <input type="submit"/>
+
+    <div class="addbuttdiv">
+        <input class="btn btn-info" type="submit" value="Save"/>
     </div>
+
 </form:form>
 <jsp:include page="/WEB-INF/views/footer.jsp"/>
 </body>

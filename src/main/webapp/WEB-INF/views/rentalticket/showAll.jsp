@@ -25,7 +25,7 @@
                         <li>Vehicle (registration number): ${rentalticket.getVehicle().getRegistrationNumber()}</li>
                         <li>Customer: ${rentalticket.getCustomer().getFirstName()} ${rentalticket.getCustomer().getSurName()}</li>
                         <li>Parking Space (street address): ${rentalticket.getParkingSpace().getStreetAddress()}</li>
-                        <li><a href="/rentalticket/delete/${rentalticket.id}" class="btn btn-danger mx-1" id="delbutt">delete</a></li>
+                        <li><a href="/rentalticket/delete/${rentalticket.getId()}" class="btn btn-danger mx-1" id="delbutt">delete</a></li>
                     </ul>
                 </div>
             </c:forEach>
@@ -37,8 +37,10 @@
 
     </c:when>
     <c:otherwise>
-        You have not added any tickets yet.
-        <h5> To buy a rental ticket, click Rent on an available parking space </h5>
+
+        <div class="addbuttdiv">
+            <h5>You have not added any tickets yet. To buy a rental ticket, click Rent on an available parking space <a href="/parkingspace/showall/available">here</a> </h5>
+        </div>
     </c:otherwise>
 </c:choose>
 
