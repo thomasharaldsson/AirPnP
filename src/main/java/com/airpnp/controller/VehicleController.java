@@ -1,7 +1,6 @@
 package com.airpnp.controller;
 
-import com.airpnp.authorization.SecurityConfig;
-import com.airpnp.authorization.proxy.UserPrincipal;
+import com.airpnp.authentication.proxy.UserPrincipal;
 import com.airpnp.data.exception.CustomerNotFoundException;
 import com.airpnp.data.exception.VehicleNotFoundException;
 import com.airpnp.data.exception.VehicleTypeNotFoundException;
@@ -19,8 +18,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
-import static com.airpnp.authorization.SecurityConfig.USER_ROLE_ADMIN;
-import static com.airpnp.authorization.SecurityConfig.USER_ROLE_CUSTOMER;
+import static com.airpnp.authentication.SecurityConfig.USER_ROLE_ADMIN;
+import static com.airpnp.authentication.SecurityConfig.USER_ROLE_CUSTOMER;
 
 @Controller
 @Secured({USER_ROLE_CUSTOMER, USER_ROLE_ADMIN})

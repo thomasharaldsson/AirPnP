@@ -1,4 +1,4 @@
-package com.airpnp.authorization.proxy;
+package com.airpnp.authentication.proxy;
 
 import com.airpnp.domainmodel.Customer;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
@@ -10,8 +10,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import static com.airpnp.authorization.SecurityConfig.USER_ROLE_CUSTOMER;
-import static com.airpnp.authorization.SecurityConfig.USER_ROLE_ADMIN;
+import static com.airpnp.authentication.SecurityConfig.USER_ROLE_CUSTOMER;
+import static com.airpnp.authentication.SecurityConfig.USER_ROLE_ADMIN;
 
 
 public class UserPrincipal implements UserDetails {

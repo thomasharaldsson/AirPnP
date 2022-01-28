@@ -1,7 +1,7 @@
 package com.airpnp.controller;
 
-import com.airpnp.authorization.loggedinuser.IAuthenticationFacade;
-import com.airpnp.authorization.proxy.UserPrincipal;
+import com.airpnp.authentication.loggedinuser.IAuthenticationFacade;
+import com.airpnp.authentication.proxy.UserPrincipal;
 import com.airpnp.data.exception.ParkingSpaceNotFoundException;
 import com.airpnp.domainmodel.Customer;
 import com.airpnp.domainmodel.ParkingSpace;
@@ -18,8 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.Date;
 import java.util.List;
 
-import static com.airpnp.authorization.SecurityConfig.USER_ROLE_ADMIN;
-import static com.airpnp.authorization.SecurityConfig.USER_ROLE_CUSTOMER;
+import static com.airpnp.authentication.SecurityConfig.USER_ROLE_ADMIN;
 
 @Controller
 @RequestMapping("/parkingspace")

@@ -1,4 +1,4 @@
-package com.airpnp.authorization;
+package com.airpnp.authentication;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

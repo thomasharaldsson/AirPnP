@@ -1,6 +1,6 @@
-package com.airpnp.authorization;
+package com.airpnp.authentication;
 
-import com.airpnp.authorization.proxy.UserPrincipal;
+import com.airpnp.authentication.proxy.UserPrincipal;
 import org.springframework.context.ApplicationListener;
 import org.springframework.security.authentication.event.AuthenticationSuccessEvent;
 import org.springframework.security.core.userdetails.UserDetails;

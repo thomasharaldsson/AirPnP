@@ -1,7 +1,6 @@
 package com.airpnp.service.implementations;
 
-import com.airpnp.authorization.proxy.UserPrincipal;
-import com.airpnp.data.CustomerDaoImpl;
+import com.airpnp.authentication.proxy.UserPrincipal;
 import com.airpnp.data.RentalTicketDaoImpl;
 import com.airpnp.data.repository.RentalTicketRepository;
 import com.airpnp.domainmodel.Customer;
