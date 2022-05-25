@@ -1,10 +1,8 @@
 # AirPnP
 
-Service for renting parking places around town for people who may have parking slots available, similar to AirBnB.
+Web application for renting parking places around town for people who may have parking slots available, similar to AirBnB.
 
-/Thomas, Uzair, Tommi, Mehrdad
-
-© AirPnP AB
+Application is built on top of the Java Spring Boot MVC framework. User interface is rendered on server side using JSP - Standard Tag Library (JSTL). Backend performs object–relational mapping to local H2 database using Hibernate.
 
 ## Build and run
 
