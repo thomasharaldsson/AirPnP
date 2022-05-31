@@ -8,4 +8,8 @@ Application is built on top of the Java Spring Boot MVC framework. User interfac
 
 From the terminal run `mvn clean install`
 
-After that open this URL in your web browser: [http://localhost:8080](http://localhost:8080)
+## Access web UI
+
+Once application is running, open [http://localhost:8080](http://localhost:8080) in your web browser and login with username=`lenny` password=`motorzzz`. 
+
+    

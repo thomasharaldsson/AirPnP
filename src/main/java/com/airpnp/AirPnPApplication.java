@@ -39,9 +39,8 @@ public class AirPnPApplication {
 	@Bean
 	CommandLineRunner runner() {
 		return args -> {
-			System.out.println("Starting command line runner.");
 			// Initialize database here
-			System.out.println("Initialize database..");
+			System.out.print("Initializing database... ");
 
 			// Delete all vehicles, customers and lenders from database:
 
@@ -132,6 +131,9 @@ public class AirPnPApplication {
 			//Test to check if availability still works if a portion of the parking space dates are free
 			RentalTicket t3 = new RentalTicket(c2, v2, p3);
 			rentalTicketService.addRentalTicket(t2);
+
+			System.out.println("done.");
+			System.out.println("Please open web UI from http://localhost:8080");
 		};
 	}
 }
