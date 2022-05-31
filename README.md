@@ -4,6 +4,8 @@ Web application for renting parking places around town for people who may have p
 
 Application is built on top of the Java Spring Boot MVC framework. User interface is rendered on server side using JSP - Standard Tag Library (JSTL). Backend performs object–relational mapping to local H2 database using Hibernate.
 
+![screenshot.png](screenshot.png)
+
 ## Build and run
 
 From the terminal run `mvn clean install`
